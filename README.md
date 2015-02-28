@@ -3,6 +3,7 @@ iOS navigation library like android SlidingTabStrip lib
 
 ![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/sample.gif)
 
+```objective-c
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
@@ -16,4 +17,5 @@ iOS navigation library like android SlidingTabStrip lib
 	return nil; // return viewController
 }
 
+```
 
