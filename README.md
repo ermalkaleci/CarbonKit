@@ -3,17 +3,6 @@ iOS navigation library like android SlidingTabStrip lib
 
 ![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/sample.gif)
 
-#import "../CarbonTabSwipeNavigation/CarbonTabSwipeNavigation/CarbonTabSwipeNavigation.h"
-
-@interface ViewController () <CarbonTabSwipeDelegate> {
-}
-
-@property (nonatomic, retain) CarbonTabSwipeNavigation *tabSwipe;
-
-@end
-
-@implementation ViewController
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
@@ -22,11 +11,9 @@ iOS navigation library like android SlidingTabStrip lib
 	self.tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
 }
 
-# pragma mark - Carbon Tab Swipe Delegate
-
+// delegate
 - (UIViewController *)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe viewControllerAtIndex:(NSUInteger)index {
 	return nil; // return viewController
 }
 
-@end
 
