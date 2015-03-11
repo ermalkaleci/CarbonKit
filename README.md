@@ -3,17 +3,9 @@ iOS navigation library like android SlidingTabStrip lib
 
 ![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/sample.gif)
 
-#import "../CarbonTabSwipeNavigation/CarbonTabSwipeNavigation/CarbonTabSwipeNavigation.h"
+# SAMPLE CODE
 
-@interface ViewController () <CarbonTabSwipeDelegate> {
-}
-
-@property (nonatomic, retain) CarbonTabSwipeNavigation *tabSwipe;
-
-@end
-
-@implementation ViewController
-
+```objective-c
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
@@ -22,11 +14,35 @@ iOS navigation library like android SlidingTabStrip lib
 	self.tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
 }
 
-# pragma mark - Carbon Tab Swipe Delegate
-
+// delegate
 - (UIViewController *)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe viewControllerAtIndex:(NSUInteger)index {
 	return nil; // return viewController
 }
 
-@end
+```
 
+# CONTRIBUTORS
+ - Ermal Kaleci
+
+# LICENSE
+The MIT License (MIT)
+
+Copyright (c) 2015 Ermal Kaleci
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
