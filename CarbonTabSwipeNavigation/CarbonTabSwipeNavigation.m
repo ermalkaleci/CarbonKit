@@ -83,12 +83,17 @@
 
 	// style segment controller
 	[segmentController setTintColor:[UIColor clearColor]];
-	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:[self.view tintColor],
+
+	UIColor *normalTextColor = [UIColor colorWithWhite:0.85 alpha:1];
+	
+	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:normalTextColor,
 						    NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}
 					 forState:UIControlStateNormal];
+	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:[self.view tintColor],
+						    NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}
+					 forState:UIControlStateSelected];
 	
 	// segment controller action
-	segmentController.momentary = YES;
 	[segmentController addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
 	
 	// get tabs width
@@ -97,7 +102,7 @@
 	for (UIView *tabView in [segmentController subviews]) {
 		for (UIView *label in tabView.subviews) {
 			if ([label isKindOfClass:[UILabel class]]) {
-				CGFloat tabWidth = label.frame.size.width+30;
+				CGFloat tabWidth = [label sizeThatFits:CGSizeMake(FLT_MAX, 16)].width + 30;
 				[segmentController setWidth:tabWidth forSegmentAtIndex:i];
 				segmentedWidth += tabWidth+1;
 			}
@@ -116,7 +121,7 @@
 	[self.view addSubview:tabScrollView];
 	
 	// create indicator
-	indicator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 5)];
+	indicator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, 100, 5)];
 	indicator.backgroundColor = [self.view tintColor];
 	[segmentController addSubview:indicator];
 
@@ -291,11 +296,13 @@
 						: UIPageViewControllerNavigationDirectionReverse;
 	
 	isNotDragging = YES;
+	pageController.view.userInteractionEnabled = NO;
 	[pageController setViewControllers:@[viewController]
 				  direction:animateDirection
 				   animated:YES
 				completion:^(BOOL finished) {
 					isNotDragging = NO;
+					pageController.view.userInteractionEnabled = YES;
 					selectedIndex = index;
 					[segmentController setSelectedSegmentIndex:selectedIndex];	
 				}];
@@ -320,6 +327,10 @@
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	[self fixEdgeInset];
+	
+	CGRect rect = indicator.frame;
+	rect.size.width = ((UIView*)tabs[selectedIndex]).frame.size.width;
+	indicator.frame = rect;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -407,6 +418,7 @@
 # pragma mark - ScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	
 	CGPoint offset = scrollView.contentOffset;
 	
 	CGFloat scrollViewWidth = scrollView.frame.size.width;
