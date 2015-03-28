@@ -1,11 +1,57 @@
+# CarbonKit
+CarbonKit is an iOS OpenSource library collection
+- CarbonSwipeRefresh
+- CarbonTabSwipeNavigation
+
+# CarbonSwipeRefresh
+
+![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/CarbonSwipeRefresh.gif)
+
+# SAMPLE CODE
+```objective-c
+#import "CarbonKit.h"
+
+@interface ViewController ()
+{
+	CarbonSwipeRefresh *refresh;
+}
+@end
+
+@implementation ViewController
+- (void)viewDidLoad {
+	[super viewDidLoad];
+
+	refresh = [[CarbonSwipeRefresh alloc] initWithScrollView:self.tableView];
+	[refresh setMarginTop:64]; // set 64 if navigation is translucent - default 0
+	[refresh setColors:@[[UIColor blueColor], [UIColor redColor], [UIColor orangeColor], [UIColor greenColor]]]; // default tintColor
+	[self.view addSubview:refresh];
+
+	[refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)refresh:(id)sender {
+	[refresh endRefreshing];
+}
+@end
+```
+
 # CarbonTabSwipeNavigation
-iOS navigation library like android SlidingTabStrip lib
 
-![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/sample.gif)
+![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/CarbonTabSwipeNavigation.gif)
 
-# SAMPLE CODE - CarbonTabSwipeNavigation
+# SAMPLE CODE
 
 ```objective-c
+#import "CarbonKit.h"
+
+@interface ViewController () <CarbonTabSwipeDelegate>
+
+@property (nonatomic, retain) CarbonTabSwipeNavigation *tabSwipe;
+
+@end
+
+@implementation ViewController
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
@@ -19,6 +65,7 @@ iOS navigation library like android SlidingTabStrip lib
 	return nil; // return viewController
 }
 
+@end
 ```
 
 # CONTRIBUTORS
