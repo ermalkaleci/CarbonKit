@@ -1,5 +1,5 @@
 # CarbonKit
-CarbonKit is an iOS OpenSource library collection
+CarbonKit is an iOS OpenSource libraries collection
 - CarbonSwipeRefresh
 - CarbonTabSwipeNavigation
 
