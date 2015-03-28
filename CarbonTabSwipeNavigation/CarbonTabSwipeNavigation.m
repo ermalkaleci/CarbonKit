@@ -50,7 +50,10 @@
 
 @implementation CarbonTabSwipeNavigation
 
-- (instancetype)createWithRootViewController:(UIViewController *)viewController tabNames:(NSArray *)names tintColor:(UIColor *)tintColor delegate:(id)delegate {
+- (instancetype)createWithRootViewController:(UIViewController *)viewController
+				    tabNames:(NSArray *)names
+				   tintColor:(UIColor *)tintColor
+				    delegate:(id)delegate {
 	
 	// init
 	self.delegate = delegate;
@@ -60,6 +63,8 @@
 	// remove navigation bar bottom border
 	[rootViewController.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 	[rootViewController.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
+	
+	[rootViewController.navigationController.navigationBar setTranslucent:NO];
 	
 	// create page controller
 	pageController = [UIPageViewController alloc];
@@ -111,6 +116,9 @@
 	// segment controller action
 	[segmentController addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
 	
+	// max tabWidth
+	CGFloat maxTabWidth = 0;
+	
 	// get tabs width
 	NSUInteger i = 0;
 	CGFloat segmentedWidth = 0;
@@ -119,7 +127,13 @@
 			if ([label isKindOfClass:[UILabel class]]) {
 				CGFloat tabWidth = [label sizeThatFits:CGSizeMake(FLT_MAX, 16)].width + 30;
 				[segmentController setWidth:tabWidth forSegmentAtIndex:i];
-				segmentedWidth += tabWidth+1;
+				
+				int extraWidth = i < numberOfTabs - 1 && i > 0 ? 1 : 0;
+				
+				segmentedWidth += tabWidth + extraWidth;
+				
+				// get max tab width
+				maxTabWidth = tabWidth > maxTabWidth ? tabWidth : maxTabWidth;
 			}
 		}
 		
@@ -128,8 +142,31 @@
 		i++;
 	}
 	
-	// remove 2 point from segment width
-	segmentedWidth -=2;
+	// remove 2 point extra
+	segmentedWidth -= 2;
+	
+	if (segmentedWidth < self.view.frame.size.width) {
+		if (self.view.frame.size.width / (float)numberOfTabs < maxTabWidth) {
+			
+			for (int i = 0; i < numberOfTabs; i++) {
+				[segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
+			}
+			
+			segmentedWidth = maxTabWidth * numberOfTabs;
+		} else {
+			maxTabWidth = self.view.frame.size.width/(float)numberOfTabs;
+			
+			for (int i = 0; i < numberOfTabs; i++) {
+				[segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
+			}
+			
+			segmentedWidth = maxTabWidth * numberOfTabs;
+		}
+	}
+	
+	CGRect segmentRect = segmentController.frame;
+	segmentRect.size.width = segmentedWidth;
+	segmentController.frame = segmentRect;
 	
 	// create scrollview
 	tabScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 44)];
@@ -240,20 +277,22 @@
 								      attribute:NSLayoutAttributeHeight
 								     multiplier:0 
 								       constant:5.0]];
-	leftConstraint = [NSLayoutConstraint constraintWithItem:indicator 
-									  attribute:NSLayoutAttributeLeading
-									  relatedBy:NSLayoutRelationEqual
-									     toItem:indicator.superview
-									  attribute:NSLayoutAttributeLeading
-									 multiplier:1.0 
-									   constant:0];
-	widthConstraint = [NSLayoutConstraint constraintWithItem:indicator 
-									   attribute:NSLayoutAttributeWidth
-									   relatedBy:NSLayoutRelationEqual
-									      toItem:indicator.superview
-									   attribute:NSLayoutAttributeWidth
-									  multiplier:0 
-									    constant:0];
+	leftConstraint = [NSLayoutConstraint constraintWithItem:indicator
+						      attribute:NSLayoutAttributeLeading
+						      relatedBy:NSLayoutRelationEqual
+							 toItem:indicator.superview
+						      attribute:NSLayoutAttributeLeading
+						     multiplier:1
+						       constant:0];
+	
+	widthConstraint = [NSLayoutConstraint constraintWithItem:indicator
+						       attribute:NSLayoutAttributeWidth
+						       relatedBy:NSLayoutRelationEqual
+							  toItem:indicator.superview
+						       attribute:NSLayoutAttributeWidth
+						      multiplier:0
+							constant:0];
+	
 	[segmentController addConstraint:leftConstraint];
 	[segmentController addConstraint:widthConstraint];
 	
@@ -263,13 +302,10 @@
 	widthConstraint.constant = tab.frame.size.width;
 	leftConstraint.constant = tab.frame.origin.x;
 	
-	CGFloat indicatorMaxOriginX = tabScrollView.frame.size.width/2 - indicator.frame.size.width/2;
-	tabScrollView.contentInset = UIEdgeInsetsMake(0, indicatorMaxOriginX, 0, indicatorMaxOriginX);
+	tabScrollView.contentInset = UIEdgeInsetsZero;
 	
-	CGFloat offsetX = indicator.frame.origin.x - indicatorMaxOriginX;
+	CGFloat offsetX = indicator.frame.origin.x;
 	tabScrollView.contentOffset = CGPointMake(offsetX, 0);
-	
-	[rootViewController.navigationController.navigationBar setTranslucent:NO];
 	
 	// set tint color
 	[self setTintColor:tintColor];
@@ -321,8 +357,6 @@
 					selectedIndex = index;
 					[segmentController setSelectedSegmentIndex:selectedIndex];	
 				}];
-	
-	
 }
 
 - (void)viewDidLoad {
@@ -361,8 +395,7 @@
 }
 
 - (void)fixEdgeInset {
-	CGFloat indicatorMaxOriginX = tabScrollView.frame.size.width/2 - indicator.frame.size.width/2;
-	tabScrollView.contentInset = UIEdgeInsetsMake(0, indicatorMaxOriginX, 0, indicatorMaxOriginX);
+	tabScrollView.contentInset = UIEdgeInsetsZero;
 }
 
 # pragma mark - PageViewController DataSource
@@ -498,8 +531,12 @@
 	}
 	
 	CGFloat indicatorMaxOriginX = scrollView.frame.size.width / 2 - indicator.frame.size.width / 2;
+	
 	CGFloat offsetX = indicator.frame.origin.x-indicatorMaxOriginX;
-
+	
+	if (offsetX < 0) offsetX = 0;
+	if (offsetX > segmentController.frame.size.width-scrollViewWidth) offsetX = segmentController.frame.size.width-scrollViewWidth;
+	
 	[UIView animateWithDuration:isNotDragging ? 0.3 : 0.01 animations:^{
 		tabScrollView.contentOffset = CGPointMake(offsetX, 0);
 	}];

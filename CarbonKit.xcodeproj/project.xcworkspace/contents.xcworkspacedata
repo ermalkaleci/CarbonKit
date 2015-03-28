@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:CarbonTabSwipeNavigation.xcodeproj">
+      location = "self:CarbonKit.xcodeproj">
    </FileRef>
 </Workspace>

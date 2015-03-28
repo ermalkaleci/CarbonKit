@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		A60473491A879F0500FCE808 /* CarbonTabSwipeNavigation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A60473481A879F0500FCE808 /* CarbonTabSwipeNavigation.h */; };
 		A604734B1A879F0500FCE808 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = A604734A1A879F0500FCE808 /* CarbonTabSwipeNavigation.m */; };
-		A60473511A879F0500FCE808 /* libCarbonTabSwipeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A60473451A879F0500FCE808 /* libCarbonTabSwipeNavigation.a */; };
+		A69E9FF51AC0B019001FEAC1 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9FF41AC0B019001FEAC1 /* CarbonSwipeRefresh.m */; };
+		A6B614CA1AC6F5780059EB6C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6B614C91AC6F5780059EB6C /* Info.plist */; };
+		A6B614CC1AC6F5960059EB6C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6B614CB1AC6F5960059EB6C /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +38,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A60473451A879F0500FCE808 /* libCarbonTabSwipeNavigation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCarbonTabSwipeNavigation.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A60473451A879F0500FCE808 /* libCarbonKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCarbonKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60473481A879F0500FCE808 /* CarbonTabSwipeNavigation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeNavigation.h; sourceTree = "<group>"; };
-		A604734A1A879F0500FCE808 /* CarbonTabSwipeNavigation.m */ = {isa = PBXFileReference; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeNavigation.m; sourceTree = "<group>"; };
-		A60473501A879F0500FCE808 /* CarbonTabSwipeNavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarbonTabSwipeNavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A60473561A879F0500FCE808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A604734A1A879F0500FCE808 /* CarbonTabSwipeNavigation.m */ = {isa = PBXFileReference; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeNavigation.m; sourceTree = "<group>"; wrapsLines = 0; };
+		A60473501A879F0500FCE808 /* CarbonKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarbonKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A69E9F4A1AC0A67C001FEAC1 /* CarbonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonKit.h; sourceTree = "<group>"; };
+		A69E9FF31AC0B019001FEAC1 /* CarbonSwipeRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarbonSwipeRefresh.h; path = CarbonSwipeRefresh/CarbonSwipeRefresh.h; sourceTree = "<group>"; };
+		A69E9FF41AC0B019001FEAC1 /* CarbonSwipeRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarbonSwipeRefresh.m; path = CarbonSwipeRefresh/CarbonSwipeRefresh.m; sourceTree = "<group>"; };
+		A6B614C91AC6F5780059EB6C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../CarbonKitTests/Info.plist; sourceTree = "<group>"; };
+		A6B614CB1AC6F5960059EB6C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A60473511A879F0500FCE808 /* libCarbonTabSwipeNavigation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,19 +70,24 @@
 		A604733C1A879F0500FCE808 = {
 			isa = PBXGroup;
 			children = (
+				A69E9F4A1AC0A67C001FEAC1 /* CarbonKit.h */,
+				A69E9FF61AC0B020001FEAC1 /* CarbonSwipeRefresh */,
 				A60473471A879F0500FCE808 /* CarbonTabSwipeNavigation */,
-				A60473541A879F0500FCE808 /* CarbonTabSwipeNavigationTests */,
+				A6B614C81AC6F5780059EB6C /* CarbonKitTests */,
+				A60473551A879F0500FCE808 /* Supporting Files */,
 				A60473461A879F0500FCE808 /* Products */,
 			);
+			indentWidth = 8;
 			sourceTree = "<group>";
 			tabWidth = 8;
 			usesTabs = 1;
+			wrapsLines = 0;
 		};
 		A60473461A879F0500FCE808 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A60473451A879F0500FCE808 /* libCarbonTabSwipeNavigation.a */,
-				A60473501A879F0500FCE808 /* CarbonTabSwipeNavigationTests.xctest */,
+				A60473451A879F0500FCE808 /* libCarbonKit.a */,
+				A60473501A879F0500FCE808 /* CarbonKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,28 +101,38 @@
 			path = CarbonTabSwipeNavigation;
 			sourceTree = "<group>";
 		};
-		A60473541A879F0500FCE808 /* CarbonTabSwipeNavigationTests */ = {
-			isa = PBXGroup;
-			children = (
-				A60473551A879F0500FCE808 /* Supporting Files */,
-			);
-			path = CarbonTabSwipeNavigationTests;
-			sourceTree = "<group>";
-		};
 		A60473551A879F0500FCE808 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A60473561A879F0500FCE808 /* Info.plist */,
+				A6B614C91AC6F5780059EB6C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			path = CarbonTabSwipeNavigationTests;
 			sourceTree = "<group>";
+		};
+		A69E9FF61AC0B020001FEAC1 /* CarbonSwipeRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				A69E9FF31AC0B019001FEAC1 /* CarbonSwipeRefresh.h */,
+				A69E9FF41AC0B019001FEAC1 /* CarbonSwipeRefresh.m */,
+			);
+			name = CarbonSwipeRefresh;
+			sourceTree = "<group>";
+		};
+		A6B614C81AC6F5780059EB6C /* CarbonKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				A6B614CB1AC6F5960059EB6C /* Info.plist */,
+			);
+			path = CarbonKitTests;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A60473441A879F0500FCE808 /* CarbonTabSwipeNavigation */ = {
+		A60473441A879F0500FCE808 /* CarbonKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A60473591A879F0500FCE808 /* Build configuration list for PBXNativeTarget "CarbonTabSwipeNavigation" */;
+			buildConfigurationList = A60473591A879F0500FCE808 /* Build configuration list for PBXNativeTarget "CarbonKit" */;
 			buildPhases = (
 				A60473411A879F0500FCE808 /* Sources */,
 				A60473421A879F0500FCE808 /* Frameworks */,
@@ -122,14 +142,14 @@
 			);
 			dependencies = (
 			);
-			name = CarbonTabSwipeNavigation;
+			name = CarbonKit;
 			productName = CarbonTabSwipeNavigation;
-			productReference = A60473451A879F0500FCE808 /* libCarbonTabSwipeNavigation.a */;
+			productReference = A60473451A879F0500FCE808 /* libCarbonKit.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		A604734F1A879F0500FCE808 /* CarbonTabSwipeNavigationTests */ = {
+		A604734F1A879F0500FCE808 /* CarbonKitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A604735C1A879F0500FCE808 /* Build configuration list for PBXNativeTarget "CarbonTabSwipeNavigationTests" */;
+			buildConfigurationList = A604735C1A879F0500FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitTests" */;
 			buildPhases = (
 				A604734C1A879F0500FCE808 /* Sources */,
 				A604734D1A879F0500FCE808 /* Frameworks */,
@@ -140,9 +160,9 @@
 			dependencies = (
 				A60473531A879F0500FCE808 /* PBXTargetDependency */,
 			);
-			name = CarbonTabSwipeNavigationTests;
+			name = CarbonKitTests;
 			productName = CarbonTabSwipeNavigationTests;
-			productReference = A60473501A879F0500FCE808 /* CarbonTabSwipeNavigationTests.xctest */;
+			productReference = A60473501A879F0500FCE808 /* CarbonKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -162,7 +182,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A60473401A879F0500FCE808 /* Build configuration list for PBXProject "CarbonTabSwipeNavigation" */;
+			buildConfigurationList = A60473401A879F0500FCE808 /* Build configuration list for PBXProject "CarbonKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -174,8 +194,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A60473441A879F0500FCE808 /* CarbonTabSwipeNavigation */,
-				A604734F1A879F0500FCE808 /* CarbonTabSwipeNavigationTests */,
+				A60473441A879F0500FCE808 /* CarbonKit */,
+				A604734F1A879F0500FCE808 /* CarbonKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -185,6 +205,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6B614CC1AC6F5960059EB6C /* Info.plist in Resources */,
+				A6B614CA1AC6F5780059EB6C /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A604734B1A879F0500FCE808 /* CarbonTabSwipeNavigation.m in Sources */,
+				A69E9FF51AC0B019001FEAC1 /* CarbonSwipeRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +234,7 @@
 /* Begin PBXTargetDependency section */
 		A60473531A879F0500FCE808 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A60473441A879F0500FCE808 /* CarbonTabSwipeNavigation */;
+			target = A60473441A879F0500FCE808 /* CarbonKit */;
 			targetProxy = A60473521A879F0500FCE808 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -295,7 +318,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CarbonKit;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -304,7 +327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CarbonKit;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -320,9 +343,9 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = CarbonTabSwipeNavigationTests/Info.plist;
+				INFOPLIST_FILE = CarbonKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CarbonKitTests;
 			};
 			name = Debug;
 		};
@@ -333,16 +356,16 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = CarbonTabSwipeNavigationTests/Info.plist;
+				INFOPLIST_FILE = CarbonKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CarbonKitTests;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A60473401A879F0500FCE808 /* Build configuration list for PBXProject "CarbonTabSwipeNavigation" */ = {
+		A60473401A879F0500FCE808 /* Build configuration list for PBXProject "CarbonKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A60473571A879F0500FCE808 /* Debug */,
@@ -351,21 +374,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A60473591A879F0500FCE808 /* Build configuration list for PBXNativeTarget "CarbonTabSwipeNavigation" */ = {
+		A60473591A879F0500FCE808 /* Build configuration list for PBXNativeTarget "CarbonKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A604735A1A879F0500FCE808 /* Debug */,
 				A604735B1A879F0500FCE808 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		A604735C1A879F0500FCE808 /* Build configuration list for PBXNativeTarget "CarbonTabSwipeNavigationTests" */ = {
+		A604735C1A879F0500FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A604735D1A879F0500FCE808 /* Debug */,
 				A604735E1A879F0500FCE808 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
