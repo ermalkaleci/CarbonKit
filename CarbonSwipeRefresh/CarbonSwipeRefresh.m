@@ -120,7 +120,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 									   toItem:self.superview
 									attribute:NSLayoutAttributeTop
 								       multiplier:1.0
-									 constant:-50 + marginTop];
+									 constant:-50];
 	
 	centerXConstrait = [NSLayoutConstraint constraintWithItem:self
 							attribute:NSLayoutAttributeCenterX
@@ -216,7 +216,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 	
 	float newY = -50 - contentOffset.y;
 	
-	if (newY < 40) {
+	if (newY < 40 + marginTop) {
 		isFullyPulled = NO;
 		
 		pathLayer.strokeColor = ((UIColor*)self.colors[colorIndex]).CGColor;
@@ -225,7 +225,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 		[self updateWithPoint:contentOffset outside:NO];
 		
 		if (isDragging) {
-			topConstrait.constant = newY + marginTop;
+			topConstrait.constant = newY;
 			[self layoutIfNeeded];
 		}
 		
@@ -238,9 +238,9 @@ typedef NS_ENUM(NSUInteger, PullState) {
 
 - (void)updateWithPoint:(CGPoint)point outside:(BOOL)flag {
 	
-	CGFloat angle = -point.y/120;
+	CGFloat angle = -point.y/(160+marginTop);
 	
-	container.layer.transform = CATransform3DMakeRotation(angle * 10, 0, 0, 1);
+	container.layer.transform = CATransform3DMakeRotation(angle * 20, 0, 0, 1);
 	
 	if (!flag && pullState == PullStateDragging) {
 		[self showView];
