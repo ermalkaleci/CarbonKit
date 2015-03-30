@@ -140,6 +140,8 @@ typedef NS_ENUM(NSUInteger, PullState) {
 	
 	tableScrollView = scrollView;
 	
+	marginTop =  scrollView.contentOffset.y;
+	
 	if (scrollView) {
 		[scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
 		[scrollView addObserver:self forKeyPath:@"pan.state" options:NSKeyValueObservingOptionNew context:nil];
@@ -154,7 +156,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 }
 
 - (void)setMarginTop:(CGFloat)topMargin {
-	marginTop = topMargin;
+	marginTop = -topMargin;
 	[self layoutIfNeeded];
 }
 
@@ -192,7 +194,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 				pullState = PullStateRefreshing;
 				[UIView animateWithDuration:.2f
 						 animations:^{
-							 topConstrait.constant = 10 + marginTop;
+							 topConstrait.constant = 10 - marginTop;
 							 [self layoutIfNeeded];
 						 }
 				 ];
@@ -200,7 +202,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 				[self sendActionsForControlEvents:UIControlEventValueChanged];
 			} else {
 				[UIView animateWithDuration:0.2 animations:^{
-					topConstrait.constant = -50 + marginTop;
+					topConstrait.constant = -50 - marginTop;
 					[self layoutIfNeeded];
 				} completion:^(BOOL finished) {
 					pathLayer.strokeColor = ((UIColor*)self.colors[colorIndex]).CGColor;
@@ -214,9 +216,9 @@ typedef NS_ENUM(NSUInteger, PullState) {
 	
 	if (pullState == PullStateRefreshing) return;
 	
-	float newY = -50 - contentOffset.y;
+	float newY = -contentOffset.y - 50;
 	
-	if (newY < 40 + marginTop) {
+	if (contentOffset.y - marginTop > -100) {
 		isFullyPulled = NO;
 		
 		pathLayer.strokeColor = ((UIColor*)self.colors[colorIndex]).CGColor;
@@ -238,9 +240,9 @@ typedef NS_ENUM(NSUInteger, PullState) {
 
 - (void)updateWithPoint:(CGPoint)point outside:(BOOL)flag {
 	
-	CGFloat angle = -point.y/(160+marginTop);
+	CGFloat angle = -(point.y - marginTop) / 130;
 	
-	container.layer.transform = CATransform3DMakeRotation(angle * 20, 0, 0, 1);
+	container.layer.transform = CATransform3DMakeRotation(angle * 10, 0, 0, 1);
 	
 	if (!flag && pullState == PullStateDragging) {
 		[self showView];
