@@ -28,8 +28,8 @@
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	
 	self.title = @"Overview";
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-
+	self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+	
 	NSArray *names = @[@"CATEGORIES", @"HOME", @"TOP PAID", @"TOP FREE", @"TOP GROSSING", @"TOP NEW PAID", @"TOP NEW FREE", @"TRENDING"];
 	UIColor *color = [UIColor colorWithRed:0.753 green:0.224 blue:0.169 alpha:1];
 	self.tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
@@ -43,7 +43,6 @@
 # pragma mark - Carbon Tab Swipe Delegate
 
 - (UIViewController *)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe viewControllerAtIndex:(NSUInteger)index {
-	
 	if (index % 2 == 0) {
 		CategoriesTableViewController *v = [self.storyboard instantiateViewControllerWithIdentifier:@"Categories"];
 		return v;
@@ -55,7 +54,6 @@
 	UILabel *t = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
 	t.text = [NSString stringWithFormat:@"Hello World! %d", (int)index];
 	[v.view addSubview:t];
-	v.view.backgroundColor = [UIColor whiteColor];
 	
 	return v;
 }
