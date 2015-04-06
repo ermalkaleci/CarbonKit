@@ -302,15 +302,21 @@ typedef NS_ENUM(NSUInteger, PullState) {
 	animations.repeatCount = INFINITY;
 	[pathLayer addAnimation:animations forKey:STROKE_ANIMATION];
 	
-	[self performSelector:@selector(hideArrow) withObject:nil afterDelay:.5f];
-	[self performSelector:@selector(changeColor) withObject:nil afterDelay:.5f];
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+		[self hideArrow];
+	});
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+		[self changeColor];
+	});
 }
 
 - (void)changeColor {
-	
-	if (pullState == PullStateRefreshing) {
 
-		[self performSelector:@selector(changeColor) withObject:nil afterDelay:1.5f];
+	if (pullState == PullStateRefreshing) {
+		
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+			[self changeColor];
+		});
 		
 		colorIndex++;
 		if (colorIndex > self.colors.count - 1) {

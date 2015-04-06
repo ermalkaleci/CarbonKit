@@ -52,7 +52,9 @@
 - (void)refresh:(id)sender {
 	NSLog(@"REFRESH");
 	
-	[self performSelector:@selector(endRefreshing) withObject:nil afterDelay:6];
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+		[self endRefreshing];
+	});
 }
 
 - (void)endRefreshing {
