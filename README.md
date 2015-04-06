@@ -1,4 +1,6 @@
 # CarbonKit
+->![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/carbonkit_logo.png)<-
+
 CarbonKit is an iOS OpenSource libraries collection.
 Like the Carbon is the base of the life, I started CarbonKit to be base of great apps ;-)
 Fork & Contribute CarbonKit to make it better.
