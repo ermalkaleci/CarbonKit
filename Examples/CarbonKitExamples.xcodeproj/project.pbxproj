@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A62CA4271AD155D300E4698D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62CA4261AD155D300E4698D /* Default-568h@2x.png */; };
+		A64B48DE1AD2E4F10053D488 /* ViewControllerThree.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */; };
 		A69E9F531AC0A911001FEAC1 /* libCarbonKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69E9F451AC0A47A001FEAC1 /* libCarbonKit.a */; };
 		A69E9F671AC0AAD6001FEAC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F5F1AC0AAD6001FEAC1 /* AppDelegate.m */; };
-		A69E9F681AC0AAD6001FEAC1 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F611AC0AAD6001FEAC1 /* CategoriesTableViewController.m */; };
+		A69E9F681AC0AAD6001FEAC1 /* ViewControllerOne.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F611AC0AAD6001FEAC1 /* ViewControllerOne.m */; };
 		A69E9F691AC0AAD6001FEAC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F621AC0AAD6001FEAC1 /* main.m */; };
-		A69E9F6A1AC0AAD6001FEAC1 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F641AC0AAD6001FEAC1 /* TestViewController.m */; };
-		A69E9F6B1AC0AAD6001FEAC1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F661AC0AAD6001FEAC1 /* ViewController.m */; };
+		A69E9F6A1AC0AAD6001FEAC1 /* ViewControllerTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F641AC0AAD6001FEAC1 /* ViewControllerTwo.m */; };
+		A69E9F6B1AC0AAD6001FEAC1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F661AC0AAD6001FEAC1 /* HomeViewController.m */; };
 		A69E9F6F1AC0AAEA001FEAC1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */; };
 		A69E9F841AC0AD21001FEAC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F731AC0AAF5001FEAC1 /* Main.storyboard */; };
 		A6B614D11AC70F4A0059EB6C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A6B614CF1AC70F4A0059EB6C /* LICENSE */; };
@@ -48,16 +49,18 @@
 		A60473681A87AFCA00FCE808 /* CarbonKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60473841A87AFCB00FCE808 /* CarbonKitExamplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarbonKitExamplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62CA4261AD155D300E4698D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "CarbonKitExamples/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		A64B48DC1AD2E4F10053D488 /* ViewControllerThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerThree.h; path = CarbonKitExamples/ViewControllerThree.h; sourceTree = SOURCE_ROOT; };
+		A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerThree.m; path = CarbonKitExamples/ViewControllerThree.m; sourceTree = SOURCE_ROOT; };
 		A69E9F3F1AC0A47A001FEAC1 /* CarbonKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CarbonKit.xcodeproj; path = ../CarbonKit.xcodeproj; sourceTree = "<group>"; };
 		A69E9F5E1AC0AAD6001FEAC1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CarbonKitExamples/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		A69E9F5F1AC0AAD6001FEAC1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CarbonKitExamples/AppDelegate.m; sourceTree = SOURCE_ROOT; };
-		A69E9F601AC0AAD6001FEAC1 /* CategoriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoriesTableViewController.h; path = CarbonKitExamples/CategoriesTableViewController.h; sourceTree = SOURCE_ROOT; };
-		A69E9F611AC0AAD6001FEAC1 /* CategoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewController.m; path = CarbonKitExamples/CategoriesTableViewController.m; sourceTree = SOURCE_ROOT; };
+		A69E9F601AC0AAD6001FEAC1 /* ViewControllerOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerOne.h; path = CarbonKitExamples/ViewControllerOne.h; sourceTree = SOURCE_ROOT; };
+		A69E9F611AC0AAD6001FEAC1 /* ViewControllerOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerOne.m; path = CarbonKitExamples/ViewControllerOne.m; sourceTree = SOURCE_ROOT; };
 		A69E9F621AC0AAD6001FEAC1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CarbonKitExamples/main.m; sourceTree = SOURCE_ROOT; };
-		A69E9F631AC0AAD6001FEAC1 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestViewController.h; path = CarbonKitExamples/TestViewController.h; sourceTree = SOURCE_ROOT; };
-		A69E9F641AC0AAD6001FEAC1 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestViewController.m; path = CarbonKitExamples/TestViewController.m; sourceTree = SOURCE_ROOT; };
-		A69E9F651AC0AAD6001FEAC1 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = CarbonKitExamples/ViewController.h; sourceTree = SOURCE_ROOT; };
-		A69E9F661AC0AAD6001FEAC1 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = CarbonKitExamples/ViewController.m; sourceTree = SOURCE_ROOT; };
+		A69E9F631AC0AAD6001FEAC1 /* ViewControllerTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerTwo.h; path = CarbonKitExamples/ViewControllerTwo.h; sourceTree = SOURCE_ROOT; };
+		A69E9F641AC0AAD6001FEAC1 /* ViewControllerTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerTwo.m; path = CarbonKitExamples/ViewControllerTwo.m; sourceTree = SOURCE_ROOT; };
+		A69E9F651AC0AAD6001FEAC1 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = CarbonKitExamples/HomeViewController.h; sourceTree = SOURCE_ROOT; };
+		A69E9F661AC0AAD6001FEAC1 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = CarbonKitExamples/HomeViewController.m; sourceTree = SOURCE_ROOT; };
 		A69E9F6C1AC0AAE3001FEAC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CarbonKitExamples/Info.plist; sourceTree = SOURCE_ROOT; };
 		A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CarbonKitExamples/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		A69E9F741AC0AAF5001FEAC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
@@ -115,13 +118,16 @@
 				A60473871A87AFCB00FCE808 /* CarbonKitExamplesTests */,
 				A69E9F5E1AC0AAD6001FEAC1 /* AppDelegate.h */,
 				A69E9F5F1AC0AAD6001FEAC1 /* AppDelegate.m */,
-				A69E9F601AC0AAD6001FEAC1 /* CategoriesTableViewController.h */,
-				A69E9F611AC0AAD6001FEAC1 /* CategoriesTableViewController.m */,
-				A69E9F631AC0AAD6001FEAC1 /* TestViewController.h */,
-				A69E9F641AC0AAD6001FEAC1 /* TestViewController.m */,
-				A69E9F651AC0AAD6001FEAC1 /* ViewController.h */,
-				A69E9F661AC0AAD6001FEAC1 /* ViewController.m */,
+				A69E9F601AC0AAD6001FEAC1 /* ViewControllerOne.h */,
+				A69E9F611AC0AAD6001FEAC1 /* ViewControllerOne.m */,
+				A69E9F631AC0AAD6001FEAC1 /* ViewControllerTwo.h */,
+				A69E9F641AC0AAD6001FEAC1 /* ViewControllerTwo.m */,
+				A64B48DC1AD2E4F10053D488 /* ViewControllerThree.h */,
+				A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */,
+				A69E9F651AC0AAD6001FEAC1 /* HomeViewController.h */,
+				A69E9F661AC0AAD6001FEAC1 /* HomeViewController.m */,
 				A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */,
+				A69E9F701AC0AAF5001FEAC1 /* Base.lproj */,
 			);
 			indentWidth = 8;
 			name = CarbonKitExamples;
@@ -133,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				A62CA4261AD155D300E4698D /* Default-568h@2x.png */,
-				A69E9F701AC0AAF5001FEAC1 /* Base.lproj */,
 				A69E9F6C1AC0AAE3001FEAC1 /* Info.plist */,
 				A69E9F621AC0AAD6001FEAC1 /* main.m */,
 			);
@@ -294,11 +299,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6B614D21AC70F4A0059EB6C /* README.md in Sources */,
-				A69E9F6B1AC0AAD6001FEAC1 /* ViewController.m in Sources */,
+				A69E9F6B1AC0AAD6001FEAC1 /* HomeViewController.m in Sources */,
 				A69E9F671AC0AAD6001FEAC1 /* AppDelegate.m in Sources */,
 				A69E9F691AC0AAD6001FEAC1 /* main.m in Sources */,
-				A69E9F681AC0AAD6001FEAC1 /* CategoriesTableViewController.m in Sources */,
-				A69E9F6A1AC0AAD6001FEAC1 /* TestViewController.m in Sources */,
+				A69E9F681AC0AAD6001FEAC1 /* ViewControllerOne.m in Sources */,
+				A64B48DE1AD2E4F10053D488 /* ViewControllerThree.m in Sources */,
+				A69E9F6A1AC0AAD6001FEAC1 /* ViewControllerTwo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,17 +1,12 @@
-//
-//  ViewController.m
-//  Test 2
-//
-//  Created by Ermal Kaleci on 08/02/15.
-//  Copyright (c) 2015 Ermal Kaleci. All rights reserved.
-//
+#import "HomeViewController.h"
 
-#import "ViewController.h"
-#import "TestViewController.h"
-#import "CategoriesTableViewController.h"
+#import "ViewControllerOne.h"
+#import "ViewControllerTwo.h"
+#import "ViewControllerThree.h"
+
 #import "../../CarbonKit.h"
 
-@interface ViewController () <CarbonTabSwipeDelegate>
+@interface HomeViewController () <CarbonTabSwipeDelegate>
 {
 }
 
@@ -19,7 +14,7 @@
 
 @end
 
-@implementation ViewController
+@implementation HomeViewController
 
 - (void)viewDidLoad
 {
@@ -30,7 +25,7 @@
 	self.title = @"Overview";
 	self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
 	
-	NSArray *names = @[@"CATEGORIES", @"HOME", @"TOP PAID", @"TOP FREE", @"TOP GROSSING", @"TOP NEW PAID", @"TOP NEW FREE", @"TRENDING"];
+	NSArray *names = @[@"ONE", @"TWO", @"THREE"];
 	UIColor *color = [UIColor colorWithRed:0.753 green:0.224 blue:0.169 alpha:1];
 	self.tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
 }
@@ -43,19 +38,17 @@
 # pragma mark - Carbon Tab Swipe Delegate
 
 - (UIViewController *)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe viewControllerAtIndex:(NSUInteger)index {
-	if (index % 2 == 0) {
-		CategoriesTableViewController *v = [self.storyboard instantiateViewControllerWithIdentifier:@"Categories"];
-		return v;
+	
+	if (index == 0) {
+		ViewControllerOne *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerOne"];
+		return viewController;
+	} else if (index == 1) {
+		ViewControllerTwo *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerTwo"];
+		return viewController;
+	} else {
+		ViewControllerThree *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerThree"];
+		return viewController;
 	}
-	
-	
-	UIViewController *v = [[UIViewController alloc] init];
-	
-	UILabel *t = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
-	t.text = [NSString stringWithFormat:@"Hello World! %d", (int)index];
-	[v.view addSubview:t];
-	
-	return v;
 }
 
 @end

@@ -1,22 +1,15 @@
-//
-//  CategoriesTableViewController.m
-//  Test 2
-//
-//  Created by Ermal Kaleci on 26/02/15.
-//  Copyright (c) 2015 Ermal Kaleci. All rights reserved.
-//
 
-#import "CategoriesTableViewController.h"
+#import "ViewControllerOne.h"
 #import "../../CarbonKit.h"
 
-@interface CategoriesTableViewController ()
+@interface ViewControllerOne ()
 {
 	CarbonSwipeRefresh *refresh;
 }
 
 @end
 
-@implementation CategoriesTableViewController
+@implementation ViewControllerOne
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
