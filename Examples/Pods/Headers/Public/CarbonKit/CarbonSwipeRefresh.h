@@ -1,1 +1,0 @@
-../../../CarbonKit/CarbonKit/CarbonSwipeRefresh.h
