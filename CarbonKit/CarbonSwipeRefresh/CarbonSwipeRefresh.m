@@ -29,7 +29,8 @@
 typedef NS_ENUM(NSUInteger, PullState) {
 	PullStateReady = 0,
 	PullStateDragging,
-	PullStateRefreshing
+	PullStateRefreshing,
+	PullStateFinished
 };
 
 @interface CarbonSwipeRefresh()
@@ -185,10 +186,20 @@ typedef NS_ENUM(NSUInteger, PullState) {
 		NSInteger state = [[change valueForKey:NSKeyValueChangeNewKey] integerValue];
 		
 		if (state == 2) {
-			isDragging = YES;
-			pullState = PullStateDragging;
+			if (pullState == PullStateFinished) {
+				if (tableScrollView.contentOffset.y > -10) {
+					isDragging = YES;
+					pullState = PullStateDragging;
+				}
+			} else {
+				isDragging = YES;
+				pullState = PullStateDragging;
+			}
 			
 		} else if (state == 3) {
+			
+			if (pullState != PullStateDragging) return;
+			
 			isDragging = NO;
 			if (isFullyPulled) {
 				pullState = PullStateRefreshing;
@@ -304,8 +315,6 @@ typedef NS_ENUM(NSUInteger, PullState) {
 	
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 		[self hideArrow];
-	});
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 		[self changeColor];
 	});
 }
@@ -314,7 +323,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 
 	if (pullState == PullStateRefreshing) {
 		
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 			[self changeColor];
 		});
 		
@@ -322,7 +331,11 @@ typedef NS_ENUM(NSUInteger, PullState) {
 		if (colorIndex > self.colors.count - 1) {
 			colorIndex = 0;
 		}
+		
+		[CATransaction begin];
+		[CATransaction setDisableActions:YES];
 		pathLayer.strokeColor = ((UIColor*)self.colors[colorIndex]).CGColor;
+		[CATransaction commit];
 	}
 }
 
@@ -365,7 +378,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 		// update center
 		centerXConstrait.constant = -20;
 		
-		pullState = PullStateReady;
+		pullState = PullStateFinished;
 		colorIndex = 0;
 		pathLayer.strokeColor = ((UIColor*)self.colors[colorIndex]).CGColor;
 		

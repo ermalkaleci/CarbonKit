@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A62CA4271AD155D300E4698D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62CA4261AD155D300E4698D /* Default-568h@2x.png */; };
 		A64B48DE1AD2E4F10053D488 /* ViewControllerThree.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */; };
-		A69E9F531AC0A911001FEAC1 /* libCarbonKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69E9F451AC0A47A001FEAC1 /* libCarbonKit.a */; };
+		A66CAE151AD5B367003E7225 /* libCarbonKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A66CAE0F1AD5B250003E7225 /* libCarbonKit.a */; };
 		A69E9F671AC0AAD6001FEAC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F5F1AC0AAD6001FEAC1 /* AppDelegate.m */; };
 		A69E9F681AC0AAD6001FEAC1 /* ViewControllerOne.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F611AC0AAD6001FEAC1 /* ViewControllerOne.m */; };
 		A69E9F691AC0AAD6001FEAC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F621AC0AAD6001FEAC1 /* main.m */; };
@@ -22,36 +22,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A69E9F441AC0A47A001FEAC1 /* PBXContainerItemProxy */ = {
+		A66CAE0E1AD5B250003E7225 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A69E9F3F1AC0A47A001FEAC1 /* CarbonKit.xcodeproj */;
+			containerPortal = A66CAE091AD5B250003E7225 /* CarbonKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A60473451A879F0500FCE808;
 			remoteInfo = CarbonKit;
-		};
-		A69E9F461AC0A47A001FEAC1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A69E9F3F1AC0A47A001FEAC1 /* CarbonKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A60473501A879F0500FCE808;
-			remoteInfo = CarbonKitTests;
-		};
-		A69E9F591AC0A93D001FEAC1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A60473601A87AFCA00FCE808 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A60473671A87AFCA00FCE808;
-			remoteInfo = CarbonKitExamples;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A60473681A87AFCA00FCE808 /* CarbonKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A60473841A87AFCB00FCE808 /* CarbonKitExamplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarbonKitExamplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62CA4261AD155D300E4698D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "CarbonKitExamples/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		A64B48DC1AD2E4F10053D488 /* ViewControllerThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerThree.h; path = CarbonKitExamples/ViewControllerThree.h; sourceTree = SOURCE_ROOT; };
 		A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerThree.m; path = CarbonKitExamples/ViewControllerThree.m; sourceTree = SOURCE_ROOT; };
-		A69E9F3F1AC0A47A001FEAC1 /* CarbonKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CarbonKit.xcodeproj; path = ../CarbonKit.xcodeproj; sourceTree = "<group>"; };
+		A66CAE091AD5B250003E7225 /* CarbonKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CarbonKit.xcodeproj; path = ../CarbonKit/CarbonKit.xcodeproj; sourceTree = "<group>"; };
 		A69E9F5E1AC0AAD6001FEAC1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CarbonKitExamples/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		A69E9F5F1AC0AAD6001FEAC1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CarbonKitExamples/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		A69E9F601AC0AAD6001FEAC1 /* ViewControllerOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerOne.h; path = CarbonKitExamples/ViewControllerOne.h; sourceTree = SOURCE_ROOT; };
@@ -60,7 +45,7 @@
 		A69E9F631AC0AAD6001FEAC1 /* ViewControllerTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerTwo.h; path = CarbonKitExamples/ViewControllerTwo.h; sourceTree = SOURCE_ROOT; };
 		A69E9F641AC0AAD6001FEAC1 /* ViewControllerTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerTwo.m; path = CarbonKitExamples/ViewControllerTwo.m; sourceTree = SOURCE_ROOT; };
 		A69E9F651AC0AAD6001FEAC1 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = CarbonKitExamples/HomeViewController.h; sourceTree = SOURCE_ROOT; };
-		A69E9F661AC0AAD6001FEAC1 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = CarbonKitExamples/HomeViewController.m; sourceTree = SOURCE_ROOT; };
+		A69E9F661AC0AAD6001FEAC1 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = CarbonKitExamples/HomeViewController.m; sourceTree = SOURCE_ROOT; wrapsLines = 1; };
 		A69E9F6C1AC0AAE3001FEAC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CarbonKitExamples/Info.plist; sourceTree = SOURCE_ROOT; };
 		A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CarbonKitExamples/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		A69E9F741AC0AAF5001FEAC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
@@ -75,14 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69E9F531AC0A911001FEAC1 /* libCarbonKit.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A60473811A87AFCB00FCE808 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				A66CAE151AD5B367003E7225 /* libCarbonKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +72,7 @@
 			children = (
 				A6B614CF1AC70F4A0059EB6C /* LICENSE */,
 				A6B614D01AC70F4A0059EB6C /* README.md */,
-				A69E9F3F1AC0A47A001FEAC1 /* CarbonKit.xcodeproj */,
+				A66CAE091AD5B250003E7225 /* CarbonKit.xcodeproj */,
 				A604736A1A87AFCA00FCE808 /* CarbonKitExamples */,
 				A604736B1A87AFCA00FCE808 /* Supporting Files */,
 				A60473691A87AFCA00FCE808 /* Products */,
@@ -107,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				A60473681A87AFCA00FCE808 /* CarbonKitExamples.app */,
-				A60473841A87AFCB00FCE808 /* CarbonKitExamplesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,11 +133,10 @@
 			path = "Test 2Tests";
 			sourceTree = SOURCE_ROOT;
 		};
-		A69E9F401AC0A47A001FEAC1 /* Products */ = {
+		A66CAE0A1AD5B250003E7225 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A69E9F451AC0A47A001FEAC1 /* libCarbonKit.a */,
-				A69E9F471AC0A47A001FEAC1 /* CarbonKitTests.xctest */,
+				A66CAE0F1AD5B250003E7225 /* libCarbonKit.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,24 +170,6 @@
 			productReference = A60473681A87AFCA00FCE808 /* CarbonKitExamples.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A60473831A87AFCB00FCE808 /* CarbonKitExamplesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A60473911A87AFCB00FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitExamplesTests" */;
-			buildPhases = (
-				A60473801A87AFCB00FCE808 /* Sources */,
-				A60473811A87AFCB00FCE808 /* Frameworks */,
-				A60473821A87AFCB00FCE808 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A69E9F5A1AC0A93D001FEAC1 /* PBXTargetDependency */,
-			);
-			name = CarbonKitExamplesTests;
-			productName = "Test 2Tests";
-			productReference = A60473841A87AFCB00FCE808 /* CarbonKitExamplesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -223,10 +181,6 @@
 				TargetAttributes = {
 					A60473671A87AFCA00FCE808 = {
 						CreatedOnToolsVersion = 6.1.1;
-					};
-					A60473831A87AFCB00FCE808 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = A60473671A87AFCA00FCE808;
 					};
 				};
 			};
@@ -243,31 +197,23 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = A69E9F401AC0A47A001FEAC1 /* Products */;
-					ProjectRef = A69E9F3F1AC0A47A001FEAC1 /* CarbonKit.xcodeproj */;
+					ProductGroup = A66CAE0A1AD5B250003E7225 /* Products */;
+					ProjectRef = A66CAE091AD5B250003E7225 /* CarbonKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
 				A60473671A87AFCA00FCE808 /* CarbonKitExamples */,
-				A60473831A87AFCB00FCE808 /* CarbonKitExamplesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A69E9F451AC0A47A001FEAC1 /* libCarbonKit.a */ = {
+		A66CAE0F1AD5B250003E7225 /* libCarbonKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libCarbonKit.a;
-			remoteRef = A69E9F441AC0A47A001FEAC1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A69E9F471AC0A47A001FEAC1 /* CarbonKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CarbonKitTests.xctest;
-			remoteRef = A69E9F461AC0A47A001FEAC1 /* PBXContainerItemProxy */;
+			remoteRef = A66CAE0E1AD5B250003E7225 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -281,13 +227,6 @@
 				A62CA4271AD155D300E4698D /* Default-568h@2x.png in Resources */,
 				A6B614D11AC70F4A0059EB6C /* LICENSE in Resources */,
 				A69E9F6F1AC0AAEA001FEAC1 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A60473821A87AFCB00FCE808 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,22 +247,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A60473801A87AFCB00FCE808 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A69E9F5A1AC0A93D001FEAC1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A60473671A87AFCA00FCE808 /* CarbonKitExamples */;
-			targetProxy = A69E9F591AC0A93D001FEAC1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A69E9F731AC0AAF5001FEAC1 /* Main.storyboard */ = {
@@ -445,40 +369,6 @@
 			};
 			name = Release;
 		};
-		A60473921A87AFCB00FCE808 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CarbonKitExamplesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = CarbonKitExamplesTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CarbonKitExamplesTests.app/CarbonKitExamplesTests";
-			};
-			name = Debug;
-		};
-		A60473931A87AFCB00FCE808 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CarbonKitExamplesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = CarbonKitExamplesTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CarbonKitExamplesTests.app/CarbonKitExamplesTests";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -496,15 +386,6 @@
 			buildConfigurations = (
 				A604738F1A87AFCB00FCE808 /* Debug */,
 				A60473901A87AFCB00FCE808 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A60473911A87AFCB00FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitExamplesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A60473921A87AFCB00FCE808 /* Debug */,
-				A60473931A87AFCB00FCE808 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

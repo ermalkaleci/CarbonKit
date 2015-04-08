@@ -429,7 +429,7 @@
 				[segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
 			}
 			
-			segmentedWidth = maxTabWidth * numberOfTabs;
+			segmentedWidth = size.width;
 		}
 	}
 	

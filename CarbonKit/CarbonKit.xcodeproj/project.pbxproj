@@ -7,21 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A60473491A879F0500FCE808 /* CarbonTabSwipeNavigation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A60473481A879F0500FCE808 /* CarbonTabSwipeNavigation.h */; };
 		A604734B1A879F0500FCE808 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = A604734A1A879F0500FCE808 /* CarbonTabSwipeNavigation.m */; };
 		A69E9FF51AC0B019001FEAC1 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9FF41AC0B019001FEAC1 /* CarbonSwipeRefresh.m */; };
-		A6B614CA1AC6F5780059EB6C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6B614C91AC6F5780059EB6C /* Info.plist */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A60473521A879F0500FCE808 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A604733D1A879F0500FCE808 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A60473441A879F0500FCE808;
-			remoteInfo = CarbonTabSwipeNavigation;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A60473431A879F0500FCE808 /* CopyFiles */ = {
@@ -30,7 +18,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				A60473491A879F0500FCE808 /* CarbonTabSwipeNavigation.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,23 +27,13 @@
 		A60473451A879F0500FCE808 /* libCarbonKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCarbonKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60473481A879F0500FCE808 /* CarbonTabSwipeNavigation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeNavigation.h; sourceTree = "<group>"; };
 		A604734A1A879F0500FCE808 /* CarbonTabSwipeNavigation.m */ = {isa = PBXFileReference; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeNavigation.m; sourceTree = "<group>"; wrapsLines = 0; };
-		A60473501A879F0500FCE808 /* CarbonKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarbonKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A69E9F4A1AC0A67C001FEAC1 /* CarbonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonKit.h; sourceTree = "<group>"; };
 		A69E9FF31AC0B019001FEAC1 /* CarbonSwipeRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarbonSwipeRefresh.h; path = CarbonSwipeRefresh/CarbonSwipeRefresh.h; sourceTree = "<group>"; };
 		A69E9FF41AC0B019001FEAC1 /* CarbonSwipeRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarbonSwipeRefresh.m; path = CarbonSwipeRefresh/CarbonSwipeRefresh.m; sourceTree = "<group>"; };
-		A6B614C91AC6F5780059EB6C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../CarbonKitTests/Info.plist; sourceTree = "<group>"; };
-		A6B614CB1AC6F5960059EB6C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A60473421A879F0500FCE808 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A604734D1A879F0500FCE808 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,8 +49,6 @@
 				A69E9F4A1AC0A67C001FEAC1 /* CarbonKit.h */,
 				A69E9FF61AC0B020001FEAC1 /* CarbonSwipeRefresh */,
 				A60473471A879F0500FCE808 /* CarbonTabSwipeNavigation */,
-				A6B614C81AC6F5780059EB6C /* CarbonKitTests */,
-				A60473551A879F0500FCE808 /* Supporting Files */,
 				A60473461A879F0500FCE808 /* Products */,
 			);
 			indentWidth = 8;
@@ -86,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				A60473451A879F0500FCE808 /* libCarbonKit.a */,
-				A60473501A879F0500FCE808 /* CarbonKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,15 +74,6 @@
 			path = CarbonTabSwipeNavigation;
 			sourceTree = "<group>";
 		};
-		A60473551A879F0500FCE808 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A6B614C91AC6F5780059EB6C /* Info.plist */,
-			);
-			name = "Supporting Files";
-			path = CarbonTabSwipeNavigationTests;
-			sourceTree = "<group>";
-		};
 		A69E9FF61AC0B020001FEAC1 /* CarbonSwipeRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,14 +82,6 @@
 			);
 			name = CarbonSwipeRefresh;
 			sourceTree = "<group>";
-		};
-		A6B614C81AC6F5780059EB6C /* CarbonKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				A6B614CB1AC6F5960059EB6C /* Info.plist */,
-			);
-			path = CarbonKitTests;
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -146,24 +103,6 @@
 			productReference = A60473451A879F0500FCE808 /* libCarbonKit.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		A604734F1A879F0500FCE808 /* CarbonKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A604735C1A879F0500FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitTests" */;
-			buildPhases = (
-				A604734C1A879F0500FCE808 /* Sources */,
-				A604734D1A879F0500FCE808 /* Frameworks */,
-				A604734E1A879F0500FCE808 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A60473531A879F0500FCE808 /* PBXTargetDependency */,
-			);
-			name = CarbonKitTests;
-			productName = CarbonTabSwipeNavigationTests;
-			productReference = A60473501A879F0500FCE808 /* CarbonKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -174,9 +113,6 @@
 				ORGANIZATIONNAME = "Ermal Kaleci";
 				TargetAttributes = {
 					A60473441A879F0500FCE808 = {
-						CreatedOnToolsVersion = 6.1.1;
-					};
-					A604734F1A879F0500FCE808 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
 				};
@@ -194,21 +130,9 @@
 			projectRoot = "";
 			targets = (
 				A60473441A879F0500FCE808 /* CarbonKit */,
-				A604734F1A879F0500FCE808 /* CarbonKitTests */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		A604734E1A879F0500FCE808 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6B614CA1AC6F5780059EB6C /* Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A60473411A879F0500FCE808 /* Sources */ = {
@@ -220,22 +144,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A604734C1A879F0500FCE808 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A60473531A879F0500FCE808 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A60473441A879F0500FCE808 /* CarbonKit */;
-			targetProxy = A60473521A879F0500FCE808 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A60473571A879F0500FCE808 /* Debug */ = {
@@ -330,36 +239,6 @@
 			};
 			name = Release;
 		};
-		A604735D1A879F0500FCE808 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CarbonKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = CarbonKitTests;
-			};
-			name = Debug;
-		};
-		A604735E1A879F0500FCE808 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CarbonKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = CarbonKitTests;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -377,15 +256,6 @@
 			buildConfigurations = (
 				A604735A1A879F0500FCE808 /* Debug */,
 				A604735B1A879F0500FCE808 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A604735C1A879F0500FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A604735D1A879F0500FCE808 /* Debug */,
-				A604735E1A879F0500FCE808 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -4,7 +4,7 @@
 #import "ViewControllerTwo.h"
 #import "ViewControllerThree.h"
 
-#import "../../CarbonKit.h"
+#import "../../CarbonKit/CarbonKit.h"
 
 @interface HomeViewController () <CarbonTabSwipeDelegate>
 {
@@ -22,7 +22,7 @@
 	
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	
-	self.title = @"Overview";
+	self.title = @"CarbonKit";
 	self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
 	
 	NSArray *names = @[@"ONE", @"TWO", @"THREE"];
