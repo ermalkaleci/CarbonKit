@@ -21,5 +21,5 @@
 //  SOFTWARE.
 //
 
-#import "CarbonTabSwipeNavigation/CarbonTabSwipeNavigation.h"
-#import "CarbonSwipeRefresh/CarbonSwipeRefresh.h"
+#import "CarbonTabSwipeNavigation.h"
+#import "CarbonSwipeRefresh.h"
