@@ -1,6 +1,6 @@
 
 #import "ViewControllerOne.h"
-#import "../../CarbonKit/CarbonKit.h"
+#import <CarbonKit.h>
 
 @interface ViewControllerOne ()
 {

@@ -1,0 +1,10 @@
+PODS:
+  - CarbonKit (1.0.5)
+
+DEPENDENCIES:
+  - CarbonKit (~> 1.0)
+
+SPEC CHECKSUMS:
+  CarbonKit: b0ca8c6d5666613b565c9be99bb671528918b8f3
+
+COCOAPODS: 0.36.3

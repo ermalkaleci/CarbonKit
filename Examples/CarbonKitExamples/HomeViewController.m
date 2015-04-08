@@ -4,7 +4,7 @@
 #import "ViewControllerTwo.h"
 #import "ViewControllerThree.h"
 
-#import "../../CarbonKit/CarbonKit.h"
+#import <CarbonKit.h>
 
 @interface HomeViewController () <CarbonTabSwipeDelegate>
 {

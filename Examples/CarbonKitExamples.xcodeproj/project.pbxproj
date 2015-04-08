@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6CC3DBAAF966BE3E6C36EB93 /* libPods-CarbonKitExamples.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EC9AC7BDAAC808A14EA79B /* libPods-CarbonKitExamples.a */; };
 		A62CA4271AD155D300E4698D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62CA4261AD155D300E4698D /* Default-568h@2x.png */; };
 		A64B48DE1AD2E4F10053D488 /* ViewControllerThree.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */; };
-		A66CAE151AD5B367003E7225 /* libCarbonKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A66CAE0F1AD5B250003E7225 /* libCarbonKit.a */; };
 		A69E9F671AC0AAD6001FEAC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F5F1AC0AAD6001FEAC1 /* AppDelegate.m */; };
 		A69E9F681AC0AAD6001FEAC1 /* ViewControllerOne.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F611AC0AAD6001FEAC1 /* ViewControllerOne.m */; };
 		A69E9F691AC0AAD6001FEAC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F621AC0AAD6001FEAC1 /* main.m */; };
@@ -21,22 +21,14 @@
 		A6B614D21AC70F4A0059EB6C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A6B614D01AC70F4A0059EB6C /* README.md */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A66CAE0E1AD5B250003E7225 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A66CAE091AD5B250003E7225 /* CarbonKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A60473451A879F0500FCE808;
-			remoteInfo = CarbonKit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		01949C6C896D0F70EC437655 /* Pods-CarbonKitExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbonKitExamples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarbonKitExamples/Pods-CarbonKitExamples.debug.xcconfig"; sourceTree = "<group>"; };
+		10C461C8925F366DA83BF69B /* Pods-CarbonKitExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbonKitExamples.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarbonKitExamples/Pods-CarbonKitExamples.release.xcconfig"; sourceTree = "<group>"; };
+		70EC9AC7BDAAC808A14EA79B /* libPods-CarbonKitExamples.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CarbonKitExamples.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60473681A87AFCA00FCE808 /* CarbonKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62CA4261AD155D300E4698D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "CarbonKitExamples/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		A64B48DC1AD2E4F10053D488 /* ViewControllerThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerThree.h; path = CarbonKitExamples/ViewControllerThree.h; sourceTree = SOURCE_ROOT; };
 		A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerThree.m; path = CarbonKitExamples/ViewControllerThree.m; sourceTree = SOURCE_ROOT; };
-		A66CAE091AD5B250003E7225 /* CarbonKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CarbonKit.xcodeproj; path = ../CarbonKit/CarbonKit.xcodeproj; sourceTree = "<group>"; };
 		A69E9F5E1AC0AAD6001FEAC1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CarbonKitExamples/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		A69E9F5F1AC0AAD6001FEAC1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CarbonKitExamples/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		A69E9F601AC0AAD6001FEAC1 /* ViewControllerOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerOne.h; path = CarbonKitExamples/ViewControllerOne.h; sourceTree = SOURCE_ROOT; };
@@ -60,22 +52,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A66CAE151AD5B367003E7225 /* libCarbonKit.a in Frameworks */,
+				6CC3DBAAF966BE3E6C36EB93 /* libPods-CarbonKitExamples.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26337254819EEA919785081B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01949C6C896D0F70EC437655 /* Pods-CarbonKitExamples.debug.xcconfig */,
+				10C461C8925F366DA83BF69B /* Pods-CarbonKitExamples.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7888C0EE3F1EA7221857E2C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70EC9AC7BDAAC808A14EA79B /* libPods-CarbonKitExamples.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A604735F1A87AFCA00FCE808 = {
 			isa = PBXGroup;
 			children = (
 				A6B614CF1AC70F4A0059EB6C /* LICENSE */,
 				A6B614D01AC70F4A0059EB6C /* README.md */,
-				A66CAE091AD5B250003E7225 /* CarbonKit.xcodeproj */,
 				A604736A1A87AFCA00FCE808 /* CarbonKitExamples */,
 				A604736B1A87AFCA00FCE808 /* Supporting Files */,
 				A60473691A87AFCA00FCE808 /* Products */,
+				26337254819EEA919785081B /* Pods */,
+				7888C0EE3F1EA7221857E2C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 1;
@@ -133,14 +143,6 @@
 			path = "Test 2Tests";
 			sourceTree = SOURCE_ROOT;
 		};
-		A66CAE0A1AD5B250003E7225 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A66CAE0F1AD5B250003E7225 /* libCarbonKit.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		A69E9F701AC0AAF5001FEAC1 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A604738E1A87AFCB00FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitExamples" */;
 			buildPhases = (
+				4FE6C92463114494F60D9B2A /* Check Pods Manifest.lock */,
 				A60473641A87AFCA00FCE808 /* Sources */,
 				A60473651A87AFCA00FCE808 /* Frameworks */,
 				A60473661A87AFCA00FCE808 /* Resources */,
+				DC6684D038CE95D8E55C4837 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,28 +199,12 @@
 			mainGroup = A604735F1A87AFCA00FCE808;
 			productRefGroup = A60473691A87AFCA00FCE808 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A66CAE0A1AD5B250003E7225 /* Products */;
-					ProjectRef = A66CAE091AD5B250003E7225 /* CarbonKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				A60473671A87AFCA00FCE808 /* CarbonKitExamples */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		A66CAE0F1AD5B250003E7225 /* libCarbonKit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libCarbonKit.a;
-			remoteRef = A66CAE0E1AD5B250003E7225 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A60473661A87AFCA00FCE808 /* Resources */ = {
@@ -231,6 +219,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4FE6C92463114494F60D9B2A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DC6684D038CE95D8E55C4837 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CarbonKitExamples/Pods-CarbonKitExamples-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A60473641A87AFCA00FCE808 /* Sources */ = {
@@ -341,13 +362,14 @@
 		};
 		A604738F1A87AFCB00FCE808 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01949C6C896D0F70EC437655 /* Pods-CarbonKitExamples.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CarbonKitExamples/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CarbonKitExamples;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -356,13 +378,14 @@
 		};
 		A60473901A87AFCB00FCE808 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10C461C8925F366DA83BF69B /* Pods-CarbonKitExamples.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CarbonKitExamples/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CarbonKitExamples;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
