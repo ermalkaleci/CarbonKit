@@ -8,6 +8,16 @@ CarbonKit includes:
 - CarbonSwipeRefresh
 - CarbonTabSwipeNavigation
 
+#Installation
+CarbonKit is available on CocoaPods. Add to your Podfile:
+```bash
+pod 'CarbonKit'
+```
+and run 
+```bash
+pod install
+```
+
 # CarbonSwipeRefresh
 
 ![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/CarbonSwipeRefresh.gif)
