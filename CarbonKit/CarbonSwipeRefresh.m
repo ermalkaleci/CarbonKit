@@ -313,7 +313,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 	animations.repeatCount = INFINITY;
 	[pathLayer addAnimation:animations forKey:STROKE_ANIMATION];
 	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 		[self hideArrow];
 		[self changeColor];
 	});
@@ -323,7 +323,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 
 	if (pullState == PullStateRefreshing) {
 		
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 			[self changeColor];
 		});
 		

@@ -1,6 +1,6 @@
 
 #import "ViewControllerOne.h"
-#import <CarbonKit.h>
+#import "CarbonKit.h"
 
 @interface ViewControllerOne ()
 {
@@ -44,7 +44,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
 	
-	// Configure the cell...
+	cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", (int)indexPath.row];
 	
 	return cell;
 }
@@ -60,10 +60,5 @@
 - (void)endRefreshing {
 	[refresh endRefreshing];
 }
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-	[refresh setMarginTop:0];
-}
-
 
 @end

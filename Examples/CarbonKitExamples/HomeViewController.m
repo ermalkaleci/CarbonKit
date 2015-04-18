@@ -4,13 +4,12 @@
 #import "ViewControllerTwo.h"
 #import "ViewControllerThree.h"
 
-#import <CarbonKit.h>
+#import "CarbonKit.h"
 
 @interface HomeViewController () <CarbonTabSwipeDelegate>
 {
+	CarbonTabSwipeNavigation *tabSwipe;
 }
-
-@property (nonatomic, retain) CarbonTabSwipeNavigation *tabSwipe;
 
 @end
 
@@ -27,7 +26,10 @@
 	
 	NSArray *names = @[@"ONE", @"TWO", @"THREE"];
 	UIColor *color = [UIColor colorWithRed:0.753 green:0.224 blue:0.169 alpha:1];
-	self.tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
+	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
+	[tabSwipe setNormalColor:[UIColor colorWithWhite:1 alpha:0.8]];
+	[tabSwipe setSelectedColor:[UIColor whiteColor]];
+	
 }
 
 - (void)didReceiveMemoryWarning {

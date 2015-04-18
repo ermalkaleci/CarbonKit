@@ -21,6 +21,8 @@
 //  SOFTWARE.
 //
 
+#define INDICATOR_WIDTH		3.f
+
 #import "CarbonTabSwipeNavigation.h"
 
 @interface CarbonTabSwipeNavigation() <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate> {
@@ -109,7 +111,7 @@
 	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:normalTextColor,
 						    NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}
 					 forState:UIControlStateNormal];
-	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:[self.view tintColor],
+	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],
 						    NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}
 					 forState:UIControlStateSelected];
 	
@@ -167,7 +169,7 @@
 	
 	// create indicator
 	indicator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, 100, 5)];
-	indicator.backgroundColor = [self.view tintColor];
+	indicator.backgroundColor = [UIColor whiteColor];
 	[segmentController addSubview:indicator];
 	
 	[segmentController setTintColor:[UIColor clearColor]];
@@ -242,7 +244,7 @@
 									 toItem:indicator.superview
 								      attribute:NSLayoutAttributeHeight
 								     multiplier:0
-								       constant:5.0]];
+								       constant:INDICATOR_WIDTH]];
 	indicatorLeftConst = [NSLayoutConstraint constraintWithItem:indicator
 							  attribute:NSLayoutAttributeLeading
 							  relatedBy:NSLayoutRelationEqual
@@ -282,6 +284,15 @@
 - (void)setTintColor:(UIColor *)tintColor {
 	tabScrollView.backgroundColor = tintColor;
 	[rootViewController.navigationController.navigationBar setBarTintColor:tintColor];
+}
+
+- (void)setNormalColor:(UIColor *)color {
+	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateNormal];
+}
+
+- (void)setSelectedColor:(UIColor *)color {
+	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateSelected];
+	indicator.backgroundColor = color;
 }
 
 - (void)segmentAction:(UISegmentedControl *)segment {

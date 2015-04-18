@@ -40,10 +40,13 @@
  */
 @interface CarbonTabSwipeNavigation : UIViewController
 
+// properties
+@property (nonatomic, weak) id<CarbonTabSwipeDelegate> delegate;
+
 // methods
 - (instancetype)createWithRootViewController:(UIViewController *)viewController tabNames:(NSArray *)names tintColor:(UIColor *)tintColor delegate:(id)delegate;
 
-// properties
-@property (nonatomic, weak) id<CarbonTabSwipeDelegate> delegate;
+- (void)setNormalColor:(UIColor *)color;
+- (void)setSelectedColor:(UIColor *)color;
 
 @end
