@@ -23,3 +23,4 @@
 
 #import "CarbonTabSwipeNavigation.h"
 #import "CarbonSwipeRefresh.h"
+#import "CarbonTabSwipeView.h"

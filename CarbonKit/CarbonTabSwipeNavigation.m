@@ -24,6 +24,7 @@
 #define INDICATOR_WIDTH		3.f
 
 #import "CarbonTabSwipeNavigation.h"
+#import "CarbonTabSwipeView.h"
 
 @interface CarbonTabSwipeNavigation() <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate> {
 	
@@ -39,12 +40,7 @@
 	
 	__weak UIViewController *rootViewController;
 	UIPageViewController *pageController;
-	UIScrollView *tabScrollView;
-	UISegmentedControl *segmentController;
-	UIImageView *indicator;
-	
-	NSLayoutConstraint *indicatorLeftConst;
-	NSLayoutConstraint *indicatorWidthConst;
+	CarbonTabSwipeView *tabSwipeView;
 }
 
 @end
@@ -55,17 +51,16 @@
 				    tabNames:(NSArray *)names
 				   tintColor:(UIColor *)tintColor
 				    delegate:(id)delegate {
-	
 	// init
 	self.delegate = delegate;
 	numberOfTabs = names.count;
 	rootViewController = viewController;
 	
 	// remove navigation bar bottom border
-	[rootViewController.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-	[rootViewController.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
-	
-	[rootViewController.navigationController.navigationBar setTranslucent:NO];
+//	[rootViewController.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+//	[rootViewController.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
+//	
+//	[rootViewController.navigationController.navigationBar setTranslucent:NO];
 	
 	// create page controller
 	pageController = [UIPageViewController alloc];
@@ -92,23 +87,13 @@
 	[rootViewController.view addSubview:self.view];
 	[self didMoveToParentViewController:rootViewController];
 	
-	// create segment control
-	segmentController = [[UISegmentedControl alloc] initWithItems:names];
-	CGRect segRect = segmentController.frame;
-	segRect.size.height = 44;
-	segmentController.frame = segRect;
-	
-	UIColor *normalTextColor = [UIColor colorWithWhite:0.85 alpha:1];
-	
-	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:normalTextColor,
-						    NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}
-					 forState:UIControlStateNormal];
-	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],
-						    NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}
-					 forState:UIControlStateSelected];
+	// create container view
+	tabSwipeView = [[CarbonTabSwipeView alloc] initWithSegmentTitles:names];
+	[tabSwipeView setTranslatesAutoresizingMaskIntoConstraints:NO];
+	[self.view addSubview:tabSwipeView];
 	
 	// segment controller action
-	[segmentController addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
+	[tabSwipeView.segmentController addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
 	
 	// max tabWidth
 	CGFloat maxTabWidth = 0;
@@ -116,11 +101,11 @@
 	// get tabs width
 	NSUInteger i = 0;
 	CGFloat segmentedWidth = 0;
-	for (UIView *tabView in [segmentController subviews]) {
+	for (UIView *tabView in [tabSwipeView.segmentController subviews]) {
 		for (UIView *label in tabView.subviews) {
 			if ([label isKindOfClass:[UILabel class]]) {
 				CGFloat tabWidth = roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 16)].width + 30); // 30 extra space
-				[segmentController setWidth:tabWidth forSegmentAtIndex:i];
+				[tabSwipeView.segmentController setWidth:tabWidth forSegmentAtIndex:i];
 				
 				segmentedWidth += tabWidth;
 				
@@ -136,7 +121,7 @@
 		if (self.view.frame.size.width / (float)numberOfTabs < maxTabWidth) {
 			
 			for (int i = 0; i < numberOfTabs; i++) {
-				[segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
+				[tabSwipeView.segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
 			}
 			
 			segmentedWidth = maxTabWidth * numberOfTabs;
@@ -144,127 +129,77 @@
 			maxTabWidth = roundf(self.view.frame.size.width/(float)numberOfTabs);
 			
 			for (int i = 0; i < numberOfTabs; i++) {
-				[segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
+				[tabSwipeView.segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
 			}
 			
 			segmentedWidth = maxTabWidth * numberOfTabs;
 		}
 	}
 	
-	CGRect segmentRect = segmentController.frame;
+	CGRect segmentRect = tabSwipeView.segmentController.frame;
 	segmentRect.size.width = segmentedWidth;
-	segmentController.frame = segmentRect;
+	tabSwipeView.segmentController.frame = segmentRect;
 	
-	// create scrollview
-	tabScrollView = [[UIScrollView alloc] init];
-	[self.view addSubview:tabScrollView];
-	
-	// create indicator
-	indicator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, 100, 5)];
-	indicator.backgroundColor = [UIColor whiteColor];
-	[segmentController addSubview:indicator];
-	
-	[segmentController setTintColor:[UIColor clearColor]];
-	[segmentController setDividerImage:[UIImage new] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-	
-	[tabScrollView addSubview:segmentController];
-	[tabScrollView setContentSize:CGSizeMake(segmentedWidth, 44)];
-	[tabScrollView setShowsHorizontalScrollIndicator:NO];
-	[tabScrollView setShowsVerticalScrollIndicator:NO];
-	[tabScrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
+	[tabSwipeView.tabScrollView setContentSize:CGSizeMake(segmentedWidth, 44)];
+
 	
 	[self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[pageController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-	
 	// create constraints
-	UIView *viewControllerContainerView = self.view;
+	UIView *viewControllertabSwipeView = self.view;
 	UIView *pageControllerView = pageController.view;
 	id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
-	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(topLayoutGuide, tabScrollView, pageControllerView, viewControllerContainerView);
+	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(topLayoutGuide, tabSwipeView, pageControllerView, viewControllertabSwipeView);
 	NSDictionary *metricsDictionary = @{
-										@"tabScrollViewHeight" : @44
+										@"tabSwipeViewHeight" : @44
 										};
 	
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][tabScrollView(==tabScrollViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabScrollView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][tabSwipeView(==tabSwipeViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabSwipeView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 
-	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[viewControllerContainerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
-	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[viewControllerContainerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[viewControllertabSwipeView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[viewControllertabSwipeView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 
 	
-	[indicator setTranslatesAutoresizingMaskIntoConstraints:NO];
-	[segmentController addConstraint:[NSLayoutConstraint constraintWithItem:indicator
-								      attribute:NSLayoutAttributeBottom
-								      relatedBy:NSLayoutRelationEqual
-									 toItem:indicator.superview
-								      attribute:NSLayoutAttributeBottom
-								     multiplier:1.0
-								       constant:1]];
-	[segmentController addConstraint:[NSLayoutConstraint constraintWithItem:indicator
-								      attribute:NSLayoutAttributeHeight
-								      relatedBy:NSLayoutRelationEqual
-									 toItem:indicator.superview
-								      attribute:NSLayoutAttributeHeight
-								     multiplier:0
-								       constant:INDICATOR_WIDTH]];
-	indicatorLeftConst = [NSLayoutConstraint constraintWithItem:indicator
-							  attribute:NSLayoutAttributeLeading
-							  relatedBy:NSLayoutRelationEqual
-							     toItem:indicator.superview
-							  attribute:NSLayoutAttributeLeading
-							 multiplier:1
-							   constant:0];
+	tabSwipeView.segmentController.selectedSegmentIndex = 0;
 	
-	indicatorWidthConst = [NSLayoutConstraint constraintWithItem:indicator
-							   attribute:NSLayoutAttributeWidth
-							   relatedBy:NSLayoutRelationEqual
-							      toItem:indicator.superview
-							   attribute:NSLayoutAttributeWidth
-							  multiplier:0
-							    constant:0];
+	UIView *tab = tabs[tabSwipeView.segmentController.selectedSegmentIndex];
+	tabSwipeView.indicatorWidthConst.constant = tab.frame.size.width;
+	tabSwipeView.indicatorLeftConst.constant = tab.frame.origin.x;
 	
-	[segmentController addConstraint:indicatorLeftConst];
-	[segmentController addConstraint:indicatorWidthConst];
+	tabSwipeView.tabScrollView.contentInset = UIEdgeInsetsZero;
 	
-	segmentController.selectedSegmentIndex = 0;
-	
-	UIView *tab = tabs[segmentController.selectedSegmentIndex];
-	indicatorWidthConst.constant = tab.frame.size.width;
-	indicatorLeftConst.constant = tab.frame.origin.x;
-	
-	tabScrollView.contentInset = UIEdgeInsetsZero;
-	
-	CGFloat offsetX = indicator.frame.origin.x;
-	tabScrollView.contentOffset = CGPointMake(offsetX, 0);
+	CGFloat offsetX = tabSwipeView.indicator.frame.origin.x;
+	tabSwipeView.tabScrollView.contentOffset = CGPointMake(offsetX, 0);
 	
 	// set tint color
-	[self setTintColor:tintColor];
+	//[self setTintColor:tintColor];
 	
 	return self;
 }
 
 - (void)setTintColor:(UIColor *)tintColor {
-	tabScrollView.backgroundColor = tintColor;
-	[rootViewController.navigationController.navigationBar setBarTintColor:tintColor];
+	//tabScrollView.backgroundColor = tintColor;
+//	[rootViewController.navigationController.navigationBar setBarTintColor:tintColor];
 }
 
 - (void)setNormalColor:(UIColor *)color {
-	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateNormal];
+//	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateNormal];
 }
 
 - (void)setSelectedColor:(UIColor *)color {
-	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateSelected];
-	indicator.backgroundColor = color;
+//	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateSelected];
+//	indicator.backgroundColor = color;
 }
 
 - (void)segmentAction:(UISegmentedControl *)segment {
-	UIView *tab = tabs[segmentController.selectedSegmentIndex];
-	indicatorWidthConst.constant = tab.frame.size.width;
-	indicatorLeftConst.constant = tab.frame.origin.x;
+	UIView *tab = tabs[tabSwipeView.segmentController.selectedSegmentIndex];
+	tabSwipeView.indicatorWidthConst.constant = tab.frame.size.width;
+	tabSwipeView.indicatorLeftConst.constant = tab.frame.origin.x;
 	
-	NSInteger index = segmentController.selectedSegmentIndex;
+	NSInteger index = tabSwipeView.segmentController.selectedSegmentIndex;
 	
 	if (index == selectedIndex) return;
 	
@@ -294,7 +229,7 @@
 					strongSelf->isNotDragging = NO;
 					strongSelf->pageController.view.userInteractionEnabled = YES;
 					strongSelf->selectedIndex = index;
-					[strongSelf->segmentController setSelectedSegmentIndex:strongSelf->selectedIndex];
+					[strongSelf->tabSwipeView.segmentController setSelectedSegmentIndex:strongSelf->selectedIndex];
 					[strongSelf fixOffset];
 				}];
 }
@@ -317,23 +252,23 @@
 	[super viewDidAppear:animated];
 	[self fixOffset];
 	
-	CGRect rect = indicator.frame;
+	CGRect rect = tabSwipeView.indicator.frame;
 	rect.size.width = ((UIView*)tabs[selectedIndex]).frame.size.width;
-	indicator.frame = rect;
+	tabSwipeView.indicator.frame = rect;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 	// fix indicator position and width
-	indicatorLeftConst.constant = ((UIView*)tabs[selectedIndex]).frame.origin.x;
-	indicatorWidthConst.constant = ((UIView*)tabs[selectedIndex]).frame.size.width;
+	tabSwipeView.indicatorLeftConst.constant = ((UIView*)tabs[selectedIndex]).frame.origin.x;
+	tabSwipeView.indicatorWidthConst.constant = ((UIView*)tabs[selectedIndex]).frame.size.width;
 }
 
 - (void)viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
 	
-	UIView *tab = tabs[segmentController.selectedSegmentIndex];
-	indicatorWidthConst.constant = tab.frame.size.width;
-	indicatorLeftConst.constant = tab.frame.origin.x;
+	UIView *tab = tabs[tabSwipeView.segmentController.selectedSegmentIndex];
+	tabSwipeView.indicatorWidthConst.constant = tab.frame.size.width;
+	tabSwipeView.indicatorLeftConst.constant = tab.frame.origin.x;
 	
 	[self resizeTabs];
 	[self fixOffset];
@@ -343,19 +278,19 @@
 
 - (void)fixOffset {
 	CGRect selectedTabRect = ((UIView*)tabs[selectedIndex]).frame;
-	CGFloat indicatorMaxOriginX = tabScrollView.frame.size.width / 2 - selectedTabRect.size.width / 2;
+	CGFloat indicatorMaxOriginX = tabSwipeView.tabScrollView.frame.size.width / 2 - selectedTabRect.size.width / 2;
 	
 	CGFloat offsetX = selectedTabRect.origin.x-indicatorMaxOriginX;
 	
 	if (offsetX < 0) offsetX = 0;
-	if (offsetX > segmentController.frame.size.width-tabScrollView.frame.size.width)
-		offsetX = segmentController.frame.size.width-tabScrollView.frame.size.width;
+	if (offsetX > tabSwipeView.segmentController.frame.size.width-tabSwipeView.tabScrollView.frame.size.width)
+		offsetX = tabSwipeView.segmentController.frame.size.width-tabSwipeView.tabScrollView.frame.size.width;
 	
 	[UIView animateWithDuration:0.3 animations:^{
-		tabScrollView.contentOffset = CGPointMake(offsetX, 0);
+		tabSwipeView.tabScrollView.contentOffset = CGPointMake(offsetX, 0);
 	}];
 	
-	previewsOffset = tabScrollView.contentOffset;
+	previewsOffset = tabSwipeView.tabScrollView.contentOffset;
 }
 
 - (void)resizeTabs {
@@ -373,7 +308,7 @@
 		for (UIView *label in tabView.subviews) {
 			if ([label isKindOfClass:[UILabel class]]) {
 				CGFloat tabWidth = roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 0)].width + 30); // 30 extra space
-				[segmentController setWidth:tabWidth forSegmentAtIndex:i];
+				[tabSwipeView.segmentController setWidth:tabWidth forSegmentAtIndex:i];
 				
 				segmentedWidth += tabWidth;
 				
@@ -391,7 +326,7 @@
 		if (size.width / (float)numberOfTabs < maxTabWidth) {
 			
 			for (int i = 0; i < numberOfTabs; i++) {
-				[segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
+				[tabSwipeView.segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
 			}
 			
 			segmentedWidth = maxTabWidth * numberOfTabs;
@@ -399,18 +334,18 @@
 			maxTabWidth = roundf(size.width/(float)numberOfTabs);
 			
 			for (int i = 0; i < numberOfTabs; i++) {
-				[segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
+				[tabSwipeView.segmentController setWidth:maxTabWidth forSegmentAtIndex:i];
 			}
 			
 			segmentedWidth = size.width;
 		}
 	}
 	
-	CGRect segmentRect = segmentController.frame;
+	CGRect segmentRect = tabSwipeView.segmentController.frame;
 	segmentRect.size.width = segmentedWidth;
-	segmentController.frame = segmentRect;
+	tabSwipeView.segmentController.frame = segmentRect;
 	
-	[tabScrollView setContentSize:CGSizeMake(segmentedWidth, 44)];
+	[tabSwipeView.tabScrollView setContentSize:CGSizeMake(segmentedWidth, 44)];
 }
 
 # pragma mark - PageViewController DataSource
@@ -468,7 +403,7 @@
 	NSNumber *key = (NSNumber*)[viewControllers allKeysForObject:currentView][0];
 	selectedIndex= [key integerValue];
 	
-	[segmentController setSelectedSegmentIndex:selectedIndex];
+	[tabSwipeView.segmentController setSelectedSegmentIndex:selectedIndex];
 }
 
 # pragma mark - ScrollView Delegate
@@ -500,13 +435,13 @@
 			float widthDiff = selectedTab.frame.size.width - backTabWidth;
 			
 			float newOriginX = selectedOriginX + newX / scrollViewWidth * backTabWidth;
-			indicatorLeftConst.constant = newOriginX;
+			tabSwipeView.indicatorLeftConst.constant = newOriginX;
 			
 			float newWidth = selectedTab.frame.size.width + newX / scrollViewWidth * widthDiff;
-			indicatorWidthConst.constant = newWidth;
+			tabSwipeView.indicatorWidthConst.constant = newWidth;
 			
 			[UIView animateWithDuration:0.01 animations:^{
-				[indicator layoutIfNeeded];
+				[tabSwipeView.indicator layoutIfNeeded];
 			}];
 			
 		} else {
@@ -526,27 +461,27 @@
 			float widthDiff = nextTabWidth - selectedTab.frame.size.width;
 			
 			float newOriginX = selectedOriginX + newX / scrollViewWidth * selectedTab.frame.size.width;
-			indicatorLeftConst.constant = newOriginX;
+			tabSwipeView.indicatorLeftConst.constant = newOriginX;
 			
 			float newWidth = selectedTab.frame.size.width + newX / scrollViewWidth * widthDiff;
-			indicatorWidthConst.constant = newWidth;
+			tabSwipeView.indicatorWidthConst.constant = newWidth;
 			
 			[UIView animateWithDuration:0.01 animations:^{
-				[indicator layoutIfNeeded];
+				[tabSwipeView.indicator layoutIfNeeded];
 			}];
 			
 		}
 	}
 	
-	CGFloat indicatorMaxOriginX = scrollView.frame.size.width / 2 - indicator.frame.size.width / 2;
+	CGFloat indicatorMaxOriginX = scrollView.frame.size.width / 2 - tabSwipeView.indicator.frame.size.width / 2;
 	
-	CGFloat offsetX = indicator.frame.origin.x-indicatorMaxOriginX;
+	CGFloat offsetX = tabSwipeView.indicator.frame.origin.x-indicatorMaxOriginX;
 	
 	if (offsetX < 0) offsetX = 0;
-	if (offsetX > segmentController.frame.size.width-scrollViewWidth) offsetX = segmentController.frame.size.width-scrollViewWidth;
+	if (offsetX > tabSwipeView.segmentController.frame.size.width-scrollViewWidth) offsetX = tabSwipeView.segmentController.frame.size.width-scrollViewWidth;
 	
 	[UIView animateWithDuration:isNotDragging ? 0.3 : 0.01 animations:^{
-		tabScrollView.contentOffset = CGPointMake(offsetX, 0);
+		tabSwipeView.tabScrollView.contentOffset = CGPointMake(offsetX, 0);
 	}];
 	
 	previewsOffset = scrollView.contentOffset;
