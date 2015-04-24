@@ -12,6 +12,7 @@
 @interface CarbonTabSwipeView ()
 
 @property (nonatomic, strong) NSArray *segmentTitles;
+@property (nonatomic, strong) NSLayoutConstraint *bottomBorderConstraint;
 
 @end
 
@@ -56,6 +57,7 @@
 
 - (void)commonInit
 {
+	self.backgroundColor = [UIColor blackColor];
 	// create segment control
 	_segmentController = [[UISegmentedControl alloc] initWithItems:_segmentTitles];
 	CGRect segRect = _segmentController.frame;
@@ -92,9 +94,18 @@
 	
 	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_tabScrollView);
 	
-	[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tabScrollView]|" options:0 metrics:nil views:viewsDictionary]];
+	[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tabScrollView]" options:0 metrics:nil views:viewsDictionary]];
 	[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tabScrollView]|" options:0 metrics:nil views:viewsDictionary]];
 
+	// 1px bottom border to mimic the illusion of being integrated below a navigation bar
+	[self addConstraint:[NSLayoutConstraint constraintWithItem:self
+																   attribute:NSLayoutAttributeBottom
+																   relatedBy:NSLayoutRelationEqual
+																	  toItem:_tabScrollView
+																   attribute:NSLayoutAttributeBottom
+																  multiplier:1.0
+																	constant:(1.0f/[UIScreen mainScreen].scale)]];
+	
 	[_segmentController addConstraint:[NSLayoutConstraint constraintWithItem:_indicator
 																  attribute:NSLayoutAttributeBottom
 																  relatedBy:NSLayoutRelationEqual
