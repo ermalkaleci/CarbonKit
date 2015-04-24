@@ -37,7 +37,7 @@
 	NSMutableArray *tabs;
 	NSMutableDictionary *viewControllers;
 	
-	UIViewController *rootViewController;
+	__weak UIViewController *rootViewController;
 	UIPageViewController *pageController;
 	UIScrollView *tabScrollView;
 	UISegmentedControl *segmentController;
@@ -93,12 +93,18 @@
 	pageController.view.frame = pageRect;
 	[self.view addSubview:pageController.view];
 	
+	// finish adding page controller as child
+	[pageController didMoveToParentViewController:self];
+	
 	// add self as child to parent
 	[rootViewController addChildViewController:self];
 	
 	// set self.view frame
 	self.view.frame = rootViewController.view.frame;
 	[rootViewController.view addSubview:self.view];
+	
+	// finish adding self as a child to parent
+	[self didMoveToParentViewController:rootViewController];
 	
 	// create segment control
 	segmentController = [[UISegmentedControl alloc] initWithItems:names];
