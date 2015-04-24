@@ -143,6 +143,7 @@
 	[tabSwipeView.tabScrollView setContentSize:CGSizeMake(segmentedWidth, 44)];
 
 	
+	[pageController.view setTranslatesAutoresizingMaskIntoConstraints: NO];
 	[self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[pageController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
 
@@ -162,6 +163,8 @@
 	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[viewControllertabSwipeView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[viewControllertabSwipeView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 
+	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[parentView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[parentView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	
 	tabSwipeView.segmentController.selectedSegmentIndex = 0;
 	
@@ -270,6 +273,9 @@
 	tabSwipeView.indicatorWidthConst.constant = tab.frame.size.width;
 	tabSwipeView.indicatorLeftConst.constant = tab.frame.origin.x;
 	
+	// keep the page controller's width in sync
+	pageController.view.frame = CGRectMake(pageController.view.frame.origin.x, pageController.view.frame.origin.y, self.view.bounds.size.width, pageController.view.frame.size.height);
+
 	[self resizeTabs];
 	[self fixOffset];
 	[self.view layoutIfNeeded];
