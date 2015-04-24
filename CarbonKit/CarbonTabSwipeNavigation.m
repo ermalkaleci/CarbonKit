@@ -148,13 +148,14 @@
 	// create constraints
 	UIView *parentView = self.view;
 	UIView *pageControllerView = pageController.view;
-	id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
-	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(topLayoutGuide, tabSwipeView, pageControllerView, parentView);
+	id<UILayoutSupport> rootTopLayoutGuide = rootViewController.topLayoutGuide;
+    id<UILayoutSupport> rootBottomLayoutGuide = rootViewController.bottomLayoutGuide;
+	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(rootTopLayoutGuide, rootBottomLayoutGuide, parentView, tabSwipeView, pageControllerView);
 	NSDictionary *metricsDictionary = @{
 										@"tabSwipeViewHeight" : @45
 										};
 	
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][tabSwipeView(==tabSwipeViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tabSwipeView(==tabSwipeViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabSwipeView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 
