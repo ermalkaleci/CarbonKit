@@ -165,7 +165,7 @@
 		_tabTitleTextColor = [[[self class] appearance] tabTitleTextColor];
 	}
 	
-	return _tabTitleTextColor ? : [UIColor darkGrayColor];
+	return _tabTitleTextColor ? : [UIColor lightGrayColor];
 }
 
 - (UIColor *)tabTitleSelectedTextColor
@@ -174,7 +174,7 @@
 		_tabTitleSelectedTextColor = [[[self class] appearance] tabTitleSelectedTextColor];
 	}
 	
-	return _tabTitleSelectedTextColor ? : [UIColor lightGrayColor];
+	return _tabTitleSelectedTextColor ? : [UIColor darkGrayColor];
 }
 
 - (UIFont *)tabTitleTextFont

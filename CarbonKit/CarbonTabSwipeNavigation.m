@@ -59,7 +59,7 @@
 	// remove navigation bar bottom border
 //	[rootViewController.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 //	[rootViewController.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
-//	
+
 //	[rootViewController.navigationController.navigationBar setTranslucent:NO];
 	
 	// create page controller
@@ -141,17 +141,15 @@
 	tabSwipeView.segmentController.frame = segmentRect;
 	
 	[tabSwipeView.tabScrollView setContentSize:CGSizeMake(segmentedWidth, 44)];
-
 	
 	[pageController.view setTranslatesAutoresizingMaskIntoConstraints: NO];
 	[self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-	[pageController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-
+	
 	// create constraints
-	UIView *viewControllertabSwipeView = self.view;
+	UIView *parentView = self.view;
 	UIView *pageControllerView = pageController.view;
 	id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
-	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(topLayoutGuide, tabSwipeView, pageControllerView, viewControllertabSwipeView);
+	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(topLayoutGuide, tabSwipeView, pageControllerView, parentView);
 	NSDictionary *metricsDictionary = @{
 										@"tabSwipeViewHeight" : @45
 										};
@@ -159,9 +157,6 @@
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][tabSwipeView(==tabSwipeViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabSwipeView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
-
-	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[viewControllertabSwipeView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
-	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[viewControllertabSwipeView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 
 	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[parentView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[parentView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
@@ -183,8 +178,9 @@
 	return self;
 }
 
+// TODO: remove these color setters, in favor of UIAppearance proxy support
 - (void)setTintColor:(UIColor *)tintColor {
-	//tabScrollView.backgroundColor = tintColor;
+//	tabScrollView.backgroundColor = tintColor;
 //	[rootViewController.navigationController.navigationBar setBarTintColor:tintColor];
 }
 
