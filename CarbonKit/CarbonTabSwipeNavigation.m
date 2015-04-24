@@ -43,7 +43,6 @@
 	UISegmentedControl *segmentController;
 	UIImageView *indicator;
 	
-	NSLayoutConstraint *tabTopConstraint;
 	NSLayoutConstraint *indicatorLeftConst;
 	NSLayoutConstraint *indicatorWidthConst;
 }
@@ -85,25 +84,12 @@
 	
 	// add page controller as child
 	[self addChildViewController:pageController];
-	
-	// set page controller frame
-	CGRect pageRect = viewController.view.frame;
-	pageRect.origin.y = 44;
-	pageRect.size.height -= 44;
-	pageController.view.frame = pageRect;
 	[self.view addSubview:pageController.view];
-	
-	// finish adding page controller as child
 	[pageController didMoveToParentViewController:self];
 	
 	// add self as child to parent
 	[rootViewController addChildViewController:self];
-	
-	// set self.view frame
-	self.view.frame = rootViewController.view.frame;
 	[rootViewController.view addSubview:self.view];
-	
-	// finish adding self as a child to parent
 	[self didMoveToParentViewController:rootViewController];
 	
 	// create segment control
@@ -170,7 +156,7 @@
 	segmentController.frame = segmentRect;
 	
 	// create scrollview
-	tabScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 44)];
+	tabScrollView = [[UIScrollView alloc] init];
 	[self.view addSubview:tabScrollView];
 	
 	// create indicator
@@ -187,54 +173,26 @@
 	[tabScrollView setShowsVerticalScrollIndicator:NO];
 	[tabScrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
 	
-	if (viewController.navigationController) {
-		[self.view addConstraint:[NSLayoutConstraint constraintWithItem:tabScrollView
-								      attribute:NSLayoutAttributeTop
-								      relatedBy:NSLayoutRelationEqual
-									 toItem:self.view
-								      attribute:NSLayoutAttributeTop
-								     multiplier:1.0
-								       constant:0]];
-	} else {
-		CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-		tabTopConstraint = [NSLayoutConstraint constraintWithItem:tabScrollView
-								attribute:NSLayoutAttributeTop
-								relatedBy:NSLayoutRelationEqual
-								   toItem:self.view
-								attribute:NSLayoutAttributeTop
-							       multiplier:1.0
-								 constant:statusBarHeight];
-		[self.view addConstraint:tabTopConstraint];
-	}
+	[self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+	[pageController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+
 	
-	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:tabScrollView
-							      attribute:NSLayoutAttributeLeading
-							      relatedBy:NSLayoutRelationEqual
-								 toItem:self.view
-							      attribute:NSLayoutAttributeLeading
-							     multiplier:1.0
-							       constant:0]];
-	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:tabScrollView
-							      attribute:NSLayoutAttributeTrailing
-							      relatedBy:NSLayoutRelationEqual
-								 toItem:self.view
-							      attribute:NSLayoutAttributeTrailing
-							     multiplier:1.0
-							       constant:0]];
-	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:tabScrollView
-							      attribute:NSLayoutAttributeHeight
-							      relatedBy:NSLayoutRelationEqual
-								 toItem:self.view
-							      attribute:NSLayoutAttributeHeight
-							     multiplier:0
-							       constant:44]];
-	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:tabScrollView
-							      attribute:NSLayoutAttributeWidth
-							      relatedBy:NSLayoutRelationEqual
-								 toItem:self.view
-							      attribute:NSLayoutAttributeWidth
-							     multiplier:1.0
-							       constant:0]];
+	// create constraints
+	UIView *viewControllerContainerView = self.view;
+	UIView *pageControllerView = pageController.view;
+	id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
+	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(topLayoutGuide, tabScrollView, pageControllerView, viewControllerContainerView);
+	NSDictionary *metricsDictionary = @{
+										@"tabScrollViewHeight" : @44
+										};
+	
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][tabScrollView(==tabScrollViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabScrollView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+
+	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[viewControllerContainerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[viewControllerContainerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+
 	
 	[indicator setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[segmentController addConstraint:[NSLayoutConstraint constraintWithItem:indicator
@@ -372,8 +330,6 @@
 
 - (void)viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
-	CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-	[tabTopConstraint setConstant:statusBarHeight];
 	
 	UIView *tab = tabs[segmentController.selectedSegmentIndex];
 	indicatorWidthConst.constant = tab.frame.size.width;
