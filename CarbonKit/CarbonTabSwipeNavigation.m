@@ -152,7 +152,7 @@
 	id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
 	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(topLayoutGuide, tabSwipeView, pageControllerView, viewControllertabSwipeView);
 	NSDictionary *metricsDictionary = @{
-										@"tabSwipeViewHeight" : @44
+										@"tabSwipeViewHeight" : @45
 										};
 	
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][tabSwipeView(==tabSwipeViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
