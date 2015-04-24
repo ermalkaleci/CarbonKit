@@ -293,12 +293,28 @@
 }
 
 - (void)setNormalColor:(UIColor *)color {
-	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateNormal];
+	[self setNormalColor:color font:[UIFont boldSystemFontOfSize:14]];
+}
+
+- (void)setNormalColor:(UIColor *)color font:(UIFont *)font {
+	[segmentController setTitleTextAttributes:@{
+												NSForegroundColorAttributeName:color,
+												NSFontAttributeName:font
+												}
+									 forState:UIControlStateNormal];
 }
 
 - (void)setSelectedColor:(UIColor *)color {
-	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateSelected];
+	[self setSelectedColor:color font:[UIFont boldSystemFontOfSize:14]];
+}
+
+- (void)setSelectedColor:(UIColor *)color font:(UIFont *)font {
 	indicator.backgroundColor = color;
+	[segmentController setTitleTextAttributes:@{
+												NSForegroundColorAttributeName:color,
+												NSFontAttributeName:font
+												}
+									 forState:UIControlStateSelected];
 }
 
 - (void)segmentAction:(UISegmentedControl *)segment {
@@ -338,6 +354,11 @@
 					strongSelf->selectedIndex = index;
 					[strongSelf->segmentController setSelectedSegmentIndex:strongSelf->selectedIndex];
 					[strongSelf fixOffset];
+					
+					// call delegate
+					if ([strongSelf->_delegate respondsToSelector:@selector(tabSwipeNavigation:didMoveAtIndex:)]) {
+						[strongSelf->_delegate tabSwipeNavigation:strongSelf didMoveAtIndex:index];
+					}
 				}];
 }
 
@@ -353,6 +374,11 @@
 	[viewControllers setObject:viewController forKey:[NSNumber numberWithInteger:selectedIndex]];
 	
 	[pageController setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+	
+	// call delegate
+	if ([self.delegate respondsToSelector:@selector(tabSwipeNavigation:didMoveAtIndex:)]) {
+		[self.delegate tabSwipeNavigation:self didMoveAtIndex:selectedIndex];
+	}
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -513,6 +539,11 @@
 	selectedIndex= [key integerValue];
 	
 	[segmentController setSelectedSegmentIndex:selectedIndex];
+	
+	// call delegate
+	if ([self.delegate respondsToSelector:@selector(tabSwipeNavigation:didMoveAtIndex:)]) {
+		[self.delegate tabSwipeNavigation:self didMoveAtIndex:selectedIndex];
+	}
 }
 
 # pragma mark - ScrollView Delegate

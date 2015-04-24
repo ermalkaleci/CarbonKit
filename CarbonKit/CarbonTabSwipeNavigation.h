@@ -26,12 +26,26 @@
 @class CarbonTabSwipeNavigation;
 
 /**
- *  Carbon Tab Swipe Delegate
+ *	CarbonTabSwipe Delegate
  */
 @protocol CarbonTabSwipeDelegate <NSObject>
 
 @required
+/**
+ *	This method must override to return each view controllers
+ *	@param tabSwipe CarbonTabSwipeNavigation
+ *	@param index NSUInteger : tab index
+ *	@return A UIViewController for tab at index
+ */
 - (UIViewController *)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe viewControllerAtIndex:(NSUInteger)index;
+
+@optional
+/**
+ *	When finished moving to index
+ *	@param tabSwipe CarbonTabSwipeNavigation
+ *	@param index NSInteger : current index
+ */
+- (void)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe didMoveAtIndex:(NSInteger)index;
 
 @end
 
@@ -40,13 +54,44 @@
  */
 @interface CarbonTabSwipeNavigation : UIViewController
 
-// properties
+/**
+ *	CarbonTabSwipeDelegate
+ */
 @property (nonatomic, weak) id<CarbonTabSwipeDelegate> delegate;
 
-// methods
+/**
+ *	This method will create TabSwipeNavigation
+ *	@param viewController UIViewController : parent view controller
+ *	@param names NSArray : name of each tabs
+ *	@param tintColor UIColor : color of navigation and tabs
+ *	@param delegate id : object where CarbonTabSwipeNavigation will delegate
+ */
 - (instancetype)createWithRootViewController:(UIViewController *)viewController tabNames:(NSArray *)names tintColor:(UIColor *)tintColor delegate:(id)delegate;
 
+/**
+ *	UIColor for tab in normal state
+ *	@param color UIColor : color of normal state
+ */
 - (void)setNormalColor:(UIColor *)color;
+
+/**
+ *	UIFont and UIColor for tab in normal state
+ *	@param color UIColor : color of normal state
+ *	@param font UIFont : font of normal state
+ */
+- (void)setNormalColor:(UIColor *)color font:(UIFont *)font;
+
+/**
+ *	UIColor for tab in selected state
+ *	@param color UIColor : color of selected state
+ */
 - (void)setSelectedColor:(UIColor *)color;
+
+/**
+ *	UIFont and UIColor for tab in selected state
+ *	@param color UIColor : color of selected state
+ *	@param font UIFont : font of selected state
+ */
+- (void)setSelectedColor:(UIColor *)color font:(UIFont *)font;
 
 @end
