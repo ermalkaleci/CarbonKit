@@ -37,7 +37,7 @@
 	NSMutableArray *tabs;
 	NSMutableDictionary *viewControllers;
 	
-	UIViewController *rootViewController;
+	__weak UIViewController *rootViewController;
 	UIPageViewController *pageController;
 	UIScrollView *tabScrollView;
 	UISegmentedControl *segmentController;
