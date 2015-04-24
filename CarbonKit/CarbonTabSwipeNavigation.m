@@ -76,11 +76,9 @@
 	pageController.dataSource = self;
 	
 	// delegate scrollview
-	UIScrollView *delegateScrollView;
 	for (UIView *v in pageController.view.subviews) {
 		if ([v isKindOfClass:[UIScrollView class]]) {
-			delegateScrollView = (UIScrollView *)v;
-			delegateScrollView.delegate = self;
+			((UIScrollView *)v).delegate = self;
 		}
 	}
 	
@@ -175,24 +173,24 @@
 	[tabScrollView setShowsVerticalScrollIndicator:NO];
 	[tabScrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
 	
+	[pageController.view setTranslatesAutoresizingMaskIntoConstraints: NO];
 	[self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-	[delegateScrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
 	
 	// create constraints
-	UIView *viewControllerContainerView = self.view;
+	UIView *parentView = self.view;
+	UIView *pageControllerView = pageController.view;
 	id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
-	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(topLayoutGuide, tabScrollView, delegateScrollView, viewControllerContainerView);
+	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(topLayoutGuide, tabScrollView, pageControllerView, parentView);
 	NSDictionary *metricsDictionary = @{
 										@"tabScrollViewHeight" : @44
 										};
 	
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][tabScrollView(==tabScrollViewHeight)][delegateScrollView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][tabScrollView(==tabScrollViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabScrollView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[delegateScrollView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 
-	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[viewControllerContainerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
-	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[viewControllerContainerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
-
+	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[parentView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[parentView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	
 	[indicator setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[segmentController addConstraint:[NSLayoutConstraint constraintWithItem:indicator
@@ -335,6 +333,9 @@
 	indicatorWidthConst.constant = tab.frame.size.width;
 	indicatorLeftConst.constant = tab.frame.origin.x;
 	
+	// keep the page controller's width in sync
+	pageController.view.frame = CGRectMake(pageController.view.frame.origin.x, pageController.view.frame.origin.y, self.view.bounds.size.width, pageController.view.frame.size.height);
+
 	[self resizeTabs];
 	[self fixOffset];
 	[self.view layoutIfNeeded];
