@@ -72,6 +72,7 @@
 	
 	// create scrollview
 	_tabScrollView = [[UIScrollView alloc] init];
+	_tabScrollView.backgroundColor = self.tabBackgroundColor;
 	[self addSubview:_tabScrollView];
 	
 	// create indicator
