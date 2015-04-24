@@ -179,17 +179,18 @@
 	// create constraints
 	UIView *parentView = self.view;
 	UIView *pageControllerView = pageController.view;
-	id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
-	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(topLayoutGuide, tabScrollView, pageControllerView, parentView);
+	id<UILayoutSupport> rootTopLayoutGuide = rootViewController.topLayoutGuide;
+    id<UILayoutSupport> rootBottomLayoutGuide = rootViewController.bottomLayoutGuide;
+	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(rootTopLayoutGuide, rootBottomLayoutGuide, parentView, tabScrollView, pageControllerView);
 	NSDictionary *metricsDictionary = @{
 										@"tabScrollViewHeight" : @44
 										};
 	
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][tabScrollView(==tabScrollViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tabScrollView(==tabScrollViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabScrollView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
-	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 
-	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[parentView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
+	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[rootTopLayoutGuide][parentView][rootBottomLayoutGuide]" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[parentView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	
 	[indicator setTranslatesAutoresizingMaskIntoConstraints:NO];
