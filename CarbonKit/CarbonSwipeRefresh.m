@@ -35,6 +35,8 @@ typedef NS_ENUM(NSUInteger, PullState) {
 
 @interface CarbonSwipeRefresh()
 {
+	dispatch_once_t initConstraits;
+	
 	NSLayoutConstraint *topConstrait;
 	NSLayoutConstraint *centerXConstrait;
 	
@@ -115,7 +117,6 @@ typedef NS_ENUM(NSUInteger, PullState) {
 }
 
 - (void)didMoveToSuperview {
-	static dispatch_once_t initConstraits;
 	dispatch_once(&initConstraits, ^{
 		topConstrait = [NSLayoutConstraint constraintWithItem:self
 													attribute:NSLayoutAttributeTop
