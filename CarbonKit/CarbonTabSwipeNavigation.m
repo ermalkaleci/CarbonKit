@@ -330,12 +330,17 @@
 	id viewController = [self.delegate tabSwipeNavigation:self viewControllerAtIndex:selectedIndex];
 	[viewControllers setObject:viewController forKey:[NSNumber numberWithInteger:selectedIndex]];
 	
-	[pageController setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-	
-	// call delegate
-	if ([self.delegate respondsToSelector:@selector(tabSwipeNavigation:didMoveAtIndex:)]) {
-		[self.delegate tabSwipeNavigation:self didMoveAtIndex:selectedIndex];
-	}
+	__weak __typeof__(self) weakSelf = self;
+	[pageController setViewControllers:@[viewController]
+							 direction:UIPageViewControllerNavigationDirectionForward
+							  animated:NO
+							completion:^(BOOL finished) {
+								__strong __typeof__(self) strongSelf = weakSelf;
+								// call delegate
+								if ([strongSelf->_delegate respondsToSelector:@selector(tabSwipeNavigation:didMoveAtIndex:)]) {
+									[strongSelf->_delegate tabSwipeNavigation:strongSelf didMoveAtIndex:strongSelf->selectedIndex];
+								}
+							}];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
