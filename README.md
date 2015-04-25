@@ -73,20 +73,20 @@ pod install
 	NSArray *names = @[@"CATEGORIES", @"HOME", @"TOP PAID", @"TOP FREE", @"TOP GROSSING", @"TOP NEW PAID", @"TOP NEW FREE", @"TRENDING"];
 	UIColor *color = [UIColor colorWithRed:0.753 green:0.224 blue:0.169 alpha:1];
 	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
-	[tabSwipe setNormalColor:[UIColor colorWithWhite:1 alpha:0.8]];
-	[tabSwipe setSelectedColor:[UIColor whiteColor]];
+	[tabSwipe setNormalColor:[UIColor colorWithWhite:1 alpha:0.8]]; //default
+	[tabSwipe setSelectedColor:[UIColor whiteColor]]; //default
 }
 
 // delegate
 - (UIViewController *)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe viewControllerAtIndex:(NSUInteger)index {
-	return nil; // return viewController
+	return nil; // return viewController at index
 }
 
 @end
 ```
 
 # CONTRIBUTORS
- - Ermal Kaleci
+![alt tag](https://github.com/ermalkaleci/CarbonKit/graphs/contributors)
 
 # LICENSE
 The MIT License (MIT)
