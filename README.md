@@ -86,7 +86,7 @@ pod install
 ```
 
 # CONTRIBUTORS
-![alt tag](https://github.com/ermalkaleci/CarbonKit/graphs/contributors)
+[Contributors](https://github.com/ermalkaleci/CarbonKit/graphs/contributors)
 
 # LICENSE
 The MIT License (MIT)
