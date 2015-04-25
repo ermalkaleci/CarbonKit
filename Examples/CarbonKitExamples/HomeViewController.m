@@ -55,7 +55,7 @@
 
 // optional
 - (void)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe didMoveAtIndex:(NSInteger)index {
-	NSLog(@"%d", index);
+	NSLog(@"Current tab: %d", (int)index);
 }
 
 @end
