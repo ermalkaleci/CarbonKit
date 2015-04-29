@@ -186,12 +186,28 @@
 }
 
 - (void)setNormalColor:(UIColor *)color {
-//	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateNormal];
+//	[self setNormalColor:color font:[UIFont boldSystemFontOfSize:14]];
+}
+
+- (void)setNormalColor:(UIColor *)color font:(UIFont *)font {
+//	[segmentController setTitleTextAttributes:@{
+//												NSForegroundColorAttributeName:color,
+//												NSFontAttributeName:font
+//												}
+//									 forState:UIControlStateNormal];
 }
 
 - (void)setSelectedColor:(UIColor *)color {
-//	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:color} forState:UIControlStateSelected];
+	[self setSelectedColor:color font:[UIFont boldSystemFontOfSize:14]];
+}
+
+- (void)setSelectedColor:(UIColor *)color font:(UIFont *)font {
 //	indicator.backgroundColor = color;
+//	[segmentController setTitleTextAttributes:@{
+//												NSForegroundColorAttributeName:color,
+//												NSFontAttributeName:font
+//												}
+//									 forState:UIControlStateSelected];
 }
 
 - (void)segmentAction:(UISegmentedControl *)segment {
@@ -375,9 +391,9 @@
 - (void)setCurrentTabIndex:(NSUInteger)currentTabIndex
 {
 	if (selectedIndex != currentTabIndex && currentTabIndex < numberOfTabs) {
-		segmentController.selectedSegmentIndex = currentTabIndex;
+		tabSwipeView.segmentController.selectedSegmentIndex = currentTabIndex;
 		
-		[self segmentAction:segmentController];
+		[self segmentAction:tabSwipeView.segmentController];
 		
 		[self.view layoutIfNeeded];
 	}
@@ -439,6 +455,11 @@
 	selectedIndex= [key integerValue];
 	
 	[tabSwipeView.segmentController setSelectedSegmentIndex:selectedIndex];
+	
+	// call delegate
+	if ([self.delegate respondsToSelector:@selector(tabSwipeNavigation:didMoveAtIndex:)]) {
+		[self.delegate tabSwipeNavigation:self didMoveAtIndex:selectedIndex];
+	}
 }
 
 # pragma mark - ScrollView Delegate
@@ -446,7 +467,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	
 	CGPoint offset = scrollView.contentOffset;
-	
+
 	CGFloat scrollViewWidth = scrollView.frame.size.width;
 	if (selectedIndex < 0 || selectedIndex > numberOfTabs-1)
 		return;
