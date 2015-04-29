@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CarbonKit"
-  s.version      = "1.0.5"
+  s.version      = "1.0.7"
   s.summary      = "CarbonKit is an iOS OpenSource libraries collection"
 
   s.description  = <<-DESC
@@ -77,7 +77,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ermalkaleci/CarbonKit.git", :tag => "1.0.5" }
+  s.source       = { :git => "https://github.com/ermalkaleci/CarbonKit.git", :tag => "1.0.7" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

@@ -231,6 +231,11 @@
 					strongSelf->selectedIndex = index;
 					[strongSelf->tabSwipeView.segmentController setSelectedSegmentIndex:strongSelf->selectedIndex];
 					[strongSelf fixOffset];
+					
+					// call delegate
+					if ([strongSelf->_delegate respondsToSelector:@selector(tabSwipeNavigation:didMoveAtIndex:)]) {
+						[strongSelf->_delegate tabSwipeNavigation:strongSelf didMoveAtIndex:index];
+					}
 				}];
 }
 
@@ -245,7 +250,17 @@
 	id viewController = [self.delegate tabSwipeNavigation:self viewControllerAtIndex:selectedIndex];
 	[viewControllers setObject:viewController forKey:[NSNumber numberWithInteger:selectedIndex]];
 	
-	[pageController setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+	__weak __typeof__(self) weakSelf = self;
+	[pageController setViewControllers:@[viewController]
+							 direction:UIPageViewControllerNavigationDirectionForward
+							  animated:NO
+							completion:^(BOOL finished) {
+								__strong __typeof__(self) strongSelf = weakSelf;
+								// call delegate
+								if ([strongSelf->_delegate respondsToSelector:@selector(tabSwipeNavigation:didMoveAtIndex:)]) {
+									[strongSelf->_delegate tabSwipeNavigation:strongSelf didMoveAtIndex:strongSelf->selectedIndex];
+								}
+							}];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -349,6 +364,23 @@
 	tabSwipeView.segmentController.frame = segmentRect;
 	
 	[tabSwipeView.tabScrollView setContentSize:CGSizeMake(segmentedWidth, 44)];
+}
+
+#pragma mark - Public API
+- (NSUInteger)currentTabIndex
+{
+	return selectedIndex;
+}
+
+- (void)setCurrentTabIndex:(NSUInteger)currentTabIndex
+{
+	if (selectedIndex != currentTabIndex && currentTabIndex < numberOfTabs) {
+		segmentController.selectedSegmentIndex = currentTabIndex;
+		
+		[self segmentAction:segmentController];
+		
+		[self.view layoutIfNeeded];
+	}
 }
 
 # pragma mark - PageViewController DataSource

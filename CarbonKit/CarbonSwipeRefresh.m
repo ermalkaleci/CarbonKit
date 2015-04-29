@@ -35,6 +35,8 @@ typedef NS_ENUM(NSUInteger, PullState) {
 
 @interface CarbonSwipeRefresh()
 {
+	dispatch_once_t initConstraits;
+	
 	NSLayoutConstraint *topConstrait;
 	NSLayoutConstraint *centerXConstrait;
 	
@@ -70,10 +72,10 @@ typedef NS_ENUM(NSUInteger, PullState) {
 		view.layer.backgroundColor = [UIColor whiteColor].CGColor;
 		view.layer.cornerRadius = 20.0;
 		
-		view.layer.shadowOffset = CGSizeMake(0, 0.7);
+		view.layer.shadowOffset = CGSizeMake(0, .7f);
 		view.layer.shadowColor = [[UIColor blackColor] CGColor];
-		view.layer.shadowRadius = 1.2;
-		view.layer.shadowOpacity = .20;
+		view.layer.shadowRadius = 1.f;
+		view.layer.shadowOpacity = .12f;
 		
 		pathLayer = [CAShapeLayer layer];
 		pathLayer.strokeStart = 0;
@@ -115,25 +117,26 @@ typedef NS_ENUM(NSUInteger, PullState) {
 }
 
 - (void)didMoveToSuperview {
-	topConstrait = [NSLayoutConstraint constraintWithItem:self
-									attribute:NSLayoutAttributeTop
-									relatedBy:NSLayoutRelationEqual
-									   toItem:self.superview
-									attribute:NSLayoutAttributeTop
-								       multiplier:1.0
-									 constant:-50];
-	
-	centerXConstrait = [NSLayoutConstraint constraintWithItem:self
-							attribute:NSLayoutAttributeCenterX
-							relatedBy:NSLayoutRelationEqual
-							   toItem:self.superview
-							attribute:NSLayoutAttributeCenterX
-						       multiplier:1.f
-							 constant:-20];
-	
-	[self setTranslatesAutoresizingMaskIntoConstraints:NO];
-	[self.superview addConstraint:topConstrait];
-	[self.superview addConstraint:centerXConstrait];
+	dispatch_once(&initConstraits, ^{
+		topConstrait = [NSLayoutConstraint constraintWithItem:self
+													attribute:NSLayoutAttributeTop
+													relatedBy:NSLayoutRelationEqual
+													   toItem:self.superview
+													attribute:NSLayoutAttributeTop
+												   multiplier:1.0
+													 constant:-50];
+		centerXConstrait = [NSLayoutConstraint constraintWithItem:self
+														attribute:NSLayoutAttributeCenterX
+														relatedBy:NSLayoutRelationEqual
+														   toItem:self.superview
+														attribute:NSLayoutAttributeCenterX
+													   multiplier:1.f
+														 constant:-20];
+		
+		[self setTranslatesAutoresizingMaskIntoConstraints:NO];
+		[self.superview addConstraint:topConstrait];
+		[self.superview addConstraint:centerXConstrait];
+	});
 }
 
 - (id)initWithScrollView:(UIScrollView *)scrollView {
