@@ -22,7 +22,10 @@
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	
 	self.title = @"CarbonKit";
-	self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+	self.navigationController.navigationBar.titleTextAttributes = @{
+									NSForegroundColorAttributeName: [UIColor whiteColor],
+									NSFontAttributeName: [UIFont boldSystemFontOfSize:20]
+									};
 	
 	NSArray *names = @[@"ONE", @"TWO", @"THREE"];
 	UIColor *color = [UIColor colorWithRed:0.753 green:0.224 blue:0.169 alpha:1];

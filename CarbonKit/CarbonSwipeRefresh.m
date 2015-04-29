@@ -72,10 +72,10 @@ typedef NS_ENUM(NSUInteger, PullState) {
 		view.layer.backgroundColor = [UIColor whiteColor].CGColor;
 		view.layer.cornerRadius = 20.0;
 		
-		view.layer.shadowOffset = CGSizeMake(0, 0.7);
+		view.layer.shadowOffset = CGSizeMake(0, .7f);
 		view.layer.shadowColor = [[UIColor blackColor] CGColor];
-		view.layer.shadowRadius = 1.2;
-		view.layer.shadowOpacity = .20;
+		view.layer.shadowRadius = 1.f;
+		view.layer.shadowOpacity = .12f;
 		
 		pathLayer = [CAShapeLayer layer];
 		pathLayer.strokeStart = 0;
