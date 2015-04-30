@@ -95,6 +95,8 @@
 	// segment controller action
 	[tabSwipeView.segmentController addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
 	
+//	[tabSwipeView layoutIfNeeded];
+	
 	// max tabWidth
 	CGFloat maxTabWidth = 0;
 	
@@ -104,7 +106,11 @@
 	for (UIView *tabView in [tabSwipeView.segmentController subviews]) {
 		for (UIView *label in tabView.subviews) {
 			if ([label isKindOfClass:[UILabel class]]) {
-				CGFloat tabWidth = roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 16)].width + 30); // 30 extra space
+				UILabel *myLabel = (UILabel*)label;
+				CGSize size = [myLabel.text sizeWithAttributes:@{NSFontAttributeName : tabSwipeView.tabTitleTextFont }];
+				CGFloat tabWidth = roundf(size.width + 30.0f); //roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 0)].width + 30); // 30 extra space
+				
+//				CGFloat tabWidth = roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 0)].width + 30); // 30 extra space
 				[tabSwipeView.segmentController setWidth:tabWidth forSegmentAtIndex:i];
 				
 				segmentedWidth += tabWidth;
@@ -136,11 +142,7 @@
 		}
 	}
 	
-	CGRect segmentRect = tabSwipeView.segmentController.frame;
-	segmentRect.size.width = segmentedWidth;
-	tabSwipeView.segmentController.frame = segmentRect;
-	
-	[tabSwipeView.tabScrollView setContentSize:CGSizeMake(segmentedWidth, 44)];
+	tabSwipeView.segmentControllerWidthConst.constant = segmentedWidth;
 	
 	[pageController.view setTranslatesAutoresizingMaskIntoConstraints: NO];
 	[self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -162,6 +164,8 @@
 	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[rootTopLayoutGuide][parentView][rootBottomLayoutGuide]" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	[rootViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[parentView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
 	
+	[tabSwipeView layoutIfNeeded];
+	
 	tabSwipeView.segmentController.selectedSegmentIndex = 0;
 	
 	UIView *tab = tabs[tabSwipeView.segmentController.selectedSegmentIndex];
@@ -175,6 +179,8 @@
 	
 	// set tint color
 	//[self setTintColor:tintColor];
+	
+	
 	
 	return self;
 }
@@ -288,10 +294,27 @@
 	tabSwipeView.indicator.frame = rect;
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+	[super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	
+	
+	if (!((UIInterfaceOrientationIsLandscape(self.interfaceOrientation) && UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) ||
+		(UIInterfaceOrientationIsPortrait(self.interfaceOrientation) && UIInterfaceOrientationIsPortrait(toInterfaceOrientation)))) {
+		[UIView animateWithDuration:duration animations:^{
+			tabSwipeView.indicator.alpha = 0.0f;
+		}];
+	}
+}
+
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-	// fix indicator position and width
-	tabSwipeView.indicatorLeftConst.constant = ((UIView*)tabs[selectedIndex]).frame.origin.x;
-	tabSwipeView.indicatorWidthConst.constant = ((UIView*)tabs[selectedIndex]).frame.size.width;
+	if (tabSwipeView.indicator.alpha < 1.0f) {
+		// fix indicator position and width
+		tabSwipeView.indicatorLeftConst.constant = ((UIView*)tabs[selectedIndex]).frame.origin.x;
+		tabSwipeView.indicatorWidthConst.constant = ((UIView*)tabs[selectedIndex]).frame.size.width;
+
+		[self fixOffset];
+		tabSwipeView.indicator.alpha = 1.0f;
+	}
 }
 
 - (void)viewDidLayoutSubviews {
@@ -307,7 +330,6 @@
 	[self resizeTabs];
 	[self fixOffset];
 	[self.view layoutIfNeeded];
-	
 }
 
 - (void)fixOffset {
@@ -324,7 +346,7 @@
 		tabSwipeView.tabScrollView.contentOffset = CGPointMake(offsetX, 0);
 	}];
 	
-	previewsOffset = tabSwipeView.tabScrollView.contentOffset;
+	previewsOffset = CGPointMake(offsetX, 0);
 }
 
 - (void)resizeTabs {
@@ -341,7 +363,9 @@
 		
 		for (UIView *label in tabView.subviews) {
 			if ([label isKindOfClass:[UILabel class]]) {
-				CGFloat tabWidth = roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 0)].width + 30); // 30 extra space
+				UILabel *myLabel = (UILabel*)label;
+				CGSize size = [myLabel.text sizeWithAttributes:@{NSFontAttributeName : tabSwipeView.tabTitleTextFont}];
+				CGFloat tabWidth = roundf(size.width + 30.0f); //roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 0)].width + 30); // 30 extra space
 				[tabSwipeView.segmentController setWidth:tabWidth forSegmentAtIndex:i];
 				
 				segmentedWidth += tabWidth;
@@ -375,11 +399,7 @@
 		}
 	}
 	
-	CGRect segmentRect = tabSwipeView.segmentController.frame;
-	segmentRect.size.width = segmentedWidth;
-	tabSwipeView.segmentController.frame = segmentRect;
-	
-	[tabSwipeView.tabScrollView setContentSize:CGSizeMake(segmentedWidth, 44)];
+	tabSwipeView.segmentControllerWidthConst.constant = segmentedWidth;
 }
 
 #pragma mark - Public API
@@ -395,7 +415,9 @@
 		
 		[self segmentAction:tabSwipeView.segmentController];
 		
-		[self.view layoutIfNeeded];
+		[tabSwipeView layoutIfNeeded];
+		
+		//[self.view layoutIfNeeded];
 	}
 }
 

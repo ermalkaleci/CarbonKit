@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong, readonly) NSLayoutConstraint *indicatorLeftConst;
 @property (nonatomic, strong, readonly) NSLayoutConstraint *indicatorWidthConst;
+@property (nonatomic, strong, readonly) NSLayoutConstraint *segmentControllerWidthConst;
 
 // methods
 - (instancetype)initWithSegmentTitles:(NSArray*)segmentTitles;
