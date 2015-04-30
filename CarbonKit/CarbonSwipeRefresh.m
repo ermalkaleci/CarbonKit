@@ -190,7 +190,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 		
 		if (state == 2) {
 			if (pullState == PullStateFinished) {
-				if (tableScrollView.contentOffset.y > -10) {
+				if (tableScrollView.contentOffset.y > -10 + marginTop) {
 					isDragging = YES;
 					pullState = PullStateDragging;
 				}
