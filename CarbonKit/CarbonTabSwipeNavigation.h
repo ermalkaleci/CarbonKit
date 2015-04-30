@@ -71,7 +71,11 @@
  *	@param tintColor UIColor : color of navigation and tabs
  *	@param delegate id : object where CarbonTabSwipeNavigation will delegate
  */
-- (instancetype)createWithRootViewController:(UIViewController *)viewController tabNames:(NSArray *)names tintColor:(UIColor *)tintColor delegate:(id)delegate;
+- (instancetype)createWithRootViewController:(UIViewController *)viewController
+									tabNames:(NSArray *)names
+								   tintColor:(UIColor *)tintColor
+							 indicatorHeight:(CGFloat)indicatorHeight
+									delegate:(id)delegate;
 
 /**
  *	UIColor for tab in normal state

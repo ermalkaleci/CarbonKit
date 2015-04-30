@@ -21,8 +21,6 @@
 //  SOFTWARE.
 //
 
-#define INDICATOR_WIDTH		3.f
-
 #import "CarbonTabSwipeNavigation.h"
 
 @interface CarbonTabSwipeNavigation() <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate> {
@@ -52,10 +50,11 @@
 @implementation CarbonTabSwipeNavigation
 
 - (instancetype)createWithRootViewController:(UIViewController *)viewController
-				    tabNames:(NSArray *)names
-				   tintColor:(UIColor *)tintColor
-				    delegate:(id)delegate {
-	
+									tabNames:(NSArray *)names
+								   tintColor:(UIColor *)tintColor
+							 indicatorHeight:(CGFloat)indicatorHeight
+									delegate:(id)delegate
+{
 	// init
 	self.delegate = delegate;
 	numberOfTabs = names.count;
@@ -160,7 +159,7 @@
 	[self.view addSubview:tabScrollView];
 	
 	// create indicator
-	indicator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, 100, 5)];
+	indicator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, 100, indicatorHeight)];
 	indicator.backgroundColor = [UIColor whiteColor];
 	[segmentController addSubview:indicator];
 	
@@ -207,7 +206,7 @@
 									 toItem:indicator.superview
 								      attribute:NSLayoutAttributeHeight
 								     multiplier:0
-								       constant:INDICATOR_WIDTH]];
+								       constant:indicatorHeight]];
 	indicatorLeftConst = [NSLayoutConstraint constraintWithItem:indicator
 							  attribute:NSLayoutAttributeLeading
 							  relatedBy:NSLayoutRelationEqual
