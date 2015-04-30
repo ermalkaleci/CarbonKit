@@ -446,6 +446,23 @@
 	[tabScrollView setContentSize:CGSizeMake(segmentedWidth, 44)];
 }
 
+#pragma mark - Public API
+- (NSUInteger)currentTabIndex
+{
+	return selectedIndex;
+}
+
+- (void)setCurrentTabIndex:(NSUInteger)currentTabIndex
+{
+	if (selectedIndex != currentTabIndex && currentTabIndex < numberOfTabs) {
+		segmentController.selectedSegmentIndex = currentTabIndex;
+		
+		[self segmentAction:segmentController];
+		
+		[self.view layoutIfNeeded];
+	}
+}
+
 # pragma mark - PageViewController DataSource
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController {
