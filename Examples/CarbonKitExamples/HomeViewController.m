@@ -29,7 +29,12 @@
 	
 	NSArray *names = @[@"ONE", @"TWO", @"THREE"];
 	UIColor *color = [UIColor colorWithRed:0.753 green:0.224 blue:0.169 alpha:1];
-	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
+	tabSwipe = [[CarbonTabSwipeNavigation alloc]
+		    createWithRootViewController:self
+		    tabNames:names
+		    tintColor:color
+		    indicatorHeight:3.
+		    delegate:self];
 	[tabSwipe setNormalColor:[UIColor colorWithWhite:1 alpha:0.8]]; // default
 	[tabSwipe setSelectedColor:[UIColor whiteColor]]; // default
 	
