@@ -62,20 +62,20 @@
 	// create segment control
 	_segmentController = [[UISegmentedControl alloc] initWithItems:_segmentTitles];
 	[_segmentController setTranslatesAutoresizingMaskIntoConstraints:NO];
-	_segmentController.backgroundColor = [UIColor orangeColor];
+	//_segmentController.backgroundColor = [UIColor orangeColor];
 	[_segmentController setTintColor:[UIColor clearColor]];
 	[_segmentController setDividerImage:[UIImage new] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 	[_segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:self.tabTitleTextColor,
-												NSFontAttributeName:self.tabTitleTextFont}
-									 forState:UIControlStateNormal];
+												 NSFontAttributeName:self.tabTitleTextFont}
+									  forState:UIControlStateNormal];
 	[_segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:self.tabTitleSelectedTextColor,
-												NSFontAttributeName:self.tabTitleTextFont}
-									 forState:UIControlStateSelected];
+												 NSFontAttributeName:self.tabTitleTextFont}
+									  forState:UIControlStateSelected];
 	
 	
 	// create scrollview
 	_tabScrollView = [[UIScrollView alloc] init];
-	_tabScrollView.backgroundColor = _segmentController.backgroundColor;//self.tabBackgroundColor;
+	_tabScrollView.backgroundColor = self.tabBackgroundColor;
 	[_tabScrollView setShowsHorizontalScrollIndicator:NO];
 	[_tabScrollView setShowsVerticalScrollIndicator:NO];
 	[_tabScrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -85,9 +85,6 @@
 	_indicator = [[UIImageView alloc] init];
 	[_indicator setTranslatesAutoresizingMaskIntoConstraints:NO];
 	_indicator.backgroundColor = self.tabIndicatorColor;
-	
-	
-	
 	
 	
 	// create container view for scroll view
@@ -104,76 +101,79 @@
 	
 	[_segmentController addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_indicator(==3)]|" options:0 metrics:nil views:viewsDictionary]];
 	[_segmentController addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_indicator]" options:0 metrics:nil views:viewsDictionary]];
-
+	
 	[_containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_segmentController]|" options:0 metrics:nil views:viewsDictionary]];
 	[_containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_segmentController]|" options:0 metrics:nil views:viewsDictionary]];
 	
 	[_tabScrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_containerView]|" options:0 metrics:nil views:viewsDictionary]];
 	[_tabScrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_containerView]|" options:0 metrics:nil views:viewsDictionary]];
-
+	
 	
 	[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tabScrollView]" options:0 metrics:nil views:viewsDictionary]];
 	[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tabScrollView]|" options:0 metrics:nil views:viewsDictionary]];
-
 	
-	// subtract the top and bottom border that
+	
+	// subtract the top and bottom border that exists no matter what on UISegmentedControls
 	NSLayoutConstraint *containerViewHeightConst = [NSLayoutConstraint constraintWithItem:_containerView
-																	  attribute:NSLayoutAttributeHeight
-																	  relatedBy:NSLayoutRelationEqual
-																		 toItem:_tabScrollView
-																	  attribute:NSLayoutAttributeHeight
-																	 multiplier:1.0
-																	   constant:0.0f];
+																				attribute:NSLayoutAttributeHeight
+																				relatedBy:NSLayoutRelationEqual
+																				   toItem:_tabScrollView
+																				attribute:NSLayoutAttributeHeight
+																			   multiplier:1.0
+																				 constant:0.0f];
 	[self addConstraint:containerViewHeightConst];
-
+	
 	
 	// 1px bottom border to mimic the illusion of being integrated below a navigation bar
 	[self addConstraint:[NSLayoutConstraint constraintWithItem:self
-																   attribute:NSLayoutAttributeBottom
-																   relatedBy:NSLayoutRelationEqual
-																	  toItem:_tabScrollView
-																   attribute:NSLayoutAttributeBottom
-																  multiplier:1.0
-																	constant:(1.0f/[UIScreen mainScreen].scale)]];
+													 attribute:NSLayoutAttributeBottom
+													 relatedBy:NSLayoutRelationEqual
+														toItem:_tabScrollView
+													 attribute:NSLayoutAttributeBottom
+													multiplier:1.0
+													  constant:(1.0f/[UIScreen mainScreen].scale)]];
 	
 	_indicatorLeftConst = [NSLayoutConstraint constraintWithItem:_indicator
-													  attribute:NSLayoutAttributeLeading
-													  relatedBy:NSLayoutRelationEqual
-														 toItem:_indicator.superview
-													  attribute:NSLayoutAttributeLeading
-													 multiplier:1
-													   constant:0];
+													   attribute:NSLayoutAttributeLeading
+													   relatedBy:NSLayoutRelationEqual
+														  toItem:_indicator.superview
+													   attribute:NSLayoutAttributeLeading
+													  multiplier:1
+														constant:0];
 	
 	_indicatorWidthConst = [NSLayoutConstraint constraintWithItem:_indicator
-													   attribute:NSLayoutAttributeWidth
-													   relatedBy:NSLayoutRelationEqual
-														  toItem:nil
-													   attribute:NSLayoutAttributeNotAnAttribute
-													  multiplier:1.0f
-														constant:0];
+														attribute:NSLayoutAttributeWidth
+														relatedBy:NSLayoutRelationEqual
+														   toItem:nil
+														attribute:NSLayoutAttributeNotAnAttribute
+													   multiplier:1.0f
+														 constant:0];
 	
 	[_segmentController addConstraint:_indicatorLeftConst];
 	[_segmentController addConstraint:_indicatorWidthConst];
 	
 	_segmentControllerWidthConst = [NSLayoutConstraint constraintWithItem:_segmentController
-																			  attribute:NSLayoutAttributeWidth
-																			  relatedBy:NSLayoutRelationEqual
-																				 toItem:nil
-																			  attribute:NSLayoutAttributeNotAnAttribute
-																			 multiplier:0
-																			   constant:0];
-
+																attribute:NSLayoutAttributeWidth
+																relatedBy:NSLayoutRelationEqual
+																   toItem:nil
+																attribute:NSLayoutAttributeNotAnAttribute
+															   multiplier:0
+																 constant:0];
+	
 	[_containerView addConstraint:_segmentControllerWidthConst];
 }
 
--(void)layoutSubviews {
+- (void)layoutSubviews {
 	[super layoutSubviews];
+	
+	self.tabScrollView.contentInset = UIEdgeInsetsZero;
+	
+	[self.tabScrollView layoutIfNeeded];
 	
 	// UISegmentedControls do not deal well with auto layout and their frame height
 	// sync the actual frame height to match the autolayout constraint
 	self.segmentController.frame = CGRectMake(self.segmentController.frame.origin.x, self.segmentController.frame.origin.y, self.segmentController.frame.size.width, CGRectGetHeight(self.containerView.frame));
 }
-
 
 #pragma mark - Styling
 - (UIColor *)tabBackgroundColor
@@ -271,4 +271,5 @@
 + (BOOL)requiresConstraintBasedLayout {
 	return YES;
 }
+
 @end
