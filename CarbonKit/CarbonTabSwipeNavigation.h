@@ -69,9 +69,19 @@
  *	@param viewController UIViewController : parent view controller
  *	@param names NSArray : name of each tabs
  *	@param tintColor UIColor : color of navigation and tabs
+ *	@pram indicatorHeight CGFloat : height of indicator
  *	@param delegate id : object where CarbonTabSwipeNavigation will delegate
  */
-- (instancetype)createWithRootViewController:(UIViewController *)viewController tabNames:(NSArray *)names tintColor:(UIColor *)tintColor delegate:(id)delegate;
+- (instancetype)createWithRootViewController:(UIViewController *)viewController
+									tabNames:(NSArray *)names
+								   tintColor:(UIColor *)tintColor
+							 indicatorHeight:(CGFloat)indicatorHeight
+									delegate:(id)delegate;
+
+- (instancetype)createWithRootViewController:(UIViewController *)viewController
+									tabNames:(NSArray *)names
+								   tintColor:(UIColor *)tintColor
+									delegate:(id)delegate;
 
 /**
  *	UIColor for tab in normal state
