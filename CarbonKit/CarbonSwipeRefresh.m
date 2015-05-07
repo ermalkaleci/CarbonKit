@@ -316,19 +316,15 @@ typedef NS_ENUM(NSUInteger, PullState) {
 	animations.repeatCount = INFINITY;
 	[pathLayer addAnimation:animations forKey:STROKE_ANIMATION];
 	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-		[self hideArrow];
-		[self changeColor];
-	});
+	NSTimer *timer = [NSTimer timerWithTimeInterval:.5 target:self selector:@selector(changeColor) userInfo:nil repeats:NO];
+	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)changeColor {
 
+	[self hideArrow];
+	
 	if (pullState == PullStateRefreshing) {
-		
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-			[self changeColor];
-		});
 		
 		colorIndex++;
 		if (colorIndex > self.colors.count - 1) {
@@ -339,6 +335,9 @@ typedef NS_ENUM(NSUInteger, PullState) {
 		[CATransaction setDisableActions:YES];
 		pathLayer.strokeColor = ((UIColor*)self.colors[colorIndex]).CGColor;
 		[CATransaction commit];
+		
+		NSTimer *timer = [NSTimer timerWithTimeInterval:1.5 target:self selector:@selector(changeColor) userInfo:nil repeats:NO];
+		[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 	}
 }
 
