@@ -61,12 +61,6 @@
 	numberOfTabs = names.count;
 	rootViewController = viewController;
 	
-	// remove navigation bar bottom border
-	[rootViewController.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-	[rootViewController.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
-	
-	[rootViewController.navigationController.navigationBar setTranslucent:NO];
-	
 	// create page controller
 	pageController = [UIPageViewController alloc];
 	pageController = [pageController initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
@@ -242,6 +236,19 @@
 	[self setTintColor:tintColor];
 	
 	return self;
+}
+
+- (void)setTranslucent:(BOOL)translucent {
+	if (translucent) {
+		[rootViewController.navigationController.navigationBar setShadowImage:[[UINavigationBar appearance] shadowImage]];
+		[rootViewController.navigationController.navigationBar setBackgroundImage:[[UINavigationBar appearance] backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
+		[rootViewController.navigationController.navigationBar setTranslucent:YES];
+	}
+	else {
+		[rootViewController.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+		[rootViewController.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
+		[rootViewController.navigationController.navigationBar setTranslucent:NO];
+	}
 }
 
 - (void)setTintColor:(UIColor *)tintColor {

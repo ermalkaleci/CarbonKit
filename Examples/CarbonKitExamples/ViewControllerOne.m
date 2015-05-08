@@ -1,5 +1,6 @@
 
 #import "ViewControllerOne.h"
+#import "ViewControllerThree.h"
 #import "CarbonKit.h"
 
 @interface ViewControllerOne ()
@@ -47,6 +48,11 @@
 	cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", (int)indexPath.row];
 	
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	ViewControllerThree *view = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerThree"];
+	[self.navigationController pushViewController:view animated:YES];
 }
 
 - (void)refresh:(id)sender {

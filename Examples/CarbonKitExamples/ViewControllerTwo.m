@@ -1,4 +1,5 @@
 #import "ViewControllerTwo.h"
+#import "ViewControllerThree.h"
 #import "CarbonKit.h"
 
 @interface ViewControllerTwo() <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -47,6 +48,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
 	return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+	ViewControllerThree *view = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerThree"];
+	[self.navigationController pushViewController:view animated:YES];
 }
 
 @end

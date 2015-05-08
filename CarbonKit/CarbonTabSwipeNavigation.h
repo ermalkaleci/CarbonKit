@@ -74,6 +74,12 @@
 - (instancetype)createWithRootViewController:(UIViewController *)viewController tabNames:(NSArray *)names tintColor:(UIColor *)tintColor delegate:(id)delegate;
 
 /**
+ *  Navigation tranlucent
+ *  @param translucent Navigation Bar translucent
+ */
+- (void)setTranslucent:(BOOL)translucent;
+
+/**
  *	UIColor for tab in normal state
  *	@param color UIColor : color of normal state
  */

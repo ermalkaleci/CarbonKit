@@ -32,7 +32,16 @@
 	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
 	[tabSwipe setNormalColor:[UIColor colorWithWhite:1 alpha:0.8]]; // default
 	[tabSwipe setSelectedColor:[UIColor whiteColor]]; // default
-	
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[tabSwipe setTranslucent:NO]; // remove translucent
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[tabSwipe setTranslucent:YES]; // add translucent
 }
 
 - (void)didReceiveMemoryWarning {
