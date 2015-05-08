@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		683CE0191AEA2AC4009378FC /* CarbonTabSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 683CE0181AEA2AC4009378FC /* CarbonTabSwipeView.m */; };
 		A61946FE1AE2C8D5005120D5 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */; };
 		A61946FF1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FD1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m */; };
 		A62CA4271AD155D300E4698D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62CA4261AD155D300E4698D /* Default-568h@2x.png */; };
@@ -23,6 +24,8 @@
 /* Begin PBXFileReference section */
 		01949C6C896D0F70EC437655 /* Pods-CarbonKitExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbonKitExamples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarbonKitExamples/Pods-CarbonKitExamples.debug.xcconfig"; sourceTree = "<group>"; };
 		10C461C8925F366DA83BF69B /* Pods-CarbonKitExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbonKitExamples.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarbonKitExamples/Pods-CarbonKitExamples.release.xcconfig"; sourceTree = "<group>"; };
+		683CE0151AEA123D009378FC /* CarbonTabSwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeView.h; sourceTree = "<group>"; };
+		683CE0181AEA2AC4009378FC /* CarbonTabSwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeView.m; sourceTree = "<group>"; };
 		70EC9AC7BDAAC808A14EA79B /* libPods-CarbonKitExamples.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CarbonKitExamples.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60473681A87AFCA00FCE808 /* CarbonKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61946F91AE2C8D5005120D5 /* CarbonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonKit.h; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */,
 				A61946FC1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.h */,
 				A61946FD1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m */,
+				683CE0151AEA123D009378FC /* CarbonTabSwipeView.h */,
+				683CE0181AEA2AC4009378FC /* CarbonTabSwipeView.m */,
 			);
 			name = CarbonKit;
 			path = ../CarbonKit;
@@ -236,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A69E9F6B1AC0AAD6001FEAC1 /* HomeViewController.m in Sources */,
+				683CE0191AEA2AC4009378FC /* CarbonTabSwipeView.m in Sources */,
 				A69E9F671AC0AAD6001FEAC1 /* AppDelegate.m in Sources */,
 				A61946FE1AE2C8D5005120D5 /* CarbonSwipeRefresh.m in Sources */,
 				A69E9F691AC0AAD6001FEAC1 /* main.m in Sources */,
