@@ -24,6 +24,7 @@
 	UIColor *color = self.navigationController.navigationBar.barTintColor;
 	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
 	[tabSwipe setIndicatorHeight:2.f]; // default 3.f
+	[tabSwipe addShadow];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

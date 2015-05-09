@@ -111,4 +111,9 @@
  */
 - (void)setSelectedColor:(UIColor *)color font:(UIFont *)font;
 
+/**
+ * Add 1 pixel shadow
+ */
+- (void)addShadow;
+
 @end

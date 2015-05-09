@@ -288,6 +288,18 @@
 									 forState:UIControlStateSelected];
 }
 
+// add shadow
+- (void)addShadow {
+	float shadowHeight = 1.f/[[UIScreen mainScreen] scale];
+	UIView *shadow = [[UIView alloc] initWithFrame:CGRectMake(0, 44 - shadowHeight, self.view.frame.size.width, shadowHeight)];
+	[shadow setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleWidth];
+	[shadow setBackgroundColor:[UIColor colorWithWhite:0.7 alpha:1]];
+	[shadow.layer setShadowOpacity:.1f];
+	[shadow.layer setShadowRadius:.3f];
+	[shadow.layer setShadowOffset:CGSizeMake(0, .2)];
+	[self.view addSubview:shadow];
+}
+
 - (void)segmentAction:(UISegmentedControl *)segment {
 	UIView *tab = tabs[segmentController.selectedSegmentIndex];
 	indicatorWidthConst.constant = tab.frame.size.width;
