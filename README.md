@@ -75,6 +75,7 @@ pod install
 	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
 	[tabSwipe setNormalColor:[UIColor colorWithWhite:1 alpha:0.8]]; // default tintColor with alpha 0.8
 	[tabSwipe setSelectedColor:[UIColor whiteColor]]; // default tintColor
+	[tabSwipe setIndicatorHeight:2.f]; // default 3.f
 }
 
 // delegate
