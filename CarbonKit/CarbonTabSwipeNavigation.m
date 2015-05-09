@@ -21,8 +21,6 @@
 //  SOFTWARE.
 //
 
-#define INDICATOR_WIDTH		3.f
-
 #import "CarbonTabSwipeNavigation.h"
 
 @interface CarbonTabSwipeNavigation() <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate> {
@@ -45,6 +43,7 @@
 	
 	NSLayoutConstraint *indicatorLeftConst;
 	NSLayoutConstraint *indicatorWidthConst;
+	NSLayoutConstraint *indicatorHeightConst;
 }
 
 @end
@@ -154,7 +153,7 @@
 	[self.view addSubview:tabScrollView];
 	
 	// create indicator
-	indicator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, 100, 5)];
+	indicator = [[UIImageView alloc] init];
 	indicator.backgroundColor = self.view.tintColor;
 	[segmentController addSubview:indicator];
 	
@@ -195,29 +194,32 @@
 								      attribute:NSLayoutAttributeBottom
 								     multiplier:1.0
 								       constant:1]];
-	[segmentController addConstraint:[NSLayoutConstraint constraintWithItem:indicator
-								      attribute:NSLayoutAttributeHeight
-								      relatedBy:NSLayoutRelationEqual
-									 toItem:indicator.superview
-								      attribute:NSLayoutAttributeHeight
-								     multiplier:0
-								       constant:INDICATOR_WIDTH]];
+	
+	indicatorHeightConst = [NSLayoutConstraint constraintWithItem:indicator
+														attribute:NSLayoutAttributeHeight
+														relatedBy:NSLayoutRelationEqual
+														   toItem:indicator.superview
+														attribute:NSLayoutAttributeHeight
+													   multiplier:0
+														 constant:3.f];
+	
 	indicatorLeftConst = [NSLayoutConstraint constraintWithItem:indicator
-							  attribute:NSLayoutAttributeLeading
-							  relatedBy:NSLayoutRelationEqual
-							     toItem:indicator.superview
-							  attribute:NSLayoutAttributeLeading
-							 multiplier:1
-							   constant:0];
+													  attribute:NSLayoutAttributeLeading
+													  relatedBy:NSLayoutRelationEqual
+														 toItem:indicator.superview
+													  attribute:NSLayoutAttributeLeading
+													 multiplier:1
+													   constant:0];
 	
 	indicatorWidthConst = [NSLayoutConstraint constraintWithItem:indicator
-							   attribute:NSLayoutAttributeWidth
-							   relatedBy:NSLayoutRelationEqual
-							      toItem:indicator.superview
-							   attribute:NSLayoutAttributeWidth
-							  multiplier:0
-							    constant:0];
+													   attribute:NSLayoutAttributeWidth
+													   relatedBy:NSLayoutRelationEqual
+														  toItem:indicator.superview
+													   attribute:NSLayoutAttributeWidth
+													  multiplier:0
+														constant:0];
 	
+	[segmentController addConstraint:indicatorHeightConst];
 	[segmentController addConstraint:indicatorLeftConst];
 	[segmentController addConstraint:indicatorWidthConst];
 	
@@ -251,6 +253,10 @@
 		[rootViewController.navigationController.navigationBar setBarTintColor:tabScrollView.backgroundColor];
 		[rootViewController.navigationController.navigationBar setTranslucent:NO];
 	}
+}
+
+- (void)setIndicatorHeight:(CGFloat)height {
+	indicatorHeightConst.constant = height;
 }
 
 - (void)setTintColor:(UIColor *)tintColor {

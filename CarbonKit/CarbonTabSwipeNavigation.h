@@ -80,6 +80,12 @@
 - (void)setTranslucent:(BOOL)translucent;
 
 /**
+ *  Change indicator height
+ *  @param height Indicator height
+ */
+- (void)setIndicatorHeight:(CGFloat)height;
+
+/**
  *	UIColor for tab in normal state
  *	@param color UIColor : color of normal state
  */

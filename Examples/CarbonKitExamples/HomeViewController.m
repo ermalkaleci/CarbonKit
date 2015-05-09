@@ -23,6 +23,7 @@
 	NSArray *names = @[@"ONE", @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN", @"EIGHT", @"NINE", @"TEN"];
 	UIColor *color = self.navigationController.navigationBar.barTintColor;
 	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
+	[tabSwipe setIndicatorHeight:2.f]; // default 3.f
 }
 
 - (void)viewWillAppear:(BOOL)animated {
