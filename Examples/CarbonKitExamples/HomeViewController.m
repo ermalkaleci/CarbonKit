@@ -15,23 +15,14 @@
 
 @implementation HomeViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-	
 	self.title = @"CarbonKit";
-	self.navigationController.navigationBar.titleTextAttributes = @{
-									NSForegroundColorAttributeName: [UIColor whiteColor],
-									NSFontAttributeName: [UIFont boldSystemFontOfSize:20]
-									};
 	
-	NSArray *names = @[@"ONE", @"TWO", @"THREE"];
-	UIColor *color = [UIColor colorWithRed:0.753 green:0.224 blue:0.169 alpha:1];
+	NSArray *names = @[@"ONE", @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN", @"EIGHT", @"NINE", @"TEN"];
+	UIColor *color = self.navigationController.navigationBar.barTintColor;
 	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
-	[tabSwipe setNormalColor:[UIColor colorWithWhite:1 alpha:0.8]]; // default
-	[tabSwipe setSelectedColor:[UIColor whiteColor]]; // default
 }
 
 - (void)viewWillAppear:(BOOL)animated {

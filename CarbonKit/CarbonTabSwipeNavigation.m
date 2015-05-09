@@ -92,12 +92,12 @@
 	segRect.size.height = 44;
 	segmentController.frame = segRect;
 	
-	UIColor *normalTextColor = [UIColor colorWithWhite:0.85 alpha:1];
+	UIColor *normalTextColor = [self.view.tintColor colorWithAlphaComponent:0.8];
 	
 	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:normalTextColor,
 						    NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}
 					 forState:UIControlStateNormal];
-	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],
+	[segmentController setTitleTextAttributes:@{NSForegroundColorAttributeName:self.view.tintColor,
 						    NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}
 					 forState:UIControlStateSelected];
 	
@@ -155,7 +155,7 @@
 	
 	// create indicator
 	indicator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, 100, 5)];
-	indicator.backgroundColor = [UIColor whiteColor];
+	indicator.backgroundColor = self.view.tintColor;
 	[segmentController addSubview:indicator];
 	
 	[segmentController setTintColor:[UIColor clearColor]];
@@ -242,18 +242,19 @@
 	if (translucent) {
 		[rootViewController.navigationController.navigationBar setShadowImage:[[UINavigationBar appearance] shadowImage]];
 		[rootViewController.navigationController.navigationBar setBackgroundImage:[[UINavigationBar appearance] backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
+		[rootViewController.navigationController.navigationBar setBarTintColor:[[UINavigationBar appearance] barTintColor]];
 		[rootViewController.navigationController.navigationBar setTranslucent:YES];
 	}
 	else {
 		[rootViewController.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 		[rootViewController.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
+		[rootViewController.navigationController.navigationBar setBarTintColor:tabScrollView.backgroundColor];
 		[rootViewController.navigationController.navigationBar setTranslucent:NO];
 	}
 }
 
 - (void)setTintColor:(UIColor *)tintColor {
 	tabScrollView.backgroundColor = tintColor;
-	[rootViewController.navigationController.navigationBar setBarTintColor:tintColor];
 }
 
 - (void)setNormalColor:(UIColor *)color {
