@@ -26,6 +26,8 @@
 @interface CarbonTabSwipeNavigation() <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate> {
 	
 	BOOL isNotDragging;
+    
+    NSInteger heightModifier;
 	
 	NSUInteger numberOfTabs;
 	NSInteger selectedIndex;
@@ -59,6 +61,8 @@
 	self.delegate = delegate;
 	numberOfTabs = names.count;
 	rootViewController = viewController;
+    
+    heightModifier = 0;
 	
 	// create page controller
 	pageController = [UIPageViewController alloc];
@@ -255,6 +259,15 @@
 	}
 }
 
+- (void)hasTranslucentTabBar:(BOOL)translucent {
+    if (translucent) {
+        heightModifier = self.tabBarController.tabBar.frame.size.height;
+    } else {
+        heightModifier = 0;
+    }
+    [self.view layoutSubviews];
+}
+
 - (void)setIndicatorHeight:(CGFloat)height {
 	indicatorHeightConst.constant = height;
 }
@@ -392,7 +405,7 @@
 	indicatorLeftConst.constant = tab.frame.origin.x;
 	
 	// keep the page controller's width in sync
-	pageController.view.frame = CGRectMake(pageController.view.frame.origin.x, pageController.view.frame.origin.y, self.view.bounds.size.width, pageController.view.frame.size.height);
+	pageController.view.frame = CGRectMake(pageController.view.frame.origin.x, pageController.view.frame.origin.y, self.view.bounds.size.width, pageController.view.frame.size.height+heightModifier);
 
 	[self resizeTabs];
 	[self fixOffset];
