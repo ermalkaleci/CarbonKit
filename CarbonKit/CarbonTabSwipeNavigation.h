@@ -80,6 +80,12 @@
 - (void)setTranslucent:(BOOL)translucent;
 
 /**
+ *  Will increase height of pageController to hide view under translucent tabBar
+ *  @param translucent Navigation Bar translucent
+ */
+- (void)hasTranslucentTabBar:(BOOL)translucent;
+
+/**
  *  Change indicator height
  *  @param height Indicator height
  */
