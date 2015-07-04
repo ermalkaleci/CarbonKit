@@ -1,8 +1,6 @@
 ![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/carbonkit_logo.png)
 
-CarbonKit - OpenSource iOS UI library.
-Like the Carbon is the base of the life, I started CarbonKit to be base of great apps ;-)
-Fork & Contribute CarbonKit to make it better.
+CarbonKit is an OpenSource iOS library that includes powerful and beauty UI controllers. I started developing these controllers inspired by Android Material Design.
 
 CarbonKit includes:
 - CarbonSwipeRefresh
@@ -81,14 +79,10 @@ pod install
 
 // delegate
 - (UIViewController *)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe viewControllerAtIndex:(NSUInteger)index {
-	return nil; // return viewController at index
+	// return viewController at index
 }
 
 @end
 ```
-
-# CONTRIBUTORS
-[Contributors](https://github.com/ermalkaleci/CarbonKit/graphs/contributors)
-
 # LICENSE
 [The MIT License (MIT)](https://github.com/ermalkaleci/CarbonKit/blob/master/LICENSE)

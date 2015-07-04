@@ -30,6 +30,8 @@
 	NSUInteger numberOfTabs;
 	NSInteger selectedIndex;
 	
+	CGFloat extraSpace;
+	
 	CGPoint previewsOffset;
 	
 	NSMutableArray *tabs;
@@ -59,6 +61,7 @@
 	self.delegate = delegate;
 	numberOfTabs = names.count;
 	rootViewController = viewController;
+	extraSpace = 15;
 	
 	// create page controller
 	pageController = [UIPageViewController alloc];
@@ -112,7 +115,7 @@
 	for (UIView *tabView in [segmentController subviews]) {
 		for (UIView *label in tabView.subviews) {
 			if ([label isKindOfClass:[UILabel class]]) {
-				CGFloat tabWidth = roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 16)].width + 30); // 30 extra space
+				CGFloat tabWidth = roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 0)].width + extraSpace * 2);
 				[segmentController setWidth:tabWidth forSegmentAtIndex:i];
 				
 				segmentedWidth += tabWidth;
@@ -300,6 +303,11 @@
 	[self.view addSubview:shadow];
 }
 
+// set extraSpace
+- (void)setExtraSpace:(CGFloat)extra {
+	extraSpace = extra;
+}
+
 - (void)segmentAction:(UISegmentedControl *)segment {
 	UIView *tab = tabs[segmentController.selectedSegmentIndex];
 	indicatorWidthConst.constant = tab.frame.size.width;
@@ -431,7 +439,7 @@
 		
 		for (UIView *label in tabView.subviews) {
 			if ([label isKindOfClass:[UILabel class]]) {
-				CGFloat tabWidth = roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 0)].width + 30); // 30 extra space
+				CGFloat tabWidth = roundf([label sizeThatFits:CGSizeMake(FLT_MAX, 0)].width + extraSpace * 2);
 				[segmentController setWidth:tabWidth forSegmentAtIndex:i];
 				
 				segmentedWidth += tabWidth;
