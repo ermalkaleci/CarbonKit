@@ -28,6 +28,7 @@
 
 - (id)initWithScrollView:(UIScrollView *)scrollView;
 
+- (void)startRefreshing;
 - (void)endRefreshing;
 
 // in case when navigation bar is not tranparent set 0

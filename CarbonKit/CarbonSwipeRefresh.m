@@ -388,6 +388,27 @@ typedef NS_ENUM(NSUInteger, PullState) {
 	}];
 }
 
+- (void)startRefreshing {
+	pullState = PullStateRefreshing;
+	self.layer.transform = CATransform3DMakeScale(0, 0, 1);
+	centerXConstrait.constant = 0;
+	topConstrait.constant = 30 - marginTop;
+	[self layoutIfNeeded];
+
+	[UIView animateWithDuration:.6f animations:^{
+		self.layer.opacity = 1;
+		self.layer.transform = CATransform3DMakeScale(1, 1, 1);
+		
+		centerXConstrait.constant = -20;
+		topConstrait.constant = 10 - marginTop;
+		[self layoutIfNeeded];
+		
+	} completion:nil];
+	
+	[self startAnimating];
+	[self hideArrow];
+}
+
 - (void)endRefreshing {
 	[self hideView];
 }
