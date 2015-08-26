@@ -336,21 +336,32 @@
 	isNotDragging = YES;
 	pageController.view.userInteractionEnabled = NO;
 	[pageController setViewControllers:@[viewController]
-				 direction:animateDirection
-				  animated:NO
-				completion:^(BOOL finished) {
-					__strong __typeof__(self) strongSelf = weakSelf;
-					strongSelf->isNotDragging = NO;
-					strongSelf->pageController.view.userInteractionEnabled = YES;
-					strongSelf->selectedIndex = index;
-					[strongSelf->segmentController setSelectedSegmentIndex:strongSelf->selectedIndex];
-					[strongSelf fixOffset];
-					
-					// call delegate
-					if ([strongSelf->_delegate respondsToSelector:@selector(tabSwipeNavigation:didMoveAtIndex:)]) {
-						[strongSelf->_delegate tabSwipeNavigation:strongSelf didMoveAtIndex:index];
-					}
-				}];
+							 direction:animateDirection
+							  animated:YES
+							completion:^(BOOL finished) {
+								__strong __typeof__(self) strongSelf = weakSelf;
+								
+								dispatch_async(dispatch_get_main_queue(), ^{
+									
+									[strongSelf->pageController
+									 setViewControllers:@[viewController]
+									 direction:animateDirection
+									 animated:NO
+									 completion:^(BOOL finished) {
+										 __strong __typeof__(self) strongSelf = weakSelf;
+										 strongSelf->isNotDragging = NO;
+										 strongSelf->pageController.view.userInteractionEnabled = YES;
+										 strongSelf->selectedIndex = index;
+										 [strongSelf->segmentController setSelectedSegmentIndex:strongSelf->selectedIndex];
+										 [strongSelf fixOffset];
+										 
+										 // call delegate
+										 if ([strongSelf->_delegate respondsToSelector:@selector(tabSwipeNavigation:didMoveAtIndex:)]) {
+											 [strongSelf->_delegate tabSwipeNavigation:strongSelf didMoveAtIndex:index];
+										 }
+									 }];
+								});
+							}];
 }
 
 - (void)viewDidLoad {
