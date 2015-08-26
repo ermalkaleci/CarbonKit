@@ -179,7 +179,7 @@
     id<UILayoutSupport> rootBottomLayoutGuide = rootViewController.bottomLayoutGuide;
 	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(rootTopLayoutGuide, rootBottomLayoutGuide, parentView, tabScrollView, pageControllerView);
 	NSDictionary *metricsDictionary = @{
-										@"tabScrollViewHeight" : @44
+										@"tabScrollViewHeight" : [self tabHeight]
 										};
 	
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tabScrollView(==tabScrollViewHeight)][pageControllerView]|" options:0 metrics:metricsDictionary views:viewsDictionary]];
@@ -639,6 +639,13 @@
 	}];
 	
 	previewsOffset = scrollView.contentOffset;
+}
+
+#pragma mark - Subclassing
+
+-(NSNumber*)tabHeight
+{
+    return @44;
 }
 
 @end
