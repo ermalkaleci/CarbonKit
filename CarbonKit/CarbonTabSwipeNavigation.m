@@ -630,7 +630,7 @@
 	CGFloat indicatorMaxOriginX = scrollView.frame.size.width / 2 - indicator.frame.size.width / 2;
 	
 	CGFloat offsetX = indicator.frame.origin.x-indicatorMaxOriginX;
-	t
+	
 	if (offsetX < 0) offsetX = 0;
 	if (offsetX > segmentController.frame.size.width-scrollViewWidth) offsetX = segmentController.frame.size.width-scrollViewWidth;
 	
