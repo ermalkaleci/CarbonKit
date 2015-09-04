@@ -337,7 +337,7 @@
 	pageController.view.userInteractionEnabled = NO;
 	[pageController setViewControllers:@[viewController]
 				 direction:animateDirection
-				  animated:NO
+				  animated:[self shouldAnimate]
 				completion:^(BOOL finished) {
 					__strong __typeof__(self) strongSelf = weakSelf;
 					strongSelf->isNotDragging = NO;
@@ -367,7 +367,7 @@
 	__weak __typeof__(self) weakSelf = self;
 	[pageController setViewControllers:@[viewController]
 							 direction:UIPageViewControllerNavigationDirectionForward
-							  animated:NO
+							  animated:[self shouldAnimate]
 							completion:^(BOOL finished) {
 								__strong __typeof__(self) strongSelf = weakSelf;
 								// call delegate
@@ -641,11 +641,16 @@
 	previewsOffset = scrollView.contentOffset;
 }
 
-#pragma mark - Subclassing
+#pragma mark - Subclass and override to customize
 
 -(NSNumber*)tabHeight
 {
-    return @44;
+    return @50;
+}
+
+-(BOOL)shouldAnimate
+{
+    return YES;
 }
 
 @end
