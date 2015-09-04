@@ -645,7 +645,7 @@
 
 -(NSNumber*)tabHeight
 {
-    return @50;
+    return @44;
 }
 
 -(BOOL)shouldAnimate
