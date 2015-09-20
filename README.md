@@ -37,6 +37,9 @@ pod install
 	refresh = [[CarbonSwipeRefresh alloc] initWithScrollView:self.tableView];
 	[refresh setMarginTop:64]; // set 64 if navigation is translucent - default 0
 	[refresh setColors:@[[UIColor blueColor], [UIColor redColor], [UIColor orangeColor], [UIColor greenColor]]]; // default tintColor
+	
+	// If your ViewController extends to UIViewController
+	// else see below
 	[self.view addSubview:refresh];
 
 	[refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
@@ -46,6 +49,17 @@ pod install
 	[refresh endRefreshing];
 }
 @end
+```
+
+If you are using UITableViewController you must add the refreshControl into self.view.superview after viewDidApper
+```objective-c
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+	if (!refreshControl.superview) {
+		[self.view.superview addSubview:refreshControl];
+	}
+}
 ```
 
 # CarbonTabSwipeNavigation
