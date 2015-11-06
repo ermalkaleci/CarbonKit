@@ -194,6 +194,7 @@
 	
 	// create scrollview
 	tabScrollView = [[UIScrollView alloc] init];
+	tabScrollView.scrollsToTop = NO;
 	[self.view addSubview:tabScrollView];
 	
 	// create indicator
