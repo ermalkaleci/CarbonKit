@@ -20,7 +20,7 @@
 	
 	self.title = @"CarbonKit";
 	
-	NSArray *names = @[@"ONE", @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN", @"EIGHT", @"NINE", @"TEN"];
+	NSArray *names = @[[UIImage imageNamed:@"statusOrange"], @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN", @"EIGHT", @"NINE", @"TEN"];
 	UIColor *color = self.navigationController.navigationBar.barTintColor;
 	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
 	[tabSwipe setIndicatorHeight:2.f]; // default 3.f
@@ -47,7 +47,10 @@
 - (UIViewController *)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe viewControllerAtIndex:(NSUInteger)index {
 	
 	if (index == 0) {
-		ViewControllerOne *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerOne"];
+		UIViewController *viewController = [[UIViewController alloc] init];
+		viewController.tabBarItem.selectedImage = [UIImage imageNamed:@"statusGreen"];
+		viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"title" image:[UIImage imageNamed:@"statusOrange"] selectedImage:[UIImage imageNamed:@"statusGreen"]];
+		
 		return viewController;
 	} else if (index == 1) {
 		ViewControllerTwo *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerTwo"];
