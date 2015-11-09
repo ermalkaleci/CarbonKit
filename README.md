@@ -35,8 +35,12 @@ pod install
 	[super viewDidLoad];
 
 	refresh = [[CarbonSwipeRefresh alloc] initWithScrollView:self.tableView];
-	[refresh setMarginTop:64]; // set 64 if navigation is translucent - default 0
-	[refresh setColors:@[[UIColor blueColor], [UIColor redColor], [UIColor orangeColor], [UIColor greenColor]]]; // default tintColor
+	[refresh setColors:@[
+		[UIColor blueColor],
+	 	[UIColor redColor],
+		[UIColor orangeColor],
+		[UIColor greenColor]]
+	]; // default tintColor
 	
 	// If your ViewController extends to UIViewController
 	// else see below
@@ -72,9 +76,6 @@ If you are using UITableViewController you must add the refreshControl into self
 #import "CarbonKit.h"
 
 @interface ViewController () <CarbonTabSwipeDelegate>
-{
-	CarbonTabSwipeNavigation *tabSwipe;
-}
 @end
 
 @implementation ViewController
@@ -82,17 +83,18 @@ If you are using UITableViewController you must add the refreshControl into self
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	NSArray *names = @[@"CATEGORIES", @"HOME", @"TOP PAID", @"TOP FREE", @"TOP GROSSING", @"TOP NEW PAID", @"TOP NEW FREE", @"TRENDING"];
-	UIColor *color = [UIColor colorWithRed:0.753 green:0.224 blue:0.169 alpha:1];
-	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
-	[tabSwipe setNormalColor:[UIColor colorWithWhite:1 alpha:0.8]]; // default tintColor with alpha 0.8
-	[tabSwipe setSelectedColor:[UIColor whiteColor]]; // default tintColor
-	[tabSwipe setIndicatorHeight:2.f]; // default 3.f
-	[tabSwipe addShadow];
+	NSArray *items = @[[UIImage imageNamed:@"home"], [UIImage imageNamed:@"hourglass"],
+			  [UIImage imageNamed:@"premium_badge"], @"Categories", @"Top Free",
+			  @"Top New Free", @"Top Paid", @"Top New Paid"];
+	
+		CarbonTabSwipeNavigation *carbonTabSwipeNavigation = 
+		[[CarbonTabSwipeNavigation alloc] initWithItems:items rootViewController:self];
+		carbonTabSwipeNavigation.delegate = self;
 }
 
 // delegate
-- (UIViewController *)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe viewControllerAtIndex:(NSUInteger)index {
+- (nonnull UIViewController *)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbontTabSwipeNavigation
+				 viewControllerAtIndex:(NSUInteger)index {
 	// return viewController at index
 }
 
