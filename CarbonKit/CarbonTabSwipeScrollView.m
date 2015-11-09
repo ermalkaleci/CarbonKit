@@ -20,18 +20,40 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-#import <UIKit/UIKit.h>
 
-@interface CarbonSwipeRefresh : UIControl
+#import "CarbonTabSwipeScrollView.h"
 
-@property (nonatomic, retain, setter=setColors:) NSArray *colors;
+@implementation CarbonTabSwipeScrollView
 
-- (id)initWithScrollView:(UIScrollView *)scrollView;
+- (instancetype)initWithItems:(NSArray *)items {
+	self = [super init];
+	if (self) {
+		// Disable scroll indicators
+		self.showsHorizontalScrollIndicator = self.showsVerticalScrollIndicator = NO;
+		
+		// Create Carbon segmented control
+		_carbonSegmentedControl = [[CarbonTabSwipeSegmentedControl alloc] initWithItems:items];
+		[self addSubview:_carbonSegmentedControl];
+	}
+	return self;
+}
 
-- (void)startRefreshing;
-- (void)endRefreshing;
-
-// in case when navigation bar is not tranparent set 0
-- (void)setMarginTop:(CGFloat)topMargin;
+- (void)layoutSubviews {
+	[super layoutSubviews];
+	
+	// Set segmented control height equal to scroll view height
+	CGRect segmentRect = _carbonSegmentedControl.frame;
+	segmentRect.size.height = CGRectGetHeight(self.frame);
+	_carbonSegmentedControl.frame = segmentRect;
+	
+	// Min content width equal to scroll view width
+	CGFloat contentWidth = [_carbonSegmentedControl getWidth];
+	if (contentWidth < CGRectGetWidth(self.frame)) {
+		contentWidth = CGRectGetWidth(self.frame) + 1;
+	}
+	
+	// Scroll view content size
+	self.contentSize = CGSizeMake(contentWidth, CGRectGetHeight(self.frame));
+}
 
 @end

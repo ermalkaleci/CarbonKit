@@ -1,6 +1,6 @@
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2015 Ermal Kaleci
+//  Copyright (c) 2015 - present Ermal Kaleci
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -81,13 +81,13 @@ typedef NS_ENUM(NSUInteger, PullState) {
 		pathLayer.strokeStart = 0;
 		pathLayer.strokeEnd = 10;
 		pathLayer.fillColor = nil;
-		pathLayer.lineWidth = 3;
+		pathLayer.lineWidth = 2.5;
 		
 		UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(20, 20) radius:9 startAngle:0 endAngle:2 * M_PI clockwise:YES];
 		pathLayer.path = path.CGPath;
 		pathLayer.strokeStart = 1;
 		pathLayer.strokeEnd = 1;
-		pathLayer.lineCap = kCALineCapRound;
+		pathLayer.lineCap = kCALineCapSquare;
 		
 		arrowLayer = [CAShapeLayer layer];
 		arrowLayer.strokeStart = 0;
@@ -95,9 +95,9 @@ typedef NS_ENUM(NSUInteger, PullState) {
 		arrowLayer.fillColor = nil;
 		arrowLayer.lineWidth = 3;
 		arrowLayer.strokeColor = [UIColor blueColor].CGColor;
-		UIBezierPath *arrow = [CarbonSwipeRefresh bezierArrowFromPoint:CGPointMake(20, 20) toPoint:CGPointMake(20, 20.8) width:0.8];
+		UIBezierPath *arrow = [CarbonSwipeRefresh bezierArrowFromPoint:CGPointMake(20, 20) toPoint:CGPointMake(20, 21) width:1];
 		arrowLayer.path = arrow.CGPath;
-		arrowLayer.transform = CATransform3DMakeTranslation(8.6, 0, 0);
+		arrowLayer.transform = CATransform3DMakeTranslation(8.5, 0, 0);
 		
 		[container.layer addSublayer:pathLayer];
 		[container.layer addSublayer:arrowLayer];
@@ -273,9 +273,10 @@ typedef NS_ENUM(NSUInteger, PullState) {
 	float currentAngle = [(NSNumber*)[container.layer valueForKeyPath:@"transform.rotation.z"] floatValue];
 	CABasicAnimation *animation = [CABasicAnimation animation];
 	animation.keyPath = @"transform.rotation";
-	animation.duration = 4.f;
+	animation.duration = 3.f;
 	animation.fromValue = @(currentAngle);
 	animation.toValue = @(2 * M_PI + currentAngle);
+	animation.removedOnCompletion = NO;
 	animation.repeatCount = INFINITY;
 	[container.layer addAnimation:animation forKey:ROTATE_ANIMATION];
 	

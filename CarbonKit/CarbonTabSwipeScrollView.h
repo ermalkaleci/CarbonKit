@@ -20,18 +20,30 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
+
 #import <UIKit/UIKit.h>
+#import "CarbonTabSwipeSegmentedControl.h"
 
-@interface CarbonSwipeRefresh : UIControl
+NS_ASSUME_NONNULL_BEGIN
 
-@property (nonatomic, retain, setter=setColors:) NSArray *colors;
+@interface CarbonTabSwipeScrollView : UIScrollView
 
-- (id)initWithScrollView:(UIScrollView *)scrollView;
+/**
+ *  Custimized segmented control without tint color and divider image
+ */
+@property (nonatomic, strong, readonly, nonnull) CarbonTabSwipeSegmentedControl *carbonSegmentedControl;
 
-- (void)startRefreshing;
-- (void)endRefreshing;
+/**
+ *  Create CarbonTabScrollView with items. Items can be NSString or UIImage like
+ *  creating a SegmentedControl. ScrollView content size is equal to
+ *  SegmentedControl width.
+ *
+ *  @param items Array of segment titles or images
+ *
+ *  @return CarbonTabSwipeScrollView that contains CarbonTabSwipeSegmentedControl
+ */
+- (instancetype)initWithItems:(nullable NSArray *)items;
 
-// in case when navigation bar is not tranparent set 0
-- (void)setMarginTop:(CGFloat)topMargin;
+NS_ASSUME_NONNULL_END
 
 @end
