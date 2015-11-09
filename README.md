@@ -68,7 +68,7 @@ If you are using UITableViewController you must add the refreshControl into self
 
 # CarbonTabSwipeNavigation
 
-![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/CarbonTabSwipeNavigation.gif)
+![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/CarbonKit_v2.x/Examples/CarbonTabSwipeNavigation.gif)
 
 # SAMPLE CODE
 
@@ -84,18 +84,18 @@ If you are using UITableViewController you must add the refreshControl into self
 	[super viewDidLoad];
 
 	NSArray *items = @[[UIImage imageNamed:@"home"], [UIImage imageNamed:@"hourglass"],
-										[UIImage imageNamed:@"premium_badge"], @"Categories", @"Top Free",
-										@"Top New Free", @"Top Paid", @"Top New Paid"];
+	[UIImage imageNamed:@"premium_badge"], @"Categories", @"Top Free",
+	@"Top New Free", @"Top Paid", @"Top New Paid"];
 	
-		CarbonTabSwipeNavigation *carbonTabSwipeNavigation = 
-		[[CarbonTabSwipeNavigation alloc]
-		initWithItems:items
-		rootViewController:self];
-		[carbonTabSwipeNavigation setDelegate:self];
+	CarbonTabSwipeNavigation *carbonTabSwipeNavigation = 
+	[[CarbonTabSwipeNavigation alloc] initWithItems:items rootViewController:self];
+	
+	[carbonTabSwipeNavigation setDelegate:self];
 }
 
 // delegate
-- (UIViewController *)carbonTabSwipeNavigation:(CarbonTabSwipeNavigation *)carbontTabSwipeNavigation 												viewControllerAtIndex:(NSUInteger)index {
+- (UIViewController *)carbonTabSwipeNavigation:(CarbonTabSwipeNavigation *)carbontTabSwipeNavigation
+			 viewControllerAtIndex:(NSUInteger)index {
 	// return viewController at index
 }
 
