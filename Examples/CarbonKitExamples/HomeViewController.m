@@ -1,40 +1,32 @@
 #import "HomeViewController.h"
-
 #import "ViewControllerOne.h"
 #import "ViewControllerTwo.h"
 #import "ViewControllerThree.h"
-
 #import "CarbonKit.h"
 
-@interface HomeViewController () <CarbonTabSwipeDelegate>
+@interface HomeViewController () <CarbonTabSwipeNavigationDelegate>
 {
-	CarbonTabSwipeNavigation *tabSwipe;
+	NSArray *items;
+	CarbonTabSwipeNavigation *carbonTabSwipeNavigation;
 }
-
 @end
 
 @implementation HomeViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
 	self.title = @"CarbonKit";
 	
-	NSArray *names = @[@"ONE", @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN", @"EIGHT", @"NINE", @"TEN"];
-	UIColor *color = self.navigationController.navigationBar.barTintColor;
-	tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self tabNames:names tintColor:color delegate:self];
-	[tabSwipe setIndicatorHeight:2.f]; // default 3.f
-	[tabSwipe addShadow];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	[tabSwipe setTranslucent:NO]; // remove translucent
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-	[tabSwipe setTranslucent:YES]; // add translucent
+	items = @[[UIImage imageNamed:@"home"], [UIImage imageNamed:@"hourglass"],
+		  [UIImage imageNamed:@"premium_badge"], @"Categories", @"Top Free",
+		  @"Top New Free", @"Top Paid", @"Top New Paid"];
+	
+	carbonTabSwipeNavigation = [[CarbonTabSwipeNavigation alloc]
+				    initWithItems:items
+				    rootViewController:self];
+	carbonTabSwipeNavigation.delegate = self;
+	
+	[self style];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,25 +34,70 @@
 	// Dispose of any resources that can be recreated.
 }
 
-# pragma mark - Carbon Tab Swipe Delegate
-// required
-- (UIViewController *)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe viewControllerAtIndex:(NSUInteger)index {
+- (void)style {
 	
-	if (index == 0) {
-		ViewControllerOne *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerOne"];
-		return viewController;
-	} else if (index == 1) {
-		ViewControllerTwo *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerTwo"];
-		return viewController;
-	} else {
-		ViewControllerThree *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerThree"];
-		return viewController;
+	UIColor *color = [UIColor colorWithRed:24.0/255 green:75.0/255 blue:152.0/255 alpha:1];
+	self.navigationController.navigationBar.translucent = NO;
+	self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+	self.navigationController.navigationBar.barTintColor = color;
+	self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+	
+	carbonTabSwipeNavigation.toolbar.translucent = NO;
+	[carbonTabSwipeNavigation setIndicatorColor:color];
+	[carbonTabSwipeNavigation setTabExtraWidth:30];
+	[carbonTabSwipeNavigation.carbonSegmentedControl setWidth:80 forSegmentAtIndex:0];
+	[carbonTabSwipeNavigation.carbonSegmentedControl setWidth:80 forSegmentAtIndex:1];
+	[carbonTabSwipeNavigation.carbonSegmentedControl setWidth:80 forSegmentAtIndex:2];
+	
+	// Custimize segmented control
+	[carbonTabSwipeNavigation setNormalColor:[color colorWithAlphaComponent:0.6]
+				  font:[UIFont boldSystemFontOfSize:14]];
+	[carbonTabSwipeNavigation setSelectedColor:color
+				    font:[UIFont boldSystemFontOfSize:14]];
+}
+
+# pragma mark - CarbonTabSwipeNavigation Delegate
+// required
+- (nonnull UIViewController *)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbontTabSwipeNavigation
+				 viewControllerAtIndex:(NSUInteger)index {
+	switch (index) {
+		case 0:
+			return [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerOne"];
+			
+		case 1:
+			return [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerTwo"];
+			
+		default:
+			return [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerThree"];
 	}
 }
 
 // optional
-- (void)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe didMoveAtIndex:(NSInteger)index {
-	NSLog(@"Current tab: %d", (int)index);
+- (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
+		 willMoveAtIndex:(NSUInteger)index {
+	switch(index) {
+		case 0:
+			self.title = @"Home";
+			break;
+		case 1:
+			self.title = @"Hourglass";
+			break;
+		case 2:
+			self.title = @"Premium Badge";
+			break;
+		default:
+			self.title = items[index];
+			break;
+	}
+}
+
+- (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
+		  didMoveAtIndex:(NSUInteger)index {
+	NSLog(@"Did move at index: %ld", index);
+}
+
+- (UIBarPosition)barPositionForCarbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation {
+	return UIBarPositionTop; // default UIBarPositionTop
 }
 
 @end

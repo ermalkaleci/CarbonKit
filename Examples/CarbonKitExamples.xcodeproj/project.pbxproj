@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E135E951BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */; };
+		8E135E981BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */; };
 		A61946FE1AE2C8D5005120D5 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */; };
 		A61946FF1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FD1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m */; };
 		A62CA4271AD155D300E4698D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62CA4261AD155D300E4698D /* Default-568h@2x.png */; };
@@ -21,9 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01949C6C896D0F70EC437655 /* Pods-CarbonKitExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbonKitExamples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarbonKitExamples/Pods-CarbonKitExamples.debug.xcconfig"; sourceTree = "<group>"; };
-		10C461C8925F366DA83BF69B /* Pods-CarbonKitExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbonKitExamples.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarbonKitExamples/Pods-CarbonKitExamples.release.xcconfig"; sourceTree = "<group>"; };
-		70EC9AC7BDAAC808A14EA79B /* libPods-CarbonKitExamples.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CarbonKitExamples.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E135E931BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeSegmentedControl.h; sourceTree = "<group>"; };
+		8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeSegmentedControl.m; sourceTree = "<group>"; };
+		8E135E961BCC2DD7006DC967 /* CarbonTabSwipeScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeScrollView.h; sourceTree = "<group>"; };
+		8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeScrollView.m; sourceTree = "<group>"; };
 		A60473681A87AFCA00FCE808 /* CarbonKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61946F91AE2C8D5005120D5 /* CarbonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonKit.h; sourceTree = "<group>"; };
 		A61946FA1AE2C8D5005120D5 /* CarbonSwipeRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonSwipeRefresh.h; sourceTree = "<group>"; };
@@ -45,8 +48,6 @@
 		A69E9F6C1AC0AAE3001FEAC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CarbonKitExamples/Info.plist; sourceTree = SOURCE_ROOT; };
 		A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CarbonKitExamples/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		A69E9F741AC0AAF5001FEAC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
-		A69E9F771AC0AB17001FEAC1 /* CarbonKitTabSwipeNavigationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarbonKitTabSwipeNavigationTests.m; path = CarbonKitExamplesTests/CarbonKitTabSwipeNavigationTests.m; sourceTree = SOURCE_ROOT; };
-		A69E9F7F1AC0AC64001FEAC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CarbonKitExamplesTests/Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,23 +61,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		26337254819EEA919785081B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				01949C6C896D0F70EC437655 /* Pods-CarbonKitExamples.debug.xcconfig */,
-				10C461C8925F366DA83BF69B /* Pods-CarbonKitExamples.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		7888C0EE3F1EA7221857E2C3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				70EC9AC7BDAAC808A14EA79B /* libPods-CarbonKitExamples.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A604735F1A87AFCA00FCE808 = {
 			isa = PBXGroup;
 			children = (
@@ -84,8 +68,6 @@
 				A604736A1A87AFCA00FCE808 /* CarbonKitExamples */,
 				A604736B1A87AFCA00FCE808 /* Supporting Files */,
 				A60473691A87AFCA00FCE808 /* Products */,
-				26337254819EEA919785081B /* Pods */,
-				7888C0EE3F1EA7221857E2C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 1;
@@ -102,7 +84,6 @@
 		A604736A1A87AFCA00FCE808 /* CarbonKitExamples */ = {
 			isa = PBXGroup;
 			children = (
-				A60473871A87AFCB00FCE808 /* CarbonKitExamplesTests */,
 				A69E9F5E1AC0AAD6001FEAC1 /* AppDelegate.h */,
 				A69E9F5F1AC0AAD6001FEAC1 /* AppDelegate.m */,
 				A69E9F601AC0AAD6001FEAC1 /* ViewControllerOne.h */,
@@ -133,16 +114,6 @@
 			path = "Test 2";
 			sourceTree = "<group>";
 		};
-		A60473871A87AFCB00FCE808 /* CarbonKitExamplesTests */ = {
-			isa = PBXGroup;
-			children = (
-				A69E9F7F1AC0AC64001FEAC1 /* Info.plist */,
-				A69E9F771AC0AB17001FEAC1 /* CarbonKitTabSwipeNavigationTests.m */,
-			);
-			name = CarbonKitExamplesTests;
-			path = "Test 2Tests";
-			sourceTree = SOURCE_ROOT;
-		};
 		A61946F81AE2C8D5005120D5 /* CarbonKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +122,10 @@
 				A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */,
 				A61946FC1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.h */,
 				A61946FD1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m */,
+				8E135E931BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.h */,
+				8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */,
+				8E135E961BCC2DD7006DC967 /* CarbonTabSwipeScrollView.h */,
+				8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */,
 			);
 			name = CarbonKit;
 			path = ../CarbonKit;
@@ -196,6 +171,7 @@
 				TargetAttributes = {
 					A60473671A87AFCA00FCE808 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = WSDWDF57D2;
 					};
 				};
 			};
@@ -240,9 +216,11 @@
 				A61946FE1AE2C8D5005120D5 /* CarbonSwipeRefresh.m in Sources */,
 				A69E9F691AC0AAD6001FEAC1 /* main.m in Sources */,
 				A61946FF1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m in Sources */,
+				8E135E951BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m in Sources */,
 				A69E9F681AC0AAD6001FEAC1 /* ViewControllerOne.m in Sources */,
 				A64B48DE1AD2E4F10053D488 /* ViewControllerThree.m in Sources */,
 				A69E9F6A1AC0AAD6001FEAC1 /* ViewControllerTwo.m in Sources */,
+				8E135E981BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +325,7 @@
 				INFOPLIST_FILE = CarbonKitExamples/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ermalkaleci.CarbonKitExamples;
 				PRODUCT_NAME = CarbonKitExamples;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -362,6 +341,7 @@
 				INFOPLIST_FILE = CarbonKitExamples/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ermalkaleci.CarbonKitExamples;
 				PRODUCT_NAME = CarbonKitExamples;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
