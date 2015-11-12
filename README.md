@@ -1,4 +1,7 @@
-![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/CarbonKit.jpeg)
+![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/CarbonKit.jpg)
+
+###CarbonKit v2.x is completely different from version 1.x.
+###Version 2.x is more custimized, interacted, documented and also nullability is integrated.
 
 CarbonKit is an OpenSource iOS library that includes powerful and beauty UI controllers. I started developing these controllers inspired by Android Material Design.
 
@@ -101,5 +104,24 @@ If you are using UITableViewController you must add the refreshControl into self
 
 @end
 ```
+
+Swift Sample
+```swift
+class ViewController: UIViewController, CarbonTabSwipeNavigationDelegate {
+    
+    // MARK: Override methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let items = ["Features", "Products", "About"]
+        let carbonTabSwipeNavigation = CarbonTabSwipeNavigation.init(items: items, rootViewController: self)
+        carbonTabSwipeNavigation.delegate = self
+    }
+    
+    func carbonTabSwipeNavigation(carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAtIndex index: UInt) -> UIViewController {
+        // return viewController at index
+    }
+}
+```
+
 # LICENSE
 [The MIT License (MIT)](https://github.com/ermalkaleci/CarbonKit/blob/master/LICENSE)
