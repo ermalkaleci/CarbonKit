@@ -1,4 +1,4 @@
-![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/carbonkit_logo.png)
+![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/CarbonKit.jpeg)
 
 CarbonKit is an OpenSource iOS library that includes powerful and beauty UI controllers. I started developing these controllers inspired by Android Material Design.
 
@@ -68,7 +68,7 @@ If you are using UITableViewController you must add the refreshControl into self
 
 # CarbonTabSwipeNavigation
 
-![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/CarbonKit_v2.x/Examples/CarbonTabSwipeNavigation.gif)
+![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/CarbonTabSwipeNavigation.gif)
 
 # SAMPLE CODE
 
