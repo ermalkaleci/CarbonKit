@@ -1,4 +1,4 @@
-![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/CarbonKit.jpeg)
+![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/CarbonKit.jpg)
 
 CarbonKit is an OpenSource iOS library that includes powerful and beauty UI controllers. I started developing these controllers inspired by Android Material Design.
 
