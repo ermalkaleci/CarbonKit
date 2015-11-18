@@ -455,14 +455,14 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	if (position == UIBarPositionTop) {
 		[constraints addObjectsFromArray:
 		 [NSLayoutConstraint
-		  constraintsWithVisualFormat:@"V:|[_toolbar(40)]"
+		  constraintsWithVisualFormat:@"V:|[_toolbar]"
 		  options:0
 		  metrics:nil
 		  views:views]];
 	} else {
 		[constraints addObjectsFromArray:
 		 [NSLayoutConstraint
-		  constraintsWithVisualFormat:@"V:[_toolbar(40)]|"
+		  constraintsWithVisualFormat:@"V:[_toolbar]|"
 		  options:0
 		  metrics:nil
 		  views:views]];
@@ -474,6 +474,15 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	  options:0
 	  metrics:nil
 	  views:views]];
+	
+	_toolbarHeight = [NSLayoutConstraint constraintWithItem:_toolbar
+												  attribute:NSLayoutAttributeHeight
+												  relatedBy:NSLayoutRelationEqual
+													 toItem:nil
+												  attribute:NSLayoutAttributeNotAnAttribute
+												 multiplier:1.0
+												   constant:40];
+	[constraints addObject:_toolbarHeight];
 	
 	[self.view addConstraints:constraints];
 }
@@ -559,7 +568,10 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	}
 }
 
-#pragma mark - Properties
+- (void)setTabBarHeight:(CGFloat)height {
+	_toolbarHeight.constant = height;
+	[self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
+}
 
 - (NSUInteger)currentTabIndex {
 	return selectedIndex;

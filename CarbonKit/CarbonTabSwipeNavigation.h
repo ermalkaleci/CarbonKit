@@ -81,6 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nonnull) UIPageViewController *pageViewController;
 @property (nonatomic, strong) NSMutableDictionary *viewControllers;
 @property (nonatomic) NSUInteger currentTabIndex;
+@property (nonatomic, strong) NSLayoutConstraint *toolbarHeight;
 
 
 /**
@@ -111,6 +112,13 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return CarbonTabSwipeNavigation instance
  */
 - (instancetype)initWithItems:(nullable NSArray *)items delegate:(id)target;
+
+/**
+ *  Set tab bar height
+ * 
+ *  @param height TabBar height
+ */
+- (void)setTabBarHeight:(CGFloat)height;
 
 /**
  *  Set indicator height
