@@ -78,7 +78,7 @@ If you are using UITableViewController you must add the refreshControl into self
 ```objective-c
 #import "CarbonKit.h"
 
-@interface ViewController () <CarbonTabSwipeDelegate>
+@interface ViewController () <CarbonTabSwipeNavigationDelegate>
 @end
 
 @implementation ViewController
@@ -91,9 +91,8 @@ If you are using UITableViewController you must add the refreshControl into self
 	@"Top New Free", @"Top Paid", @"Top New Paid"];
 	
 	CarbonTabSwipeNavigation *carbonTabSwipeNavigation = 
-	[[CarbonTabSwipeNavigation alloc] initWithItems:items rootViewController:self];
-	
-	[carbonTabSwipeNavigation setDelegate:self];
+	[[CarbonTabSwipeNavigation alloc] initWithItems:items delegate:self];
+	[carbonTabSwipeNavigation insertIntoRootViewController:self];
 }
 
 // delegate
@@ -113,8 +112,8 @@ class ViewController: UIViewController, CarbonTabSwipeNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let items = ["Features", "Products", "About"]
-        let carbonTabSwipeNavigation = CarbonTabSwipeNavigation.init(items: items, rootViewController: self)
-        carbonTabSwipeNavigation.delegate = self
+        let carbonTabSwipeNavigation = CarbonTabSwipeNavigation.init(items: items, delegate: self)
+        carbonTabSwipeNavigation.insertIntoRootViewController(self)
     }
     
     func carbonTabSwipeNavigation(carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAtIndex index: UInt) -> UIViewController {

@@ -84,9 +84,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Create CarbonTabSwipeNavigation with items and insert to rootViewController
- *  and create constraint using topLayoutGuide, bottomLayoutGuide, leading,
- *  trailing equal to 0.
+ *  Insert instance into rootViewController and create constraint using
+ *  topLayoutGuide, bottomLayoutGuide, leading, trailing equal to 0.
  *  +-----------------------------------+
  *  |          topLayoutGuide           |
  *  +-----------------------------------+
@@ -99,21 +98,19 @@ NS_ASSUME_NONNULL_BEGIN
  *  |        bottomLayoutGuide          |
  *  +-----------------------------------+
  *
- *  @param items Array of items
  *  @param viewController Parent view controller
- *
- *	@return CarbonTabSwipeNavigation instance
  */
-- (instancetype)initWithItems:(NSArray *)items rootViewController:(UIViewController *)viewController;
+- (void)insertIntoRootViewController:(UIViewController *)rootViewController;
 
 /**
  *  Create CarbonTabSwipeNavigation with items
  *
  *  @param items Array of items
+ *  @param target Delegate target object
  *
  *  @return CarbonTabSwipeNavigation instance
  */
-- (instancetype)initWithItems:(nullable NSArray *)items;
+- (instancetype)initWithItems:(nullable NSArray *)items delegate:(id)target;
 
 /**
  *  Set indicator height

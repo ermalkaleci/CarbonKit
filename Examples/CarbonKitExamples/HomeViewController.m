@@ -21,10 +21,8 @@
 		  [UIImage imageNamed:@"premium_badge"], @"Categories", @"Top Free",
 		  @"Top New Free", @"Top Paid", @"Top New Paid"];
 	
-	carbonTabSwipeNavigation = [[CarbonTabSwipeNavigation alloc]
-				    initWithItems:items
-				    rootViewController:self];
-	carbonTabSwipeNavigation.delegate = self;
+	carbonTabSwipeNavigation = [[CarbonTabSwipeNavigation alloc] initWithItems:items delegate:self];
+	[carbonTabSwipeNavigation insertIntoRootViewController:self];
 	
 	[self style];
 }
