@@ -16,17 +16,10 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CarbonKit"
-  s.version      = "1.1.2"
-  s.summary      = "CarbonKit is an iOS OpenSource libraries collection"
+  s.version      = "2.0.0"
+  s.summary      = "CarbonKit - iOS Components"
 
-  s.description  = <<-DESC
-		  CarbonKit is an iOS OpenSource libraries collection. Like the Carbon is the base of the life, I started CarbonKit to be base of great apps ;-) Fork & Contribute CarbonKit to make it better.
-
-		  CarbonKit includes:
-
-		  - CarbonSwipeRefresh : pull to refresh
-		  - CarbonTabSwipeNavigation : navigate with tabs using swipe
-                   DESC
+  s.description  = "CarbonKit is an OpenSource iOS library that includes powerful and beauty UI controllers. I started developing these controllers inspired by Android Material Design."
 
   s.homepage     = "https://github.com/ermalkaleci/CarbonKit"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -77,7 +70,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ermalkaleci/CarbonKit.git", :tag => "1.1.2" }
+  s.source       = { :git => "https://github.com/ermalkaleci/CarbonKit.git", :tag => "2.0.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
