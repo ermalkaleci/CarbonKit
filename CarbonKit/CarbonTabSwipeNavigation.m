@@ -26,22 +26,16 @@
 @interface CarbonTabSwipeNavigation() <UIPageViewControllerDelegate,
 UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 {
-	dispatch_once_t token;
-	
 	BOOL isLocked;
 	NSInteger selectedIndex;
 	CGPoint previewsOffset;
-	__weak UIViewController *rootViewController;
 }
 
 @end
 
 @implementation CarbonTabSwipeNavigation
 
-- (instancetype)initWithItems:(NSArray *)items rootViewController:(UIViewController *)viewController {
-	rootViewController = viewController;
-
-	[self commonInitWithItems:items];
+- (void)insertIntoRootViewController:(UIViewController *)rootViewController {
 	
 	[self willMoveToParentViewController:rootViewController];
 	[rootViewController addChildViewController:self];
@@ -65,36 +59,24 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	  options:0
 	  metrics:nil
 	  views:views]];
-	
-	return self;
 }
 
-- (instancetype)initWithItems:(NSArray *)items {
-	[self commonInitWithItems:items];
-	return self;
-}
-
-- (void)commonInitWithItems:(NSArray *)items {
+- (instancetype)initWithItems:(NSArray *)items delegate:(id)target {
 	selectedIndex = 0;
+	self.delegate = target;
 	self.viewControllers = [NSMutableDictionary new];
 	
 	[self createSegmentedToolbar];
 	[self createTabSwipeScrollViewWithItems:items];
 	[self addToolbarIntoSuperview];
 	[self createPageViewController];
+	
+	[self loadFirstViewController];
+	
+	return self;
 }
 
 #pragma mark - Override
-
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	
-	dispatch_once(&token, ^() {
-		[self loadFirstViewController];
-	});
-	[self syncIndicator];
-}
-
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
@@ -473,14 +455,14 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	if (position == UIBarPositionTop) {
 		[constraints addObjectsFromArray:
 		 [NSLayoutConstraint
-		  constraintsWithVisualFormat:@"V:|[_toolbar(40)]"
+		  constraintsWithVisualFormat:@"V:|[_toolbar]"
 		  options:0
 		  metrics:nil
 		  views:views]];
 	} else {
 		[constraints addObjectsFromArray:
 		 [NSLayoutConstraint
-		  constraintsWithVisualFormat:@"V:[_toolbar(40)]|"
+		  constraintsWithVisualFormat:@"V:[_toolbar]|"
 		  options:0
 		  metrics:nil
 		  views:views]];
@@ -492,6 +474,15 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	  options:0
 	  metrics:nil
 	  views:views]];
+	
+	_toolbarHeight = [NSLayoutConstraint constraintWithItem:_toolbar
+												  attribute:NSLayoutAttributeHeight
+												  relatedBy:NSLayoutRelationEqual
+													 toItem:nil
+												  attribute:NSLayoutAttributeNotAnAttribute
+												 multiplier:1.0
+												   constant:40];
+	[constraints addObject:_toolbarHeight];
 	
 	[self.view addConstraints:constraints];
 }
@@ -577,7 +568,10 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	}
 }
 
-#pragma mark - Properties
+- (void)setTabBarHeight:(CGFloat)height {
+	_toolbarHeight.constant = height;
+	[self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
+}
 
 - (NSUInteger)currentTabIndex {
 	return selectedIndex;
