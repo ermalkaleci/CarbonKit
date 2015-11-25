@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Custimized segmented control without tint color and divider image
  */
-@property (nonatomic, strong, readonly, nonnull) CarbonTabSwipeSegmentedControl *carbonSegmentedControl;
+@property (nonatomic, strong, readonly) CarbonTabSwipeSegmentedControl *carbonSegmentedControl;
 
 /**
  *  Create CarbonTabScrollView with items. Items can be NSString or UIImage like
@@ -43,6 +43,17 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return CarbonTabSwipeScrollView that contains CarbonTabSwipeSegmentedControl
  */
 - (instancetype)initWithItems:(nullable NSArray *)items;
+
+/**
+ *  Add items to CarbonTabScrollView. Items can be NSString or UIImage like
+ *  creating a SegmentedControl. ScrollView content size is equal to
+ *  SegmentedControl width.
+ *
+ *  @param items Array of segment titles or images
+ *
+ *  @return CarbonTabSwipeScrollView that contains CarbonTabSwipeSegmentedControl
+ */
+- (void)setItems:(nullable NSArray *)items;
 
 NS_ASSUME_NONNULL_END
 

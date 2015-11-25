@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56DCFD4F1C0561AB00B9E2F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DCFD4E1C0561AB00B9E2F5 /* main.m */; };
+		56DCFD521C0561AB00B9E2F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DCFD511C0561AB00B9E2F5 /* AppDelegate.m */; };
+		56DCFD551C0561AB00B9E2F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DCFD541C0561AB00B9E2F5 /* ViewController.m */; };
+		56DCFD581C0561AB00B9E2F5 /* Example2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56DCFD561C0561AB00B9E2F5 /* Example2.storyboard */; };
+		56DCFD621C0561C200B9E2F5 /* CarbonTabSwipeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */; };
+		56DCFD631C0561C700B9E2F5 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */; };
+		56DCFD641C0561C700B9E2F5 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FD1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m */; };
+		56DCFD651C0561C700B9E2F5 /* CarbonTabSwipeSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */; };
+		56DCFD671C0591CB00B9E2F5 /* Example1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F731AC0AAF5001FEAC1 /* Example1.storyboard */; };
+		56DCFD681C05924300B9E2F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */; };
+		56DCFD6A1C0593D200B9E2F5 /* ViewControllerOne.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F611AC0AAD6001FEAC1 /* ViewControllerOne.m */; };
+		56DCFD6B1C0593D200B9E2F5 /* ViewControllerTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F641AC0AAD6001FEAC1 /* ViewControllerTwo.m */; };
+		56DCFD6C1C0593D200B9E2F5 /* ViewControllerThree.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */; };
 		8E135E951BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */; };
 		8E135E981BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */; };
 		A61946FE1AE2C8D5005120D5 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */; };
@@ -19,15 +32,23 @@
 		A69E9F6A1AC0AAD6001FEAC1 /* ViewControllerTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F641AC0AAD6001FEAC1 /* ViewControllerTwo.m */; };
 		A69E9F6B1AC0AAD6001FEAC1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F661AC0AAD6001FEAC1 /* HomeViewController.m */; };
 		A69E9F6F1AC0AAEA001FEAC1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */; };
-		A69E9F841AC0AD21001FEAC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F731AC0AAF5001FEAC1 /* Main.storyboard */; };
+		A69E9F841AC0AD21001FEAC1 /* Example1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F731AC0AAF5001FEAC1 /* Example1.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56DCFD4B1C0561AB00B9E2F5 /* CarbonKitExample2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonKitExample2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56DCFD4E1C0561AB00B9E2F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		56DCFD501C0561AB00B9E2F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		56DCFD511C0561AB00B9E2F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		56DCFD531C0561AB00B9E2F5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		56DCFD541C0561AB00B9E2F5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		56DCFD571C0561AB00B9E2F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Example2.storyboard; sourceTree = "<group>"; };
+		56DCFD5E1C0561AB00B9E2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E135E931BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeSegmentedControl.h; sourceTree = "<group>"; };
 		8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeSegmentedControl.m; sourceTree = "<group>"; };
 		8E135E961BCC2DD7006DC967 /* CarbonTabSwipeScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeScrollView.h; sourceTree = "<group>"; };
 		8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeScrollView.m; sourceTree = "<group>"; };
-		A60473681A87AFCA00FCE808 /* CarbonKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A60473681A87AFCA00FCE808 /* CarbonKitExample1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonKitExample1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61946F91AE2C8D5005120D5 /* CarbonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonKit.h; sourceTree = "<group>"; };
 		A61946FA1AE2C8D5005120D5 /* CarbonSwipeRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonSwipeRefresh.h; sourceTree = "<group>"; };
 		A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonSwipeRefresh.m; sourceTree = "<group>"; };
@@ -47,10 +68,17 @@
 		A69E9F661AC0AAD6001FEAC1 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = CarbonKitExamples/HomeViewController.m; sourceTree = SOURCE_ROOT; wrapsLines = 1; };
 		A69E9F6C1AC0AAE3001FEAC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CarbonKitExamples/Info.plist; sourceTree = SOURCE_ROOT; };
 		A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CarbonKitExamples/Images.xcassets; sourceTree = SOURCE_ROOT; };
-		A69E9F741AC0AAF5001FEAC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		A69E9F741AC0AAF5001FEAC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Example1.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		56DCFD481C0561AB00B9E2F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A60473651A87AFCA00FCE808 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,11 +89,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56DCFD4C1C0561AB00B9E2F5 /* CarbonKitExample2 */ = {
+			isa = PBXGroup;
+			children = (
+				56DCFD501C0561AB00B9E2F5 /* AppDelegate.h */,
+				56DCFD511C0561AB00B9E2F5 /* AppDelegate.m */,
+				56DCFD531C0561AB00B9E2F5 /* ViewController.h */,
+				56DCFD541C0561AB00B9E2F5 /* ViewController.m */,
+				56DCFD561C0561AB00B9E2F5 /* Example2.storyboard */,
+				56DCFD5E1C0561AB00B9E2F5 /* Info.plist */,
+				56DCFD4D1C0561AB00B9E2F5 /* Supporting Files */,
+			);
+			path = CarbonKitExample2;
+			sourceTree = "<group>";
+		};
+		56DCFD4D1C0561AB00B9E2F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				56DCFD4E1C0561AB00B9E2F5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		56DCFD691C05925C00B9E2F5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		A604735F1A87AFCA00FCE808 = {
 			isa = PBXGroup;
 			children = (
 				A61946F81AE2C8D5005120D5 /* CarbonKit */,
-				A604736A1A87AFCA00FCE808 /* CarbonKitExamples */,
+				A604736A1A87AFCA00FCE808 /* CarbonKitExample1 */,
+				56DCFD4C1C0561AB00B9E2F5 /* CarbonKitExample2 */,
+				56DCFD691C05925C00B9E2F5 /* Resources */,
 				A604736B1A87AFCA00FCE808 /* Supporting Files */,
 				A60473691A87AFCA00FCE808 /* Products */,
 			);
@@ -76,12 +136,13 @@
 		A60473691A87AFCA00FCE808 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A60473681A87AFCA00FCE808 /* CarbonKitExamples.app */,
+				A60473681A87AFCA00FCE808 /* CarbonKitExample1.app */,
+				56DCFD4B1C0561AB00B9E2F5 /* CarbonKitExample2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A604736A1A87AFCA00FCE808 /* CarbonKitExamples */ = {
+		A604736A1A87AFCA00FCE808 /* CarbonKitExample1 */ = {
 			isa = PBXGroup;
 			children = (
 				A69E9F5E1AC0AAD6001FEAC1 /* AppDelegate.h */,
@@ -94,11 +155,10 @@
 				A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */,
 				A69E9F651AC0AAD6001FEAC1 /* HomeViewController.h */,
 				A69E9F661AC0AAD6001FEAC1 /* HomeViewController.m */,
-				A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */,
 				A69E9F701AC0AAF5001FEAC1 /* Base.lproj */,
 			);
 			indentWidth = 8;
-			name = CarbonKitExamples;
+			name = CarbonKitExample1;
 			path = "Test 2";
 			sourceTree = "<group>";
 			tabWidth = 8;
@@ -134,7 +194,7 @@
 		A69E9F701AC0AAF5001FEAC1 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				A69E9F731AC0AAF5001FEAC1 /* Main.storyboard */,
+				A69E9F731AC0AAF5001FEAC1 /* Example1.storyboard */,
 			);
 			name = Base.lproj;
 			path = CarbonKitExamples/Base.lproj;
@@ -143,9 +203,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A60473671A87AFCA00FCE808 /* CarbonKitExamples */ = {
+		56DCFD4A1C0561AB00B9E2F5 /* CarbonKitExample2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A604738E1A87AFCB00FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitExamples" */;
+			buildConfigurationList = 56DCFD611C0561AB00B9E2F5 /* Build configuration list for PBXNativeTarget "CarbonKitExample2" */;
+			buildPhases = (
+				56DCFD471C0561AB00B9E2F5 /* Sources */,
+				56DCFD481C0561AB00B9E2F5 /* Frameworks */,
+				56DCFD491C0561AB00B9E2F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CarbonKitExample2;
+			productName = CarbonKitExample2;
+			productReference = 56DCFD4B1C0561AB00B9E2F5 /* CarbonKitExample2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A60473671A87AFCA00FCE808 /* CarbonKitExample1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A604738E1A87AFCB00FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitExample1" */;
 			buildPhases = (
 				A60473641A87AFCA00FCE808 /* Sources */,
 				A60473651A87AFCA00FCE808 /* Frameworks */,
@@ -155,9 +232,9 @@
 			);
 			dependencies = (
 			);
-			name = CarbonKitExamples;
+			name = CarbonKitExample1;
 			productName = "Test 2";
-			productReference = A60473681A87AFCA00FCE808 /* CarbonKitExamples.app */;
+			productReference = A60473681A87AFCA00FCE808 /* CarbonKitExample1.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -169,6 +246,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Ermal Kaleci";
 				TargetAttributes = {
+					56DCFD4A1C0561AB00B9E2F5 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
 					A60473671A87AFCA00FCE808 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = WSDWDF57D2;
@@ -188,17 +268,28 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A60473671A87AFCA00FCE808 /* CarbonKitExamples */,
+				A60473671A87AFCA00FCE808 /* CarbonKitExample1 */,
+				56DCFD4A1C0561AB00B9E2F5 /* CarbonKitExample2 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		56DCFD491C0561AB00B9E2F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56DCFD681C05924300B9E2F5 /* Images.xcassets in Resources */,
+				56DCFD581C0561AB00B9E2F5 /* Example2.storyboard in Resources */,
+				56DCFD671C0591CB00B9E2F5 /* Example1.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A60473661A87AFCA00FCE808 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69E9F841AC0AD21001FEAC1 /* Main.storyboard in Resources */,
+				A69E9F841AC0AD21001FEAC1 /* Example1.storyboard in Resources */,
 				A62CA4271AD155D300E4698D /* Default-568h@2x.png in Resources */,
 				A69E9F6F1AC0AAEA001FEAC1 /* Images.xcassets in Resources */,
 			);
@@ -207,6 +298,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		56DCFD471C0561AB00B9E2F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56DCFD6B1C0593D200B9E2F5 /* ViewControllerTwo.m in Sources */,
+				56DCFD551C0561AB00B9E2F5 /* ViewController.m in Sources */,
+				56DCFD521C0561AB00B9E2F5 /* AppDelegate.m in Sources */,
+				56DCFD6C1C0593D200B9E2F5 /* ViewControllerThree.m in Sources */,
+				56DCFD4F1C0561AB00B9E2F5 /* main.m in Sources */,
+				56DCFD631C0561C700B9E2F5 /* CarbonSwipeRefresh.m in Sources */,
+				56DCFD621C0561C200B9E2F5 /* CarbonTabSwipeScrollView.m in Sources */,
+				56DCFD651C0561C700B9E2F5 /* CarbonTabSwipeSegmentedControl.m in Sources */,
+				56DCFD641C0561C700B9E2F5 /* CarbonTabSwipeNavigation.m in Sources */,
+				56DCFD6A1C0593D200B9E2F5 /* ViewControllerOne.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A60473641A87AFCA00FCE808 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,17 +335,55 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A69E9F731AC0AAF5001FEAC1 /* Main.storyboard */ = {
+		56DCFD561C0561AB00B9E2F5 /* Example2.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56DCFD571C0561AB00B9E2F5 /* Base */,
+			);
+			name = Example2.storyboard;
+			sourceTree = "<group>";
+		};
+		A69E9F731AC0AAF5001FEAC1 /* Example1.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A69E9F741AC0AAF5001FEAC1 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Example1.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		56DCFD5F1C0561AB00B9E2F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = CarbonKitExample2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ermalkaleci.CarbonKitExample2.CarbonKitExample2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		56DCFD601C0561AB00B9E2F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = CarbonKitExample2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ermalkaleci.CarbonKitExample2.CarbonKitExample2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		A604738C1A87AFCB00FCE808 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -325,8 +471,8 @@
 				INFOPLIST_FILE = CarbonKitExamples/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ermalkaleci.CarbonKitExamples;
-				PRODUCT_NAME = CarbonKitExamples;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ermalkaleci.CarbonKitExample1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -341,8 +487,8 @@
 				INFOPLIST_FILE = CarbonKitExamples/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ermalkaleci.CarbonKitExamples;
-				PRODUCT_NAME = CarbonKitExamples;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ermalkaleci.CarbonKitExample1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -351,6 +497,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		56DCFD611C0561AB00B9E2F5 /* Build configuration list for PBXNativeTarget "CarbonKitExample2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56DCFD5F1C0561AB00B9E2F5 /* Debug */,
+				56DCFD601C0561AB00B9E2F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A60473631A87AFCA00FCE808 /* Build configuration list for PBXProject "CarbonKitExamples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -360,7 +514,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A604738E1A87AFCB00FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitExamples" */ = {
+		A604738E1A87AFCB00FCE808 /* Build configuration list for PBXNativeTarget "CarbonKitExample1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A604738F1A87AFCB00FCE808 /* Debug */,
