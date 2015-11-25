@@ -61,6 +61,31 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	  views:views]];
 }
 
+- (void)insertIntoRootViewController:(UIViewController *)rootViewController
+					   andTargetView:(UIView *)targetView {
+	
+	[self willMoveToParentViewController:rootViewController];
+	[rootViewController addChildViewController:self];
+	[targetView addSubview:self.view];
+	[self didMoveToParentViewController:rootViewController];
+	
+	self.view.translatesAutoresizingMaskIntoConstraints = NO;
+	id views = @{@"carbonTabSwipe": self.view};
+	
+	[targetView addConstraints:
+	 [NSLayoutConstraint
+	  constraintsWithVisualFormat:@"V:|[carbonTabSwipe]|"
+	  options:0
+	  metrics:nil
+	  views:views]];
+	[targetView addConstraints:
+	 [NSLayoutConstraint
+	  constraintsWithVisualFormat:@"H:|[carbonTabSwipe]|"
+	  options:0
+	  metrics:nil
+	  views:views]];
+}
+
 - (instancetype)initWithItems:(NSArray *)items delegate:(id)target {
 	selectedIndex = 0;
 	self.delegate = target;
@@ -69,6 +94,22 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	[self createSegmentedToolbar];
 	[self createTabSwipeScrollViewWithItems:items];
 	[self addToolbarIntoSuperview];
+	[self createPageViewController];
+	
+	[self loadFirstViewController];
+	
+	return self;
+}
+
+- (instancetype)initWithItems:(NSArray *)items
+					  toolBar:(UIToolbar *)toolBar
+					 delegate:(id)target {
+	selectedIndex = 0;
+	self.delegate = target;
+	self.viewControllers = [NSMutableDictionary new];
+	
+	[self setToolbar:toolBar];
+	[self createTabSwipeScrollViewWithItems:items];
 	[self createPageViewController];
 	
 	[self loadFirstViewController];
@@ -382,9 +423,14 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 		}
 	}
 	
+	BOOL isToolbarChildView = [self.view.subviews containsObject:_toolbar];
 	[_pageViewController willMoveToParentViewController:self];
 	[self addChildViewController:_pageViewController];
-	[self.view insertSubview:_pageViewController.view belowSubview:_toolbar];
+	if (isToolbarChildView) {
+		[self.view insertSubview:_pageViewController.view belowSubview:_toolbar];
+	} else {
+		[self.view addSubview:_pageViewController.view];
+	}
 	[_pageViewController didMoveToParentViewController:self];
 	
 	// Add layout constraints
@@ -402,21 +448,21 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 		position = [_delegate barPositionForCarbonTabSwipeNavigation:self];
 	}
 	
-	if (position == UIBarPositionTop) {
-		[constraints addObjectsFromArray:
-		 [NSLayoutConstraint
-		  constraintsWithVisualFormat:@"V:[segmentedToolbar][pageViewController]|"
-		  options:0
-		  metrics:nil
-		  views:views]];
-	} else {
-		[constraints addObjectsFromArray:
-		 [NSLayoutConstraint
-		  constraintsWithVisualFormat:@"V:|[pageViewController][segmentedToolbar]"
-		  options:0
-		  metrics:nil
-		  views:views]];
+	NSString *verticalConstraints = @"V:|[pageViewController]|";
+	if (isToolbarChildView) {
+		if (position == UIBarPositionTop || position == UIBarPositionTopAttached) {
+			verticalConstraints = @"V:[segmentedToolbar][pageViewController]|";
+		} else if (position == UIBarPositionBottom) {
+			verticalConstraints = @"V:|[pageViewController][segmentedToolbar]";
+		}
 	}
+	
+	[constraints addObjectsFromArray:
+	 [NSLayoutConstraint
+	  constraintsWithVisualFormat:verticalConstraints
+	  options:0
+	  metrics:nil
+	  views:views]];
 	
 	[constraints addObjectsFromArray:
 	 [NSLayoutConstraint
@@ -426,12 +472,15 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	  views:views]];
 	
 	[self.view addConstraints:constraints];
-	
+}
+
+- (void)setToolbar:(UIToolbar *)toolbar {
+	_toolbar = toolbar;
+	_toolbar.delegate = self;
 }
 
 - (void)createSegmentedToolbar {
-	_toolbar = [[UIToolbar alloc] init];
-	_toolbar.delegate = self;
+	[self setToolbar:[[UIToolbar alloc] init]];
 }
 
 - (void)addToolbarIntoSuperview {

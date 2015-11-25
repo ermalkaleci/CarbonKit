@@ -99,9 +99,30 @@ NS_ASSUME_NONNULL_BEGIN
  *  |        bottomLayoutGuide          |
  *  +-----------------------------------+
  *
- *  @param viewController Parent view controller
+ *  @param rootViewController Parent view controller
  */
 - (void)insertIntoRootViewController:(UIViewController *)rootViewController;
+
+/**
+ *  Insert instance into rootViewController and create constraint using
+ *  topLayoutGuide, bottomLayoutGuide, leading, trailing equal to 0.
+ *  +-----------------------------------+
+ *  |       targetViewTopAnchor         |
+ *  +-----------------------------------+
+ *  |                                   |
+ *  |                                   |
+ *  |     CarbonTabSwipeNavigation      |
+ *  |                                   |
+ *  |                                   |
+ *  +-----------------------------------+
+ *  |      targetViewBottomAnchor       |
+ *  +-----------------------------------+
+ *
+ *  @param rootViewController Parent view controller
+ *	@param targetView Parent view
+ */
+- (void)insertIntoRootViewController:(UIViewController *)rootViewController
+					   andTargetView:(UIView *)targetView;
 
 /**
  *  Create CarbonTabSwipeNavigation with items
@@ -112,6 +133,19 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return CarbonTabSwipeNavigation instance
  */
 - (instancetype)initWithItems:(nullable NSArray *)items delegate:(id)target;
+
+/**
+ *  Create CarbonTabSwipeNavigation with items
+ *
+ *  @param items Array of items
+ *  @param toolBar Tool bar for Menu
+ *  @param target Delegate target object
+ *
+ *  @return CarbonTabSwipeNavigation instance
+ */
+- (instancetype)initWithItems:(NSArray *)items
+					  toolBar:(UIToolbar *)toolBar
+					 delegate:(id)target;
 
 /**
  *  Set tab bar height

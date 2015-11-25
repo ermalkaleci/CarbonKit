@@ -26,20 +26,37 @@
 @implementation CarbonTabSwipeScrollView
 
 - (instancetype)initWithItems:(NSArray *)items {
-	self = [super init];
+	self = [self init];
 	if (self) {
-		// Disable scroll indicators
-		self.showsHorizontalScrollIndicator = self.showsVerticalScrollIndicator = NO;
-		
-		// Create Carbon segmented control
-		_carbonSegmentedControl = [[CarbonTabSwipeSegmentedControl alloc] initWithItems:items];
-		[self addSubview:_carbonSegmentedControl];
+		[self setItems:items];
 	}
 	return self;
 }
 
+- (instancetype)init {
+	self = [super init];
+	if (self) {
+		// Disable scroll indicators
+		self.showsHorizontalScrollIndicator = self.showsVerticalScrollIndicator = NO;
+	}
+	return self;
+}
+
+- (void)setItems:(NSArray *)items {
+	// Remove all subviews if it exists.
+	for (UIView *view in self.subviews) {
+		[view removeFromSuperview];
+	}
+	
+	// Create Carbon segmented control
+	_carbonSegmentedControl = [[CarbonTabSwipeSegmentedControl alloc] initWithItems:items];
+	[self addSubview:_carbonSegmentedControl];
+}
+
 - (void)layoutSubviews {
 	[super layoutSubviews];
+	// Validate `_carbonSegmentedControl` is exist.
+	if (_carbonSegmentedControl == nil) { return; }
 	
 	// Set segmented control height equal to scroll view height
 	CGRect segmentRect = _carbonSegmentedControl.frame;
