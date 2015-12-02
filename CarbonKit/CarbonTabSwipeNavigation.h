@@ -101,11 +101,11 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param rootViewController Parent view controller
  */
-- (void)insertIntoRootViewController:(UIViewController *)rootViewController;
+- (void)insertIntoRootViewController:(nonnull UIViewController *)rootViewController;
 
 /**
  *  Insert instance into rootViewController and create constraint using
- *  topLayoutGuide, bottomLayoutGuide, leading, trailing equal to 0.
+ *  targetViewTopAnchor, targetViewBottomAnchor, leading, trailing equal to 0.
  *  +-----------------------------------+
  *  |       targetViewTopAnchor         |
  *  +-----------------------------------+
@@ -121,8 +121,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param rootViewController Parent view controller
  *	@param targetView Parent view
  */
-- (void)insertIntoRootViewController:(UIViewController *)rootViewController
-					   andTargetView:(UIView *)targetView;
+- (void)insertIntoRootViewController:(nonnull UIViewController *)rootViewController
+					   andTargetView:(nonnull UIView *)targetView;
 
 /**
  *  Create CarbonTabSwipeNavigation with items
@@ -132,7 +132,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return CarbonTabSwipeNavigation instance
  */
-- (instancetype)initWithItems:(nullable NSArray *)items delegate:(id)target;
+- (instancetype)initWithItems:(nullable NSArray *)items delegate:(nonnull id)target;
 
 /**
  *  Create CarbonTabSwipeNavigation with items
@@ -143,9 +143,9 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return CarbonTabSwipeNavigation instance
  */
-- (instancetype)initWithItems:(NSArray *)items
-					  toolBar:(UIToolbar *)toolBar
-					 delegate:(id)target;
+- (instancetype)initWithItems:(nullable NSArray *)items
+					  toolBar:(nonnull UIToolbar *)toolBar
+					 delegate:(nonnull id)target;
 
 /**
  *  Set tab bar height

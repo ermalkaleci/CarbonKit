@@ -22,6 +22,7 @@
 		56DCFD6C1C0593D200B9E2F5 /* ViewControllerThree.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */; };
 		8E135E951BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */; };
 		8E135E981BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */; };
+		8E302D711C0FA0A900197054 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62CA4261AD155D300E4698D /* Default-568h@2x.png */; };
 		A61946FE1AE2C8D5005120D5 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */; };
 		A61946FF1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FD1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m */; };
 		A62CA4271AD155D300E4698D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62CA4261AD155D300E4698D /* Default-568h@2x.png */; };
@@ -280,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56DCFD681C05924300B9E2F5 /* Images.xcassets in Resources */,
+				8E302D711C0FA0A900197054 /* Default-568h@2x.png in Resources */,
 				56DCFD581C0561AB00B9E2F5 /* Example2.storyboard in Resources */,
 				56DCFD671C0591CB00B9E2F5 /* Example1.storyboard in Resources */,
 			);
@@ -504,6 +506,7 @@
 				56DCFD601C0561AB00B9E2F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A60473631A87AFCA00FCE808 /* Build configuration list for PBXProject "CarbonKitExamples" */ = {
 			isa = XCConfigurationList;
