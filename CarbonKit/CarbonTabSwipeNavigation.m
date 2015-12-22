@@ -420,6 +420,7 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	for (UIView *subView in _pageViewController.view.subviews) {
 		if ([subView isKindOfClass:[UIScrollView class]]) {
 			((UIScrollView *)subView).delegate = self;
+            ((UIScrollView *)subView).panGestureRecognizer.maximumNumberOfTouches = 1;
 		}
 	}
 	
