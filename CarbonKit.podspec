@@ -16,13 +16,13 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CarbonKit"
-  s.version      = "2.0.1"
-  s.summary      = "CarbonKit - iOS Components"
+  s.version      = "2.1.0"
+  s.summary      = "CarbonKit - iOS Components (Obj-C & Swift)"
 
-  s.description  = "CarbonKit is an OpenSource iOS library that includes powerful and beauty UI controllers. I started developing these controllers inspired by Android Material Design."
+  s.description  = "CarbonKit is an open source iOS library that includes powerful and beauty UI controllers. I started developing these controllers inspired by Android Material Design."
 
   s.homepage     = "https://github.com/ermalkaleci/CarbonKit"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
+  s.screenshots  = "https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/CarbonSwipeRefresh.gif", "https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/CarbonTabSwipeNavigation.gif"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -46,9 +46,7 @@ Pod::Spec.new do |s|
   #
 
   s.author             = { "Ermal Kaleci" => "ermalkaleci@gmail.com" }
-  # Or just: s.author    = "Ermal Kaleci"
-  # s.authors            = { "Ermal Kaleci" => "ermalkaleci@gmail.com" }
-  # s.social_media_url   = "http://twitter.com/Ermal Kaleci"
+  s.social_media_url   = "https://twitter.com/KaleciErmal"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -57,7 +55,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "7.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -70,7 +68,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ermalkaleci/CarbonKit.git", :tag => "2.0.1" }
+  s.source       = { :git => "https://github.com/ermalkaleci/CarbonKit.git", :tag => "2.1.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

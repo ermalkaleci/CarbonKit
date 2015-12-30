@@ -26,7 +26,7 @@
 @interface CarbonTabSwipeNavigation() <UIPageViewControllerDelegate,
 UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 {
-	BOOL isLocked;
+	BOOL isSwipeLocked;
 	NSInteger selectedIndex;
 	CGPoint previewsOffset;
 }
@@ -126,12 +126,12 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 								duration:(NSTimeInterval)duration {
-	isLocked = YES;
+	isSwipeLocked = YES;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 	[self.pageViewController.view layoutSubviews];
-	isLocked = NO;
+	isSwipeLocked = NO;
 }
 
 - (void)viewWillLayoutSubviews {
@@ -157,26 +157,17 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	? UIPageViewControllerNavigationDirectionForward
 	: UIPageViewControllerNavigationDirectionReverse;
 	
-	isLocked = YES;
+	isSwipeLocked = YES;
 	segment.userInteractionEnabled = NO;
 	self.pageViewController.view.userInteractionEnabled = NO;
 	
-	id replaceCompletionBlock = ^(BOOL finished) {
-		isLocked = NO;
+	id animateCompletionBlock = ^(BOOL finished) {
+		isSwipeLocked = NO;
 		selectedIndex = index;
 		self.carbonSegmentedControl.userInteractionEnabled = YES;
 		self.pageViewController.view.userInteractionEnabled = YES;
 		
 		[self callDelegateForCurrentIndex];
-	};
-	
-	id animateCompletionBlock = ^(BOOL finished) {
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[self.pageViewController setViewControllers:@[viewController]
-											  direction:animateDirection
-											   animated:NO
-											 completion:replaceCompletionBlock];
-		});
 	};
 	
 	[self callDelegateForTargetIndex];
@@ -291,6 +282,14 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 
 # pragma mark - ScrollView Delegate
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	self.carbonSegmentedControl.userInteractionEnabled = NO;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	self.carbonSegmentedControl.userInteractionEnabled = YES;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	
 	CGPoint offset = scrollView.contentOffset;
@@ -301,7 +300,7 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 		return;
 	}
 	
-	if (!isLocked) {
+	if (!isSwipeLocked) {
 		
 		if (offset.x < scrollViewWidth) {
 			// we are moving back
@@ -388,7 +387,7 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 		}
 	}
 	
-	[UIView animateWithDuration:isLocked ? 0.3 : 0 animations:^{
+	[UIView animateWithDuration:isSwipeLocked ? 0.3 : 0 animations:^{
 		_carbonTabSwipeScrollView.contentOffset = CGPointMake(offsetX, 0);
 	}];
 	

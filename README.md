@@ -12,7 +12,9 @@ CarbonKit includes:
 #Installation
 CarbonKit is available on CocoaPods. Add to your Podfile:
 ```bash
-pod 'CarbonKit'
+use_frameworks!
+pod 'CarbonKit', '~>2.1' 
+// or pod 'CarbonKit/Swift', '~>2.1' for Swift projects
 ```
 and run 
 ```bash
@@ -93,6 +95,7 @@ If you are using UITableViewController you must add the refreshControl into self
 	CarbonTabSwipeNavigation *carbonTabSwipeNavigation = 
 	[[CarbonTabSwipeNavigation alloc] initWithItems:items delegate:self];
 	[carbonTabSwipeNavigation insertIntoRootViewController:self];
+	// or [carbonTabSwipeNavigation insertIntoRootViewController:self andTargetView:yourView];
 }
 
 // delegate
@@ -106,14 +109,17 @@ If you are using UITableViewController you must add the refreshControl into self
 
 Swift Sample
 ```swift
+import CarbonKit
+
 class ViewController: UIViewController, CarbonTabSwipeNavigationDelegate {
     
     // MARK: Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
         let items = ["Features", "Products", "About"]
-        let carbonTabSwipeNavigation = CarbonTabSwipeNavigation.init(items: items, delegate: self)
+        let carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
         carbonTabSwipeNavigation.insertIntoRootViewController(self)
+		// or carbonTabSwipeNavigation.insertIntoRootViewController(self, andTargetView: yourView)
     }
     
     func carbonTabSwipeNavigation(carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAtIndex index: UInt) -> UIViewController {
