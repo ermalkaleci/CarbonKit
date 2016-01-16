@@ -14,7 +14,6 @@ CarbonKit is available on CocoaPods. Add to your Podfile:
 ```bash
 use_frameworks!
 pod 'CarbonKit', '~>2.1' 
-// or pod 'CarbonKit/Swift', '~>2.1' for Swift projects
 ```
 and run 
 ```bash
