@@ -38,6 +38,12 @@
 	if (self) {
 		// Disable scroll indicators
 		self.showsHorizontalScrollIndicator = self.showsVerticalScrollIndicator = NO;
+		
+		// Support RTL
+		if ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft
+			&& [self respondsToSelector:@selector(semanticContentAttribute)]) {
+			self.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
+		}
 	}
 	return self;
 }

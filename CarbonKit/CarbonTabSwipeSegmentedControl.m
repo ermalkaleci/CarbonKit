@@ -42,6 +42,13 @@
 		self.indicator.autoresizingMask = UIViewAutoresizingNone;
 		[self addSubview:self.indicator];
 		
+		// Support RTL
+		if ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft
+			&& [self respondsToSelector:@selector(semanticContentAttribute)]) {
+			self.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
+			self.indicator.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
+		}
+		
 		// Custimize segmented control
 		[self setTitleTextAttributes:@{
 				NSForegroundColorAttributeName : [self.tintColor colorWithAlphaComponent:0.8],

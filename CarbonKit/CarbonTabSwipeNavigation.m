@@ -157,6 +157,15 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	? UIPageViewControllerNavigationDirectionForward
 	: UIPageViewControllerNavigationDirectionReverse;
 	
+	// Support RTL
+	if (self.isRTL) {
+		if (animateDirection == UIPageViewControllerNavigationDirectionForward) {
+			animateDirection = UIPageViewControllerNavigationDirectionReverse;
+		} else {
+			animateDirection = UIPageViewControllerNavigationDirectionForward;
+		}
+	}
+	
 	isSwipeLocked = YES;
 	segment.userInteractionEnabled = NO;
 	self.pageViewController.view.userInteractionEnabled = NO;
@@ -305,15 +314,25 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 		if (offset.x < scrollViewWidth) {
 			// we are moving back
 			
-			if (selectedIndex - 1 < 0) {
-				return;
+			// Support RTL
+			NSInteger backIndex = selectedIndex;
+			if (self.isRTL) {
+				// Ensure index range
+				if (++backIndex >= self.carbonSegmentedControl.numberOfSegments) {
+					return;
+				}
+			} else {
+				// Ensure index range
+				if (--backIndex < 0) {
+					return;
+				}
 			}
 			
 			CGFloat newX = offset.x - scrollViewWidth;
 			
 			CGFloat selectedSegmentWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:selectedIndex];
 			CGFloat selectedOriginX = [self.carbonSegmentedControl getMinXForSegmentAtIndex:selectedIndex];
-			CGFloat backTabWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:selectedIndex-1];
+			CGFloat backTabWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:backIndex];
 			
 			CGFloat minX = selectedOriginX + newX / scrollViewWidth * backTabWidth;
 			[self.carbonSegmentedControl setIndicatorMinX:minX];
@@ -325,8 +344,8 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 			[self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
 			
 			if (ABS(newX) > scrollViewWidth / 2) {
-				if (self.carbonSegmentedControl.selectedSegmentIndex != selectedIndex - 1) {
-					[self.carbonSegmentedControl setSelectedSegmentIndex:selectedIndex - 1];
+				if (self.carbonSegmentedControl.selectedSegmentIndex != backIndex) {
+					[self.carbonSegmentedControl setSelectedSegmentIndex:backIndex];
 					[self callDelegateForTargetIndex];
 				}
 			} else {
@@ -339,15 +358,25 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 		} else {
 			// we are moving forward
 			
-			if (selectedIndex + 1 >= self.carbonSegmentedControl.numberOfSegments) {
-				return;
+			// Support RTL
+			NSInteger nextIndex = selectedIndex;
+			if (self.isRTL) {
+				// Ensure index range
+				if (--nextIndex < 0) {
+					return;
+				}
+			} else {
+				// Ensure index range
+				if (++nextIndex >= self.carbonSegmentedControl.numberOfSegments) {
+					return;
+				}
 			}
 			
 			CGFloat newX = offset.x - scrollViewWidth;
 
 			CGFloat selectedSegmentWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:selectedIndex];
 			CGFloat selectedOriginX = [self.carbonSegmentedControl getMinXForSegmentAtIndex:selectedIndex];
-			CGFloat nextTabWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:selectedIndex+1];
+			CGFloat nextTabWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:nextIndex];
 			
 			CGFloat minX = selectedOriginX + newX / scrollViewWidth * selectedSegmentWidth;
 			[self.carbonSegmentedControl setIndicatorMinX:minX];
@@ -359,8 +388,8 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 			[self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
 			
 			if (newX > scrollViewWidth / 2) {
-				if (self.carbonSegmentedControl.selectedSegmentIndex != selectedIndex + 1) {
-					[self.carbonSegmentedControl setSelectedSegmentIndex:selectedIndex + 1];
+				if (self.carbonSegmentedControl.selectedSegmentIndex != nextIndex) {
+					[self.carbonSegmentedControl setSelectedSegmentIndex:nextIndex];
 					[self callDelegateForTargetIndex];
 				}
 			} else {
@@ -600,9 +629,21 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	};
 	
 	[_pageViewController setViewControllers:@[viewController]
-								  direction:UIPageViewControllerNavigationDirectionForward
+								  direction:self.directionAnimation
 								   animated:YES
 								 completion:completionBlock];
+}
+
+- (BOOL)isRTL {
+	return [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft
+	&& [self.view respondsToSelector:@selector(semanticContentAttribute)];
+}
+
+- (UIPageViewControllerNavigationDirection)directionAnimation {
+	if (self.isRTL) {
+		return UIPageViewControllerNavigationDirectionReverse;
+	}
+	return UIPageViewControllerNavigationDirectionForward;
 }
 
 - (void)callDelegateForTargetIndex {
