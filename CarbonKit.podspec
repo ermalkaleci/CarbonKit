@@ -16,14 +16,12 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CarbonKit"
-  s.version      = "2.1.0"
+  s.version      = "2.1.1"
   s.summary      = "CarbonKit - iOS Components (Obj-C & Swift)"
 
   s.description  = "CarbonKit is an open source iOS library that includes powerful and beauty UI controllers. I started developing these controllers inspired by Android Material Design."
 
   s.homepage     = "https://github.com/ermalkaleci/CarbonKit"
-  s.screenshots  = "https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/CarbonSwipeRefresh.gif", "https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/Examples/CarbonTabSwipeNavigation.gif"
-
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -68,7 +66,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ermalkaleci/CarbonKit.git", :tag => "2.1.0" }
+  s.source       = { :git => "https://github.com/ermalkaleci/CarbonKit.git", :tag => s.version.to_s }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -105,7 +103,7 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  # s.framework  = "SomeFramework"
+  s.framework  = "UIKit"
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   # s.library   = "iconv"
