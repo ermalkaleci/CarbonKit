@@ -24,6 +24,7 @@
 #import "CarbonTabSwipeSegmentedControl.h"
 
 @interface CarbonTabSwipeSegmentedControl()
+@property (nonatomic, assign) BOOL didAddExtraWidth;
 @end
 
 @implementation CarbonTabSwipeSegmentedControl
@@ -35,6 +36,7 @@
 		self.indicatorHeight = 3;
 		self.selectedSegmentIndex = 0;
 		self.apportionsSegmentWidthsByContent = YES;
+		self.didAddExtraWidth = NO;
 		
 		// Create indicator
 		self.indicator = [UIImageView new];
@@ -85,19 +87,22 @@
 	[super drawRect:rect];
 	
 	// Add extra width to each segment and calculate the segment width
-	CGFloat totalWidth = 0;
-	for (UIView *segment in self.segments) {
-		CGFloat width = [self getWidthForSegmentAtIndex:[self.segments indexOfObject:segment]];
-		CGRect segmentRect = segment.frame;
-		segmentRect.origin.x = totalWidth;
-		segmentRect.size.width = width + _tabExtraWidth;
-		segment.frame = segmentRect;
-		totalWidth += segmentRect.size.width;
+	if (!self.didAddExtraWidth) {
+		CGFloat totalWidth = 0;
+		for (UIView *segment in self.segments) {
+			CGFloat width = [self getWidthForSegmentAtIndex:[self.segments indexOfObject:segment]];
+			CGRect segmentRect = segment.frame;
+			segmentRect.origin.x = totalWidth;
+			segmentRect.size.width = width + _tabExtraWidth;
+			segment.frame = segmentRect;
+			totalWidth += segmentRect.size.width;
+		}
+		self.didAddExtraWidth = YES;
+        
+        // Set the width of UISegmentedControl to fit all segments
+        rect.size.width = totalWidth;
+        self.frame = rect;
 	}
-	
-	// Set the width of UISegmentedControl to fit all segments
-	rect.size.width = totalWidth;
-	self.frame = rect;
 	
 	// Change images tint
 	[self syncImageTintColor];
