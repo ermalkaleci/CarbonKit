@@ -95,18 +95,33 @@
 		totalWidth += segmentRect.size.width;
 	}
 	
+	_tabExtraWidth = 0;
+	
 	// Set the width of UISegmentedControl to fit all segments
 	rect.size.width = totalWidth;
 	self.frame = rect;
 	
 	// Change images tint
 	[self syncImageTintColor];
+	
+	// Sync indicator
+	dispatch_async(dispatch_get_main_queue(), ^{
+		self.indicatorMinX = [self getMinXForSegmentAtIndex:self.selectedSegmentIndex];
+		self.indicatorWidth = [self getWidthForSegmentAtIndex:self.selectedSegmentIndex];
+		[self updateIndicatorWithAnimation:NO];
+	});
 }
 
 - (void)didChangeValueForKey:(NSString *)key {
 	if ([key isEqualToString:@"selectedSegmentIndex"]) {
 		[self syncImageTintColor];
 	}
+}
+
+- (void)setTabExtraWidth:(CGFloat)tabExtraWidth {
+	_tabExtraWidth = tabExtraWidth;
+	
+	[self setNeedsDisplay];
 }
 
 - (void)setTitleTextAttributes:(NSDictionary *)attributes forState:(UIControlState)state {

@@ -200,6 +200,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Set an extra width for each segment
+ *  Use positive values for increasign or nevative values for descreasing
  *
  *  @param extraWidth Extra width value
  */
