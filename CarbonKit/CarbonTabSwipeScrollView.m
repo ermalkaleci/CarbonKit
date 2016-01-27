@@ -67,6 +67,10 @@
 	// Set segmented control height equal to scroll view height
 	CGRect segmentRect = _carbonSegmentedControl.frame;
 	segmentRect.size.height = CGRectGetHeight(self.frame);
+    BOOL isRtl = ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft);
+    if (isRtl && self.frame.size.width > segmentRect.size.width) {
+        segmentRect.origin.x = self.frame.size.width - segmentRect.size.width;
+    }
 	_carbonSegmentedControl.frame = segmentRect;
 	
 	// Min content width equal to scroll view width
