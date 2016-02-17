@@ -153,7 +153,7 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	}
 	
 	UIPageViewControllerNavigationDirection animateDirection
-	= index > selectedIndex
+	= index >= selectedIndex
 	? UIPageViewControllerNavigationDirectionForward
 	: UIPageViewControllerNavigationDirectionReverse;
 	
@@ -671,7 +671,7 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	if (currentTabIndex != selectedIndex &&
 		currentTabIndex < self.carbonSegmentedControl.numberOfSegments) {
 		// Trigger segmented tap action
-		self.carbonSegmentedControl.selectedSegmentIndex = selectedIndex = currentTabIndex;
+		self.carbonSegmentedControl.selectedSegmentIndex = currentTabIndex;
 		[self.carbonSegmentedControl sendActionsForControlEvents:UIControlEventValueChanged];
 	}
 }
