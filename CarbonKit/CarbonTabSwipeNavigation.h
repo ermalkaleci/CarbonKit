@@ -206,6 +206,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setTabExtraWidth:(CGFloat)extraWidth;
 
+
+/**
+ *  If embedded in another viewcontroller which will disappear.
+ *  This function helps getting this information down to the pageViewController
+ *	so viewWillDisappear and viewDidDisappear will be called in children
+ */
+- (void)prepareForDisappearance;
+
 NS_ASSUME_NONNULL_END
 
 @end

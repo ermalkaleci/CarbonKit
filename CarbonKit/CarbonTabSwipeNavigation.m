@@ -719,5 +719,11 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 - (void)setTabExtraWidth:(CGFloat)extraWidth {
 	self.carbonSegmentedControl.tabExtraWidth = extraWidth;
 }
-
+-(void)prepareForDisappearance{
+	[_pageViewController willMoveToParentViewController:nil];
+	[_pageViewController beginAppearanceTransition:NO animated:YES];    
+	[_pageViewController.view removeFromSuperview]; 
+	[_pageViewController removeFromParentViewController];
+	[_pageViewController endAppearanceTransition];
+}
 @end
