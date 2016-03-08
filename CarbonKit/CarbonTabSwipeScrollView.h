@@ -21,7 +21,7 @@
 //  SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "CarbonTabSwipeSegmentedControl.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Custimized segmented control without tint color and divider image
  */
-@property (nonatomic, strong, readonly) CarbonTabSwipeSegmentedControl *carbonSegmentedControl;
+@property(nonatomic, strong, readonly) CarbonTabSwipeSegmentedControl *carbonSegmentedControl;
 
 /**
  *  Create CarbonTabScrollView with items. Items can be NSString or UIImage like

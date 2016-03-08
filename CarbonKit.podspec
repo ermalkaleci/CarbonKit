@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CarbonKit"
-  s.version      = "2.1.2"
+  s.version      = "2.1.3"
   s.summary      = "CarbonKit - iOS Components (Obj-C & Swift)"
 
   s.description  = "CarbonKit is an open source iOS library that includes powerful and beauty UI controllers. I started developing these controllers inspired by Android Material Design."

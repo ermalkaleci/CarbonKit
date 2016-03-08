@@ -21,33 +21,33 @@
 //  SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 typedef NS_ENUM(NSUInteger, IndicatorPosition) {
-	IndicatorPositionBottom	= 0,
-	IndicatorPositionTop
+    IndicatorPositionBottom = 0,
+    IndicatorPositionTop
 };
 
 typedef NS_ENUM(NSUInteger, IndicatorHorizontalPositionFocus) {
-	IndicatorHorizontalPositionFocusMiddle = 0,
-	IndicatorHorizontalPositionFocusLeft,
-	IndicatorHorizontalPositionFocusRight
+    IndicatorHorizontalPositionFocusMiddle = 0,
+    IndicatorHorizontalPositionFocusLeft,
+    IndicatorHorizontalPositionFocusRight
 };
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CarbonTabSwipeSegmentedControl : UISegmentedControl
 
-@property (nonatomic) CGFloat indicatorHeight;
-@property (nonatomic) CGFloat indicatorMinX;
-@property (nonatomic) CGFloat indicatorWidth;
-@property (nonatomic) IndicatorPosition indicatorPosition;
-@property (nonatomic) IndicatorHorizontalPositionFocus indicatorHorizontalPositionFocus; // TODO
-@property (nonatomic) CGFloat tabExtraWidth;
-@property (nonatomic, strong, nullable) UIColor *imageNormalColor;
-@property (nonatomic, strong, nullable) UIColor *imageSelectedColor;
-@property (nonatomic, strong, nonnull) UIImageView *indicator;
-@property (nonatomic, weak, readonly) NSArray *segments;
+@property(nonatomic) CGFloat indicatorHeight;
+@property(nonatomic) CGFloat indicatorMinX;
+@property(nonatomic) CGFloat indicatorWidth;
+@property(nonatomic) IndicatorPosition indicatorPosition;
+@property(nonatomic) IndicatorHorizontalPositionFocus indicatorHorizontalPositionFocus; // TODO
+@property(nonatomic) CGFloat tabExtraWidth;
+@property(nonatomic, strong, nullable) UIColor *imageNormalColor;
+@property(nonatomic, strong, nullable) UIColor *imageSelectedColor;
+@property(nonatomic, strong, nonnull) UIImageView *indicator;
+@property(nonatomic, weak, readonly) NSArray<UIView *> *segments;
 
 - (instancetype)initWithItems:(nullable NSArray *)items;
 

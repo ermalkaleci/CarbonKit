@@ -26,57 +26,58 @@
 @implementation CarbonTabSwipeScrollView
 
 - (instancetype)initWithItems:(NSArray *)items {
-	self = [self init];
-	if (self) {
-		[self setItems:items];
-	}
-	return self;
+    self = [self init];
+    if (self) {
+        [self setItems:items];
+    }
+    return self;
 }
 
 - (instancetype)init {
-	self = [super init];
-	if (self) {
-		// Disable scroll indicators
-		self.showsHorizontalScrollIndicator = self.showsVerticalScrollIndicator = NO;
-		
-		// Support RTL
-		if ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft
-			&& [self respondsToSelector:@selector(semanticContentAttribute)]) {
-			self.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
-		}
-	}
-	return self;
+    self = [super init];
+    if (self) {
+        // Disable scroll indicators
+        self.showsHorizontalScrollIndicator = self.showsVerticalScrollIndicator = NO;
+
+        // Support RTL
+        if ([UIApplication sharedApplication].userInterfaceLayoutDirection ==
+                UIUserInterfaceLayoutDirectionRightToLeft &&
+            [self respondsToSelector:@selector(semanticContentAttribute)]) {
+            self.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
+        }
+    }
+    return self;
 }
 
 - (void)setItems:(NSArray *)items {
-	// Remove all subviews if it exists.
-	for (UIView *view in self.subviews) {
-		[view removeFromSuperview];
-	}
-	
-	// Create Carbon segmented control
-	_carbonSegmentedControl = [[CarbonTabSwipeSegmentedControl alloc] initWithItems:items];
-	[self addSubview:_carbonSegmentedControl];
+    // Remove all subviews if it exists.
+    for (UIView *view in self.subviews) {
+        [view removeFromSuperview];
+    }
+
+    // Create Carbon segmented control
+    _carbonSegmentedControl = [[CarbonTabSwipeSegmentedControl alloc] initWithItems:items];
+    [self addSubview:_carbonSegmentedControl];
 }
 
 - (void)layoutSubviews {
-	[super layoutSubviews];
-	// Validate `_carbonSegmentedControl` is exist.
-	if (_carbonSegmentedControl == nil) { return; }
-	
-	// Set segmented control height equal to scroll view height
-	CGRect segmentRect = _carbonSegmentedControl.frame;
-	segmentRect.size.height = CGRectGetHeight(self.frame);
-	_carbonSegmentedControl.frame = segmentRect;
-	
-	// Min content width equal to scroll view width
-	CGFloat contentWidth = [_carbonSegmentedControl getWidth];
-	if (contentWidth < CGRectGetWidth(self.frame)) {
-		contentWidth = CGRectGetWidth(self.frame) + 1;
-	}
-	
-	// Scroll view content size
-	self.contentSize = CGSizeMake(contentWidth, CGRectGetHeight(self.frame));
+    [super layoutSubviews];
+
+    if (_carbonSegmentedControl) {
+		// Set segmented control height equal to scroll view height
+		CGRect segmentRect = _carbonSegmentedControl.frame;
+		segmentRect.size.height = CGRectGetHeight(self.frame);
+		_carbonSegmentedControl.frame = segmentRect;
+		
+		// Min content width equal to scroll view width
+		CGFloat contentWidth = [_carbonSegmentedControl getWidth];
+		if (contentWidth < CGRectGetWidth(self.frame)) {
+			contentWidth = CGRectGetWidth(self.frame) + 1;
+		}
+		
+		// Scroll view content size
+		self.contentSize = CGSizeMake(contentWidth, CGRectGetHeight(self.frame));
+    }
 }
 
 @end

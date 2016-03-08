@@ -21,8 +21,9 @@
 //  SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "CarbonTabSwipeScrollView.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -39,8 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return UIViewController at index
  */
-- (nonnull UIViewController *)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
-								 viewControllerAtIndex:(NSUInteger)index;
+- (nonnull UIViewController *)carbonTabSwipeNavigation:
+                                  (nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
+                                 viewControllerAtIndex:(NSUInteger)index;
 
 @optional
 /**
@@ -50,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index Target index
  */
 - (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
-				 willMoveAtIndex:(NSUInteger)index;
+                 willMoveAtIndex:(NSUInteger)index;
 
 /**
  *  Did move to index
@@ -59,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index Current index
  */
 - (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
-				  didMoveAtIndex:(NSUInteger)index;
+                  didMoveAtIndex:(NSUInteger)index;
 
 /**
  *  Toolbar position
@@ -68,21 +70,22 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Toolbar position (UIBarPositionTop or UIBarPositionBottom)
  */
-- (UIBarPosition)barPositionForCarbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation;
+- (UIBarPosition)barPositionForCarbonTabSwipeNavigation:
+    (nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation;
 
 @end
 
 @interface CarbonTabSwipeNavigation : UIViewController
 
-@property (nonatomic, weak) id<CarbonTabSwipeNavigationDelegate> delegate;
-@property (nonatomic, strong, nonnull) UIToolbar *toolbar;
-@property (nonatomic, strong, nonnull) CarbonTabSwipeScrollView *carbonTabSwipeScrollView;
-@property (nonatomic, weak, readonly) CarbonTabSwipeSegmentedControl *carbonSegmentedControl;
-@property (nonatomic, strong, nonnull) UIPageViewController *pageViewController;
-@property (nonatomic, strong) NSMutableDictionary *viewControllers;
-@property (nonatomic) NSUInteger currentTabIndex;
-@property (nonatomic, strong) NSLayoutConstraint *toolbarHeight;
-
+@property(nonatomic) NSUInteger currentTabIndex;
+@property(nonatomic) NSLayoutConstraint *toolbarHeight;
+@property(nonatomic, nonnull) UIToolbar *toolbar;
+@property(nonatomic, nonnull) UIPageViewController *pageViewController;
+@property(nonatomic, nonnull) CarbonTabSwipeScrollView *carbonTabSwipeScrollView;
+@property(weak, nonatomic) UIScrollView *pagesScrollView;
+@property(weak, nonatomic) id<CarbonTabSwipeNavigationDelegate> delegate;
+@property(weak, nonatomic, readonly) CarbonTabSwipeSegmentedControl *carbonSegmentedControl;
+@property(nonatomic) NSMutableDictionary<NSNumber *, UIViewController *> *viewControllers;
 
 /**
  *  Insert instance into rootViewController and create constraint using
@@ -122,7 +125,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@param targetView Parent view
  */
 - (void)insertIntoRootViewController:(nonnull UIViewController *)rootViewController
-					   andTargetView:(nonnull UIView *)targetView;
+                       andTargetView:(nonnull UIView *)targetView;
 
 /**
  *  Create CarbonTabSwipeNavigation with items
@@ -144,8 +147,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return CarbonTabSwipeNavigation instance
  */
 - (instancetype)initWithItems:(nullable NSArray *)items
-					  toolBar:(nonnull UIToolbar *)toolBar
-					 delegate:(nonnull id)target;
+                      toolBar:(nonnull UIToolbar *)toolBar
+                     delegate:(nonnull id)target;
 
 /**
  *  Set tab bar height
