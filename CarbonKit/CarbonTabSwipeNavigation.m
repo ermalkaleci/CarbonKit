@@ -116,6 +116,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self syncIndicator];
+	
+	// Fix UIPageViewController misplace issue on iOS 8
+	[self.pageViewController.view setNeedsLayout];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
