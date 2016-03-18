@@ -123,6 +123,10 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	[super viewDidAppear:animated];
 	[self syncIndicator];
 }
+- (void)dealloc
+{
+	[self prepareForDisappearance];
+}
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 								duration:(NSTimeInterval)duration {
