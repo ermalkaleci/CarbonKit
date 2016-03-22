@@ -124,8 +124,8 @@ class ViewController: UIViewController, CarbonTabSwipeNavigationDelegate {
 }
 ```
 
-# CONTRIBUTORS
-[Thanks to](https://github.com/ermalkaleci/CarbonKit/graphs/contributors)
+# THANKS TO
+[Contributors](https://github.com/ermalkaleci/CarbonKit/graphs/contributors)
 
 # LICENSE
 [The MIT License (MIT)](https://github.com/ermalkaleci/CarbonKit/blob/master/LICENSE)
