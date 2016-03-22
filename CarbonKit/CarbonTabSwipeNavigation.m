@@ -137,6 +137,10 @@
 	[super viewDidDisappear:animated];
 	[self.pageViewController viewDidDisappear:animated];
 }
+- (void)dealloc
+{
+	[self prepareForDisappearance];
+}
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                 duration:(NSTimeInterval)duration {
@@ -708,5 +712,11 @@
 - (void)setTabExtraWidth:(CGFloat)extraWidth {
     self.carbonSegmentedControl.tabExtraWidth = extraWidth;
 }
-
+-(void)prepareForDisappearance{
+	[_pageViewController willMoveToParentViewController:nil];
+	[_pageViewController beginAppearanceTransition:NO animated:YES];    
+	[_pageViewController.view removeFromSuperview]; 
+	[_pageViewController removeFromParentViewController];
+	[_pageViewController endAppearanceTransition];
+}
 @end

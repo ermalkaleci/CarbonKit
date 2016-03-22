@@ -208,7 +208,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param extraWidth Extra width value
  */
 - (void)setTabExtraWidth:(CGFloat)extraWidth;
-
 NS_ASSUME_NONNULL_END
 
 @end
