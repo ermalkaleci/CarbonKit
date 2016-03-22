@@ -1,9 +1,6 @@
 ![alt tag](https://github.com/ermalkaleci/CarbonTabSwipeNavigation/blob/master/CarbonKit.jpg)
 
-###CarbonKit v2.x is completely different from version 1.x.
-###Version 2.x is more custimized, interacted, documented and also nullability is integrated.
-
-CarbonKit is an OpenSource iOS library that includes powerful and beauty UI controllers. I started developing these controllers inspired by Android Material Design.
+CarbonKit is an open source iOS library that includes powerful and beauty UI components.
 
 CarbonKit includes:
 - CarbonSwipeRefresh
@@ -11,12 +8,12 @@ CarbonKit includes:
 
 #Installation
 CarbonKit is available on CocoaPods. Add to your Podfile:
-```bash
+```ruby
 use_frameworks!
-pod 'CarbonKit', '~>2.1' 
+pod 'CarbonKit', '~>2.1'
 ```
-and run 
-```bash
+and run
+```ruby
 pod install
 ```
 
@@ -45,7 +42,7 @@ pod install
 		[UIColor orangeColor],
 		[UIColor greenColor]]
 	]; // default tintColor
-	
+
 	// If your ViewController extends to UIViewController
 	// else see below
 	[self.view addSubview:refresh];
@@ -59,11 +56,11 @@ pod install
 @end
 ```
 
-If you are using UITableViewController you must add the refreshControl into self.view.superview after viewDidApper
+If you are using UITableViewController you must add the refreshControl into self.view.superview after viewDidAppear
 ```objective-c
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	
+
 	if (!refreshControl.superview) {
 		[self.view.superview addSubview:refreshControl];
 	}
@@ -90,15 +87,15 @@ If you are using UITableViewController you must add the refreshControl into self
 	NSArray *items = @[[UIImage imageNamed:@"home"], [UIImage imageNamed:@"hourglass"],
 	[UIImage imageNamed:@"premium_badge"], @"Categories", @"Top Free",
 	@"Top New Free", @"Top Paid", @"Top New Paid"];
-	
-	CarbonTabSwipeNavigation *carbonTabSwipeNavigation = 
+
+	CarbonTabSwipeNavigation *carbonTabSwipeNavigation =
 	[[CarbonTabSwipeNavigation alloc] initWithItems:items delegate:self];
 	[carbonTabSwipeNavigation insertIntoRootViewController:self];
 	// or [carbonTabSwipeNavigation insertIntoRootViewController:self andTargetView:yourView];
 }
 
 // delegate
-- (UIViewController *)carbonTabSwipeNavigation:(CarbonTabSwipeNavigation *)carbontTabSwipeNavigation
+- (UIViewController *)carbonTabSwipeNavigation:(CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
 			 viewControllerAtIndex:(NSUInteger)index {
 	// return viewController at index
 }
@@ -111,7 +108,7 @@ Swift Sample
 import CarbonKit
 
 class ViewController: UIViewController, CarbonTabSwipeNavigationDelegate {
-    
+
     // MARK: Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,12 +117,15 @@ class ViewController: UIViewController, CarbonTabSwipeNavigationDelegate {
         carbonTabSwipeNavigation.insertIntoRootViewController(self)
 		// or carbonTabSwipeNavigation.insertIntoRootViewController(self, andTargetView: yourView)
     }
-    
+
     func carbonTabSwipeNavigation(carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAtIndex index: UInt) -> UIViewController {
         // return viewController at index
     }
 }
 ```
+
+# CONTRIBUTORS
+[Thanks to](https://github.com/ermalkaleci/CarbonKit/graphs/contributors)
 
 # LICENSE
 [The MIT License (MIT)](https://github.com/ermalkaleci/CarbonKit/blob/master/LICENSE)
