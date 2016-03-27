@@ -28,6 +28,7 @@
 @end
 
 @implementation CarbonTabSwipeNavigation {
+    BOOL isLoaded;
     BOOL isSwipeLocked;
     NSInteger selectedIndex;
     CGPoint previewsOffset;
@@ -115,27 +116,24 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self.pageViewController viewDidAppear:animated];
     [self syncIndicator];
-	
-	// Fix UIPageViewController misplace issue on iOS 8
-	[self.pageViewController.view setNeedsLayout];
-	
-	[self.pageViewController viewDidAppear:animated];
+    isLoaded = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	[self.pageViewController viewWillAppear:animated];
+    [super viewWillAppear:animated];
+    [self.pageViewController viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-	[self.pageViewController viewWillDisappear:animated];
+    [super viewWillDisappear:animated];
+    [self.pageViewController viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-	[super viewDidDisappear:animated];
-	[self.pageViewController viewDidDisappear:animated];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.pageViewController viewDidDisappear:animated];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -150,21 +148,17 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    [self.pageViewController.view layoutSubviews];
+    [self.pageViewController.view setNeedsLayout];
 }
 
 #pragma mark - Actions
 
 - (void)segmentedTapped:(CarbonTabSwipeSegmentedControl *)segment {
+    [self moveToIndex:segment.selectedSegmentIndex withAnimation:YES];
+}
 
-    NSUInteger index = segment.selectedSegmentIndex;
-
-    UIViewController *viewController = _viewControllers[@(index)];
-    if (!viewController) {
-        NSAssert(_delegate, @"CarbonTabSwipeDelegate is nil");
-        viewController = [_delegate carbonTabSwipeNavigation:self viewControllerAtIndex:index];
-        _viewControllers[@(index)] = viewController;
-    }
+- (void)moveToIndex:(NSUInteger)index withAnimation:(BOOL)animate {
+    UIViewController *viewController = [self viewControllerAtIndex:index];
 
     UIPageViewControllerNavigationDirection animateDirection =
         index >= selectedIndex ? UIPageViewControllerNavigationDirectionForward
@@ -180,7 +174,7 @@
     }
 
     isSwipeLocked = YES;
-    segment.userInteractionEnabled = NO;
+    self.carbonSegmentedControl.userInteractionEnabled = NO;
     self.pageViewController.view.userInteractionEnabled = NO;
 
     id animateCompletionBlock = ^(BOOL finished) {
@@ -196,7 +190,7 @@
 
     [self.pageViewController setViewControllers:@[ viewController ]
                                       direction:animateDirection
-                                       animated:YES
+                                       animated:animate
                                      completion:animateCompletionBlock];
 }
 
@@ -227,57 +221,38 @@
         }
     }
 
-    [UIView animateWithDuration:0.3
+    previewsOffset = CGPointMake(offsetX, 0);
+    [UIView animateWithDuration:isLoaded ? 0.3 : 0
                      animations:^{
-                         _carbonTabSwipeScrollView.contentOffset = CGPointMake(offsetX, 0);
+                         self.carbonTabSwipeScrollView.contentOffset = previewsOffset;
                      }];
-
-    previewsOffset = _carbonTabSwipeScrollView.contentOffset;
 }
 
 #pragma mark - PageViewController data source
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController {
-	
-	NSInteger index = selectedIndex + 1;
-	
-	if (index < self.carbonSegmentedControl.numberOfSegments) {
-		
-		UIViewController *nextViewController = _viewControllers[@(index)];
-		
-		if (nextViewController == nil) {
-            NSAssert(_delegate, @"CarbonTabSwipeDelegate is nil");
-            nextViewController =
-                [_delegate carbonTabSwipeNavigation:self viewControllerAtIndex:index];
-            _viewControllers[@(index)] = nextViewController;
-        }
-        return nextViewController;
+
+    NSInteger index = selectedIndex + 1;
+
+    if (index < self.carbonSegmentedControl.numberOfSegments) {
+        return [self viewControllerAtIndex:index];
     }
     return nil;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController {
-	
-	NSInteger index = selectedIndex - 1;
-	
-	if (index >= 0) {
-		
-		UIViewController *nextViewController = _viewControllers[@(index)];
-		
-		if (nextViewController == nil) {
-            NSAssert(_delegate, @"CarbonTabSwipeDelegate is nil");
-            nextViewController =
-                [_delegate carbonTabSwipeNavigation:self viewControllerAtIndex:index];
-            _viewControllers[@(index)] = nextViewController;
-        }
-        return nextViewController;
+
+    NSInteger index = selectedIndex - 1;
+
+    if (index >= 0) {
+        return [self viewControllerAtIndex:index];
     }
     return nil;
 }
 
-# pragma mark - PageViewController Delegate
+#pragma mark - PageViewController Delegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished
@@ -286,7 +261,8 @@
 
     if (completed) {
         id currentView = pageViewController.viewControllers.firstObject;
-        selectedIndex = [[_viewControllers allKeysForObject:currentView].firstObject integerValue];
+        selectedIndex =
+            [[self.viewControllers allKeysForObject:currentView].firstObject integerValue];
 
         [self.carbonSegmentedControl setSelectedSegmentIndex:selectedIndex];
         [self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
@@ -295,7 +271,7 @@
     }
 }
 
-# pragma mark - ScrollView Delegate
+#pragma mark - ScrollView Delegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     self.carbonSegmentedControl.userInteractionEnabled = NO;
@@ -431,7 +407,7 @@
 
     [UIView animateWithDuration:isSwipeLocked ? 0.3 : 0
                      animations:^{
-                         _carbonTabSwipeScrollView.contentOffset = CGPointMake(offsetX, 0);
+                         self.carbonTabSwipeScrollView.contentOffset = CGPointMake(offsetX, 0);
                      }];
 
     previewsOffset = scrollView.contentOffset;
@@ -440,8 +416,8 @@
 #pragma mark - Toolbar position
 
 - (UIBarPosition)positionForBar:(id<UIBarPositioning>)bar {
-    if ([_delegate respondsToSelector:@selector(barPositionForCarbonTabSwipeNavigation:)]) {
-        return [_delegate barPositionForCarbonTabSwipeNavigation:self];
+    if ([self.delegate respondsToSelector:@selector(barPositionForCarbonTabSwipeNavigation:)]) {
+        return [self.delegate barPositionForCarbonTabSwipeNavigation:self];
     }
     return UIToolbarPositionTop;
 }
@@ -450,45 +426,46 @@
 
 - (void)createPageViewController {
     // Create page controller
-    _pageViewController = [[UIPageViewController alloc]
+    self.pageViewController = [[UIPageViewController alloc]
         initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                         options:nil];
-    _pageViewController.delegate = self;
-    _pageViewController.dataSource = self;
+    self.pageViewController.delegate = self;
+    self.pageViewController.dataSource = self;
 
     // delegate scrollview
-    for (id subView in _pageViewController.view.subviews) {
+    for (id subView in self.pageViewController.view.subviews) {
         if ([subView isKindOfClass:[UIScrollView class]]) {
-			self.pagesScrollView = subView;
+            self.pagesScrollView = subView;
             self.pagesScrollView.delegate = self;
             self.pagesScrollView.panGestureRecognizer.maximumNumberOfTouches = 1;
         }
     }
 
-    BOOL isToolbarChildView = [self.view.subviews containsObject:_toolbar];
-    [_pageViewController willMoveToParentViewController:self];
-    [self addChildViewController:_pageViewController];
+    BOOL isToolbarChildView = [self.view.subviews containsObject:self.toolbar];
+    [self.pageViewController willMoveToParentViewController:self];
+    [self addChildViewController:self.pageViewController];
     if (isToolbarChildView) {
-        [self.view insertSubview:_pageViewController.view belowSubview:_toolbar];
+        [self.view insertSubview:self.pageViewController.view belowSubview:self.toolbar];
     } else {
-        [self.view addSubview:_pageViewController.view];
+        [self.view addSubview:self.pageViewController.view];
     }
-    [_pageViewController didMoveToParentViewController:self];
+    [self.pageViewController didMoveToParentViewController:self];
 
-    // Add layout constraints
-    _pageViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    // Setup constraints
+    self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
 
     // Views dictionary
-    NSDictionary *views =
-        @{ @"pageViewController" : _pageViewController.view,
-           @"segmentedToolbar" : _toolbar };
+    NSDictionary *views = @{
+        @"pageViewController" : self.pageViewController.view,
+        @"segmentedToolbar" : self.toolbar
+    };
 
     // Create constraints using visual format
-	
+
     UIBarPosition position = UIBarPositionTop;
-    if ([_delegate respondsToSelector:@selector(barPositionForCarbonTabSwipeNavigation:)]) {
-        position = [_delegate barPositionForCarbonTabSwipeNavigation:self];
+    if ([self.delegate respondsToSelector:@selector(barPositionForCarbonTabSwipeNavigation:)]) {
+        position = [self.delegate barPositionForCarbonTabSwipeNavigation:self];
     }
 
     NSString *verticalConstraints = @"V:|[pageViewController]|";
@@ -522,10 +499,10 @@
 
 - (void)addToolbarIntoSuperview {
     // add views
-    [self.view addSubview:_toolbar];
+    [self.view addSubview:self.toolbar];
 
-    // Add layout constraints
-    _toolbar.translatesAutoresizingMaskIntoConstraints = NO;
+    // Setup constraints
+    self.toolbar.translatesAutoresizingMaskIntoConstraints = NO;
 
     // Views dictionary
     NSDictionary *views = NSDictionaryOfVariableBindings(_toolbar);
@@ -533,8 +510,8 @@
     // Create constraints using visual format
 
     UIBarPosition position = UIBarPositionTop;
-    if ([_delegate respondsToSelector:@selector(barPositionForCarbonTabSwipeNavigation:)]) {
-        position = [_delegate barPositionForCarbonTabSwipeNavigation:self];
+    if ([self.delegate respondsToSelector:@selector(barPositionForCarbonTabSwipeNavigation:)]) {
+        position = [self.delegate barPositionForCarbonTabSwipeNavigation:self];
     }
 
     NSString *verticalFormat = @"V:[_toolbar]|";
@@ -553,30 +530,30 @@
                                                                       metrics:nil
                                                                         views:views]];
 
-    _toolbarHeight = [NSLayoutConstraint constraintWithItem:_toolbar
-                                                  attribute:NSLayoutAttributeHeight
-                                                  relatedBy:NSLayoutRelationEqual
-                                                     toItem:nil
-                                                  attribute:NSLayoutAttributeNotAnAttribute
-                                                 multiplier:1.0
-                                                   constant:40];
+    self.toolbarHeight = [NSLayoutConstraint constraintWithItem:self.toolbar
+                                                      attribute:NSLayoutAttributeHeight
+                                                      relatedBy:NSLayoutRelationEqual
+                                                         toItem:nil
+                                                      attribute:NSLayoutAttributeNotAnAttribute
+                                                     multiplier:1.0
+                                                       constant:40];
 
-    [self.view addConstraint:_toolbarHeight];
+    [self.view addConstraint:self.toolbarHeight];
 }
 
 - (void)createTabSwipeScrollViewWithItems:(NSArray *)items {
-    NSAssert(_toolbar, @"Toolbar is not created!");
+    NSAssert(self.toolbar, @"Toolbar is not created!");
 
-    _carbonTabSwipeScrollView = [[CarbonTabSwipeScrollView alloc] initWithItems:items];
-    [_toolbar addSubview:_carbonTabSwipeScrollView];
+    self.carbonTabSwipeScrollView = [[CarbonTabSwipeScrollView alloc] initWithItems:items];
+    [self.toolbar addSubview:self.carbonTabSwipeScrollView];
 
-    [_carbonTabSwipeScrollView.carbonSegmentedControl addTarget:self
-                                                         action:@selector(segmentedTapped:)
-                                               forControlEvents:UIControlEventValueChanged];
+    [self.carbonTabSwipeScrollView.carbonSegmentedControl addTarget:self
+                                                             action:@selector(segmentedTapped:)
+                                                   forControlEvents:UIControlEventValueChanged];
 
     UIBarPosition position = UIBarPositionTop;
-    if ([_delegate respondsToSelector:@selector(barPositionForCarbonTabSwipeNavigation:)]) {
-        position = [_delegate barPositionForCarbonTabSwipeNavigation:self];
+    if ([self.delegate respondsToSelector:@selector(barPositionForCarbonTabSwipeNavigation:)]) {
+        position = [self.delegate barPositionForCarbonTabSwipeNavigation:self];
     }
 
     if (position == UIBarPositionTop || position == UIBarPositionTopAttached) {
@@ -586,47 +563,52 @@
     }
 
     // Add layout constraints
-    _carbonTabSwipeScrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.carbonTabSwipeScrollView.translatesAutoresizingMaskIntoConstraints = NO;
 
     // Views dictionary
     NSDictionary *views = NSDictionaryOfVariableBindings(_carbonTabSwipeScrollView);
 
     // Create constraints using visual format
-	
-	[_toolbar addConstraints:[NSLayoutConstraint
-                                 constraintsWithVisualFormat:@"V:|[_carbonTabSwipeScrollView]|"
-                                                     options:0
-                                                     metrics:nil
-                                                       views:views]];
-	
-    [_toolbar addConstraints:[NSLayoutConstraint
-                                 constraintsWithVisualFormat:@"H:|[_carbonTabSwipeScrollView]|"
-                                                     options:0
-                                                     metrics:nil
-                                                       views:views]];
+
+    [self.toolbar addConstraints:[NSLayoutConstraint
+                                     constraintsWithVisualFormat:@"V:|[_carbonTabSwipeScrollView]|"
+                                                         options:0
+                                                         metrics:nil
+                                                           views:views]];
+
+    [self.toolbar addConstraints:[NSLayoutConstraint
+                                     constraintsWithVisualFormat:@"H:|[_carbonTabSwipeScrollView]|"
+                                                         options:0
+                                                         metrics:nil
+                                                           views:views]];
 }
 
 - (void)loadFirstViewController {
     // Load first view controller
-    NSAssert(_delegate, @"CarbonTabSwipeDelegate is nil");
+    NSAssert(self.delegate, @"CarbonTabSwipeDelegate is nil");
 
-    id viewController = _viewControllers[@(selectedIndex)];
-    if (!viewController) {
-        viewController =
-            [_delegate carbonTabSwipeNavigation:self viewControllerAtIndex:selectedIndex];
-    }
-    _viewControllers[@(selectedIndex)] = viewController;
+    id viewController = [self viewControllerAtIndex:selectedIndex];
 
-	[self callDelegateForTargetIndex];
-	
+    [self callDelegateForTargetIndex];
+
     id completionBlock = ^(BOOL finished) {
         [self callDelegateForCurrentIndex];
     };
-	
-    [_pageViewController setViewControllers:@[ viewController ]
-                                  direction:self.directionAnimation
-                                   animated:YES
-                                 completion:completionBlock];
+
+    [self.pageViewController setViewControllers:@[ viewController ]
+                                      direction:self.directionAnimation
+                                       animated:YES
+                                     completion:completionBlock];
+}
+
+- (UIViewController *)viewControllerAtIndex:(NSUInteger)index {
+    id viewController = self.viewControllers[@(index)];
+    if (viewController == nil) {
+        NSAssert(self.delegate, @"CarbonTabSwipeDelegate is nil");
+        viewController = [self.delegate carbonTabSwipeNavigation:self viewControllerAtIndex:index];
+        self.viewControllers[@(index)] = viewController;
+    }
+    return viewController;
 }
 
 - (BOOL)isRTL {
@@ -643,21 +625,21 @@
 }
 
 - (void)callDelegateForTargetIndex {
-    if ([_delegate respondsToSelector:@selector(carbonTabSwipeNavigation:willMoveAtIndex:)]) {
-		NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
-        [_delegate carbonTabSwipeNavigation:self willMoveAtIndex:index];
+    if ([self.delegate respondsToSelector:@selector(carbonTabSwipeNavigation:willMoveAtIndex:)]) {
+        NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
+        [self.delegate carbonTabSwipeNavigation:self willMoveAtIndex:index];
     }
 }
 
 - (void)callDelegateForCurrentIndex {
-    if ([_delegate respondsToSelector:@selector(carbonTabSwipeNavigation:didMoveAtIndex:)]) {
-		NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
-        [_delegate carbonTabSwipeNavigation:self didMoveAtIndex:index];
+    if ([self.delegate respondsToSelector:@selector(carbonTabSwipeNavigation:didMoveAtIndex:)]) {
+        NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
+        [self.delegate carbonTabSwipeNavigation:self didMoveAtIndex:index];
     }
 }
 
 - (void)setTabBarHeight:(CGFloat)height {
-    _toolbarHeight.constant = height;
+    self.toolbarHeight.constant = height;
     [self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
 }
 
@@ -666,16 +648,27 @@
 }
 
 - (void)setCurrentTabIndex:(NSUInteger)currentTabIndex {
+    if (isLoaded) {
+        [self setCurrentTabIndex:currentTabIndex withAnimation:YES];
+    } else {
+        [self setCurrentTabIndex:currentTabIndex withAnimation:NO];
+    }
+}
+
+- (void)setCurrentTabIndex:(NSUInteger)currentTabIndex withAnimation:(BOOL)animate {
+    if (isLoaded == NO) {
+        animate = NO;
+    }
+
     NSInteger numberOfSegments = self.carbonSegmentedControl.numberOfSegments;
     if (currentTabIndex != selectedIndex && currentTabIndex < numberOfSegments) {
-        // Trigger segmented tap action
         self.carbonSegmentedControl.selectedSegmentIndex = currentTabIndex;
-        [self.carbonSegmentedControl sendActionsForControlEvents:UIControlEventValueChanged];
+        [self moveToIndex:currentTabIndex withAnimation:animate];
     }
 }
 
 - (CarbonTabSwipeSegmentedControl *)carbonSegmentedControl {
-    return _carbonTabSwipeScrollView.carbonSegmentedControl;
+    return self.carbonTabSwipeScrollView.carbonSegmentedControl;
 }
 
 - (void)setIndicatorHeight:(CGFloat)height {
@@ -697,7 +690,7 @@
 }
 
 - (void)setSelectedColor:(UIColor *)color {
-	[self setSelectedColor:color font:[UIFont boldSystemFontOfSize:14]];
+    [self setSelectedColor:color font:[UIFont boldSystemFontOfSize:14]];
 }
 
 - (void)setSelectedColor:(UIColor *)color font:(UIFont *)font {
