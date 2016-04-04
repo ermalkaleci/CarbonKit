@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CarbonTabSwipeNavigation : UIViewController
 
 @property(nonatomic) NSUInteger currentTabIndex;
-@property(nonatomic) NSLayoutConstraint *toolbarHeight;
+@property(nonatomic, readonly) NSLayoutConstraint *toolbarHeight;
 @property(nonatomic, nonnull) UIToolbar *toolbar;
 @property(nonatomic, nonnull) UIPageViewController *pageViewController;
 @property(nonatomic, nonnull) CarbonTabSwipeScrollView *carbonTabSwipeScrollView;

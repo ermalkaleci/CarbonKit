@@ -529,16 +529,6 @@
                                                                       options:0
                                                                       metrics:nil
                                                                         views:views]];
-
-    self.toolbarHeight = [NSLayoutConstraint constraintWithItem:self.toolbar
-                                                      attribute:NSLayoutAttributeHeight
-                                                      relatedBy:NSLayoutRelationEqual
-                                                         toItem:nil
-                                                      attribute:NSLayoutAttributeNotAnAttribute
-                                                     multiplier:1.0
-                                                       constant:40];
-
-    [self.view addConstraint:self.toolbarHeight];
 }
 
 - (void)createTabSwipeScrollViewWithItems:(NSArray *)items {
@@ -636,6 +626,16 @@
         NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
         [self.delegate carbonTabSwipeNavigation:self didMoveAtIndex:index];
     }
+}
+
+- (NSLayoutConstraint *)toolbarHeight {
+	for (NSLayoutConstraint *constraint in self.toolbar.constraints) {
+		if ([NSStringFromClass(constraint.class) isEqualToString:@"NSContentSizeLayoutConstraint"]) {
+			return constraint;
+		}
+	}
+	
+	return nil;
 }
 
 - (void)setTabBarHeight:(CGFloat)height {
