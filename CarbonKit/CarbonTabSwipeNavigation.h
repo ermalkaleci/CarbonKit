@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index Target index
  */
 - (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
-                 willMoveAtIndex:(NSUInteger)index;
+				 willMoveAtIndex:(NSUInteger)index;
 
 /**
  *  Did move to index
@@ -61,7 +61,25 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index Current index
  */
 - (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
-                  didMoveAtIndex:(NSUInteger)index;
+				  didMoveAtIndex:(NSUInteger)index;
+
+/**
+ *  Will start the page transition from index.
+ *
+ *  @param carbonTabSwipeNavigation CarbonTabSwipeNavigation instance
+ *  @param index Starting index
+ */
+- (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
+	willBeginTransitionFromIndex:(NSUInteger)index;
+
+/**
+ *  Did finish the page transition to index.
+ *
+ *  @param carbonTabSwipeNavigation CarbonTabSwipeNavigation instance
+ *  @param index Target index
+ */
+- (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
+	  didFinishTransitionToIndex:(NSUInteger)index;
 
 /**
  *  Toolbar position
