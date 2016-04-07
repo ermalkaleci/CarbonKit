@@ -255,10 +255,14 @@
 #pragma mark - PageViewController Delegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
+willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
+	[self callDelegateForStartingTransition];
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray *)previousViewControllers
-       transitionCompleted:(BOOL)completed {
-
+	   transitionCompleted:(BOOL)completed {
     if (completed) {
         id currentView = pageViewController.viewControllers.firstObject;
         selectedIndex =
@@ -268,7 +272,9 @@
         [self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
 
         [self callDelegateForCurrentIndex];
-    }
+	}
+	
+	[self callDelegateForFinishingTransition];
 }
 
 #pragma mark - ScrollView Delegate
@@ -636,6 +642,20 @@
         NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
         [self.delegate carbonTabSwipeNavigation:self didMoveAtIndex:index];
     }
+}
+
+- (void)callDelegateForStartingTransition {
+	if ([self.delegate respondsToSelector:@selector(carbonTabSwipeNavigation:willBeginTransitionFromIndex:)]) {
+		NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
+		[self.delegate carbonTabSwipeNavigation:self willBeginTransitionFromIndex:index];
+	}
+}
+
+- (void)callDelegateForFinishingTransition {
+	if ([self.delegate respondsToSelector:@selector(carbonTabSwipeNavigation:didFinishTransitionToIndex:)]) {
+		NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
+		[self.delegate carbonTabSwipeNavigation:self didFinishTransitionToIndex:index];
+	}
 }
 
 - (void)setTabBarHeight:(CGFloat)height {
