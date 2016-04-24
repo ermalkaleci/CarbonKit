@@ -232,9 +232,8 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController {
-
-    NSInteger index = selectedIndex + 1;
-
+    NSInteger index = [self.viewControllers allKeysForObject:viewController].firstObject.integerValue;
+	index += 1;
     if (index < self.carbonSegmentedControl.numberOfSegments) {
         return [self viewControllerAtIndex:index];
     }
@@ -243,9 +242,8 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController {
-
-    NSInteger index = selectedIndex - 1;
-
+    NSInteger index = [self.viewControllers allKeysForObject:viewController].firstObject.integerValue;
+	index -= 1;
     if (index >= 0) {
         return [self viewControllerAtIndex:index];
     }
