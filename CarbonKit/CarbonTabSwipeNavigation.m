@@ -143,11 +143,13 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [self.pageViewController.view layoutSubviews];
+    [self.pagesScrollView setNeedsLayout];
     isSwipeLocked = NO;
 }
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
+    [self.pagesScrollView setNeedsLayout];
     [self.pageViewController.view setNeedsLayout];
 }
 
