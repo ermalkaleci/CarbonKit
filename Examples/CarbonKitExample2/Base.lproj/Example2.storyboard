@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OmR-Pk-K6i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OmR-Pk-K6i">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,8 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpR-5C-yKJ">
-                                <rect key="frame" x="0.0" y="456" width="600" height="44"/>
-                                <animations/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="TUn-5P-rBM"/>
@@ -29,17 +29,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="HDU-Zm-F3m"/>
                                 </connections>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ir4-cv-Bzy">
+                                <rect key="frame" x="20" y="212" width="560" height="328"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ir4-cv-Bzy" firstAttribute="top" secondItem="vpR-5C-yKJ" secondAttribute="bottom" constant="60" id="Afv-7C-Pz2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ir4-cv-Bzy" secondAttribute="bottom" constant="60" id="Lfu-he-SI9"/>
                             <constraint firstItem="vpR-5C-yKJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NyR-zi-NBo"/>
+                            <constraint firstItem="Ir4-cv-Bzy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="S2o-EY-dBP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ir4-cv-Bzy" secondAttribute="trailing" id="UvK-dx-fm6"/>
                             <constraint firstAttribute="trailing" secondItem="vpR-5C-yKJ" secondAttribute="trailing" id="VmH-mr-MI7"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vpR-5C-yKJ" secondAttribute="bottom" constant="100" id="ccc-QS-iJ0"/>
+                            <constraint firstItem="vpR-5C-yKJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="y80-vh-bdg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JQI-KP-6Jc"/>
                     <connections>
+                        <outlet property="targetView" destination="Ir4-cv-Bzy" id="E5W-LZ-1G8"/>
                         <outlet property="toolBar" destination="vpR-5C-yKJ" id="Ho3-pz-0I2"/>
                     </connections>
                 </viewController>
@@ -54,7 +62,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DN1-yG-aQc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GhJ-LT-vUj"/>

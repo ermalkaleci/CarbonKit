@@ -287,15 +287,16 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
-    CGPoint offset = scrollView.contentOffset;
-    CGFloat segmentedWidth = [self.carbonSegmentedControl getWidth];
+    CGPoint offset			= scrollView.contentOffset;
+    CGFloat segmentedWidth	= [self.carbonSegmentedControl getWidth];
     CGFloat scrollViewWidth = CGRectGetWidth(scrollView.frame);
+	CGFloat toolbarWidth	= CGRectGetWidth(self.toolbar.frame);
 
     if (selectedIndex < 0 || selectedIndex > self.carbonSegmentedControl.numberOfSegments - 1) {
         return;
     }
 
-    if (!isSwipeLocked) {
+    if (isSwipeLocked == false) {
 
         if (offset.x < scrollViewWidth) {
             // we are moving back
@@ -393,8 +394,7 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
         }
     }
 
-    CGFloat indicatorMaxOriginX =
-        scrollViewWidth / 2 - self.carbonSegmentedControl.indicatorWidth / 2;
+    CGFloat indicatorMaxOriginX = toolbarWidth / 2 - self.carbonSegmentedControl.indicatorWidth / 2;
     CGFloat offsetX = self.carbonSegmentedControl.indicatorMinX - indicatorMaxOriginX;
 
     if (segmentedWidth <= scrollViewWidth) {
@@ -404,8 +404,8 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
             offsetX = 0;
         }
 
-        if (offsetX > segmentedWidth - scrollViewWidth) {
-            offsetX = segmentedWidth - scrollViewWidth;
+        if (offsetX > segmentedWidth - toolbarWidth) {
+            offsetX = segmentedWidth - toolbarWidth;
         }
     }
 
