@@ -142,7 +142,6 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self.pageViewController.view layoutSubviews];
     isSwipeLocked = NO;
 }
 
@@ -682,6 +681,7 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
     if (currentTabIndex != selectedIndex && currentTabIndex < numberOfSegments) {
         self.carbonSegmentedControl.selectedSegmentIndex = currentTabIndex;
         [self moveToIndex:currentTabIndex withAnimation:animate];
+		[self syncIndicator];
     }
 }
 
