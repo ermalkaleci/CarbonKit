@@ -23,6 +23,7 @@
 
 #import "CarbonTabSwipeNavigation.h"
 
+
 @interface CarbonTabSwipeNavigation () <UIPageViewControllerDelegate, UIToolbarDelegate,
                                         UIPageViewControllerDataSource, UIScrollViewDelegate>
 @end
@@ -231,8 +232,9 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController {
-    NSInteger index = [self.viewControllers allKeysForObject:viewController].firstObject.integerValue;
-	index += 1;
+    NSInteger index =
+        [self.viewControllers allKeysForObject:viewController].firstObject.integerValue;
+    index += 1;
     if (index < self.carbonSegmentedControl.numberOfSegments) {
         return [self viewControllerAtIndex:index];
     }
@@ -241,8 +243,9 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController {
-    NSInteger index = [self.viewControllers allKeysForObject:viewController].firstObject.integerValue;
-	index -= 1;
+    NSInteger index =
+        [self.viewControllers allKeysForObject:viewController].firstObject.integerValue;
+    index -= 1;
     if (index >= 0) {
         return [self viewControllerAtIndex:index];
     }
@@ -252,14 +255,14 @@
 #pragma mark - PageViewController Delegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
-willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
-	[self callDelegateForStartingTransition];
+    willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
+    [self callDelegateForStartingTransition];
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray *)previousViewControllers
-	   transitionCompleted:(BOOL)completed {
+       transitionCompleted:(BOOL)completed {
     if (completed) {
         id currentView = pageViewController.viewControllers.firstObject;
         selectedIndex =
@@ -269,9 +272,9 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
         [self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
 
         [self callDelegateForCurrentIndex];
-	}
-	
-	[self callDelegateForFinishingTransition];
+    }
+
+    [self callDelegateForFinishingTransition];
 }
 
 #pragma mark - ScrollView Delegate
@@ -286,10 +289,10 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
-    CGPoint offset			= scrollView.contentOffset;
-    CGFloat segmentedWidth	= [self.carbonSegmentedControl getWidth];
+    CGPoint offset = scrollView.contentOffset;
+    CGFloat segmentedWidth = [self.carbonSegmentedControl getWidth];
     CGFloat scrollViewWidth = CGRectGetWidth(scrollView.frame);
-	CGFloat toolbarWidth	= CGRectGetWidth(self.toolbar.frame);
+    CGFloat toolbarWidth = CGRectGetWidth(self.toolbar.frame);
 
     if (selectedIndex < 0 || selectedIndex > self.carbonSegmentedControl.numberOfSegments - 1) {
         return;
@@ -642,17 +645,19 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
 }
 
 - (void)callDelegateForStartingTransition {
-	if ([self.delegate respondsToSelector:@selector(carbonTabSwipeNavigation:willBeginTransitionFromIndex:)]) {
-		NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
-		[self.delegate carbonTabSwipeNavigation:self willBeginTransitionFromIndex:index];
-	}
+    if ([self.delegate
+            respondsToSelector:@selector(carbonTabSwipeNavigation:willBeginTransitionFromIndex:)]) {
+        NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
+        [self.delegate carbonTabSwipeNavigation:self willBeginTransitionFromIndex:index];
+    }
 }
 
 - (void)callDelegateForFinishingTransition {
-	if ([self.delegate respondsToSelector:@selector(carbonTabSwipeNavigation:didFinishTransitionToIndex:)]) {
-		NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
-		[self.delegate carbonTabSwipeNavigation:self didFinishTransitionToIndex:index];
-	}
+    if ([self.delegate
+            respondsToSelector:@selector(carbonTabSwipeNavigation:didFinishTransitionToIndex:)]) {
+        NSInteger index = self.carbonSegmentedControl.selectedSegmentIndex;
+        [self.delegate carbonTabSwipeNavigation:self didFinishTransitionToIndex:index];
+    }
 }
 
 - (void)setTabBarHeight:(CGFloat)height {
@@ -681,7 +686,7 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
     if (currentTabIndex != selectedIndex && currentTabIndex < numberOfSegments) {
         self.carbonSegmentedControl.selectedSegmentIndex = currentTabIndex;
         [self moveToIndex:currentTabIndex withAnimation:animate];
-		[self syncIndicator];
+        [self syncIndicator];
     }
 }
 

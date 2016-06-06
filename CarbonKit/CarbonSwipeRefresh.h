@@ -22,9 +22,10 @@
 //
 #import <UIKit/UIKit.h>
 
+
 @interface CarbonSwipeRefresh : UIControl
 
-@property (nonatomic, retain, setter=setColors:) NSArray *colors;
+@property(nonatomic, retain, setter=setColors:) NSArray *colors;
 
 - (id)initWithScrollView:(UIScrollView *)scrollView;
 

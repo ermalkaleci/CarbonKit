@@ -23,7 +23,8 @@
 
 #import "CarbonTabSwipeSegmentedControl.h"
 
-@interface CarbonTabSwipeSegmentedControl()
+
+@interface CarbonTabSwipeSegmentedControl ()
 @end
 
 @implementation CarbonTabSwipeSegmentedControl
@@ -56,7 +57,7 @@
             NSFontAttributeName : [UIFont boldSystemFontOfSize:14]
         };
         [self setTitleTextAttributes:titleAttr forState:UIControlStateNormal];
-		
+
         id selectedTittleAttr = @{
             NSForegroundColorAttributeName : self.tintColor,
             NSFontAttributeName : [UIFont boldSystemFontOfSize:14]
@@ -90,7 +91,7 @@
     // Add extra width to each segment and calculate the segment width
     CGFloat totalWidth = 0;
     for (UIView *segment in self.segments) {
-		NSInteger index = [self.segments indexOfObject:segment];
+        NSInteger index = [self.segments indexOfObject:segment];
         CGFloat width = [self getWidthForSegmentAtIndex:index];
         CGRect segmentRect = segment.frame;
         segmentRect.origin.x = totalWidth;
@@ -202,17 +203,17 @@
 }
 
 - (void)updateIndicatorWithAnimation:(BOOL)animation {
-	CGFloat indicatorY = 0;
-	
-	if (self.indicatorPosition == IndicatorPositionBottom) {
-		indicatorY = CGRectGetHeight(self.frame) - self.indicatorHeight;
-	}
+    CGFloat indicatorY = 0;
+
+    if (self.indicatorPosition == IndicatorPositionBottom) {
+        indicatorY = CGRectGetHeight(self.frame) - self.indicatorHeight;
+    }
 
     [UIView animateWithDuration:animation ? 0.3 : 0
                      animations:^{
                          CGRect rect = self.indicator.frame;
                          rect.origin.x = self.indicatorMinX;
-						 rect.origin.y = indicatorY;
+                         rect.origin.y = indicatorY;
                          rect.size.width = self.indicatorWidth;
                          rect.size.height = self.indicatorHeight;
                          self.indicator.frame = rect;

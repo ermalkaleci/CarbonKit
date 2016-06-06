@@ -23,6 +23,7 @@
 
 @import UIKit;
 
+
 typedef NS_ENUM(NSUInteger, IndicatorPosition) {
     IndicatorPositionBottom = 0,
     IndicatorPositionTop

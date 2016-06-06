@@ -1,10 +1,10 @@
-#import "ViewControllerTwo.h"
-#import "ViewControllerThree.h"
 #import "CarbonKit.h"
+#import "ViewControllerThree.h"
+#import "ViewControllerTwo.h"
 
-@interface ViewControllerTwo() <UICollectionViewDelegate, UICollectionViewDataSource>
-{
-	CarbonSwipeRefresh *refreshControl;
+
+@interface ViewControllerTwo () <UICollectionViewDelegate, UICollectionViewDataSource> {
+    CarbonSwipeRefresh *refreshControl;
 }
 
 @end
@@ -13,10 +13,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	refreshControl = [[CarbonSwipeRefresh alloc] initWithScrollView:self.collectionView];
-	[refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-	[self.view addSubview:refreshControl];
+
+    refreshControl = [[CarbonSwipeRefresh alloc] initWithScrollView:self.collectionView];
+    [refreshControl addTarget:self
+                       action:@selector(refresh:)
+             forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:refreshControl];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,34 +27,40 @@
 }
 
 - (void)viewWillLayoutSubviews {
-	UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-	flowLayout.itemSize = CGSizeMake((self.view.frame.size.width - 30)/2, 145);
+    UICollectionViewFlowLayout *flowLayout =
+        (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    flowLayout.itemSize = CGSizeMake((self.view.frame.size.width - 30) / 2, 145);
 }
 
 - (void)refresh:(id)sender {
-	NSLog(@"REFRESH");
-	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-		[refreshControl endRefreshing];
-	});
+    NSLog(@"REFRESH");
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [refreshControl endRefreshing];
+    });
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-	return 1;
+    return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-	return 10;
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
+    return 10;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-	return cell;
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell =
+        [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-	ViewControllerThree *view = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerThree"];
-	[self.navigationController pushViewController:view animated:YES];
+- (void)collectionView:(UICollectionView *)collectionView
+    didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    ViewControllerThree *view =
+        [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerThree"];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 @end

@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index Target index
  */
 - (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
-				 willMoveAtIndex:(NSUInteger)index;
+                 willMoveAtIndex:(NSUInteger)index;
 
 /**
  *  Did move to index
@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index Current index
  */
 - (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
-				  didMoveAtIndex:(NSUInteger)index;
+                  didMoveAtIndex:(NSUInteger)index;
 
 /**
  *  Will start the page transition from index.
@@ -70,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index Starting index
  */
 - (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
-	willBeginTransitionFromIndex:(NSUInteger)index;
+    willBeginTransitionFromIndex:(NSUInteger)index;
 
 /**
  *  Did finish the page transition to index.
@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param index Target index
  */
 - (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
-	  didFinishTransitionToIndex:(NSUInteger)index;
+      didFinishTransitionToIndex:(NSUInteger)index;
 
 /**
  *  Toolbar position
@@ -170,7 +170,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Set tab bar height
- * 
+ *
  *  @param height TabBar height
  */
 - (void)setTabBarHeight:(CGFloat)height;
