@@ -63,21 +63,31 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-
+    
     if (_carbonSegmentedControl) {
         // Set segmented control height equal to scroll view height
         CGRect segmentRect = _carbonSegmentedControl.frame;
         segmentRect.size.height = CGRectGetHeight(self.frame);
         _carbonSegmentedControl.frame = segmentRect;
-
-        // Min content width equal to scroll view width
-        CGFloat contentWidth = [_carbonSegmentedControl getWidth];
-        if (contentWidth < CGRectGetWidth(self.frame)) {
-            contentWidth = CGRectGetWidth(self.frame) + 1;
+        
+        CGRect bounds = self.bounds;
+        CGFloat selfWidth = CGRectGetWidth(bounds);
+        CGFloat segmendtedWidth = [_carbonSegmentedControl getWidth];
+        
+        if (segmendtedWidth < CGRectGetWidth(bounds))
+        {
+            CGFloat difference = selfWidth - segmendtedWidth;
+            self.frame = CGRectMake(difference/2.f, 0, selfWidth, CGRectGetHeight(bounds));
         }
-
-        // Scroll view content size
-        self.contentSize = CGSizeMake(contentWidth, CGRectGetHeight(self.frame));
+        else
+        {
+            CGRect frame = self.frame;
+            
+            if (!CGRectEqualToRect(frame, CGRectMake(0, 0, selfWidth, CGRectGetHeight(bounds))))
+            {
+                self.frame = CGRectMake(0, 0, selfWidth, CGRectGetHeight(bounds));
+            }
+        }
     }
 }
 
