@@ -32,7 +32,7 @@ $ brew install carthage
 To integrate CarbonKit into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "soheilbm/CarbonKit" ~> 2.1.9
+github "ermalkaleci/CarbonKit"
 ```
 
 Run `carthage update` to build the framework and drag the built `CarbonKit.framework` into your Xcode project.
