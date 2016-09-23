@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CarbonKit"
-  s.version      = "2.1.8"
+  s.version      = "2.1.9"
   s.summary      = "CarbonKit - iOS Components (Obj-C & Swift)"
 
   s.description  = "CarbonKit is an open source iOS library that includes powerful and beauty UI components."
@@ -77,10 +77,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "CarbonKit/*.{h,m}"
+  s.source_files  = "Source/*.{h,m}"
   #s.exclude_files = "Classes/Exclude"
 
-  s.public_header_files = "CarbonKit/*.h"
+  s.public_header_files = "Source/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

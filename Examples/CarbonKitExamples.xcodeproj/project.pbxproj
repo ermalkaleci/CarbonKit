@@ -189,7 +189,7 @@
 				8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */,
 			);
 			name = CarbonKit;
-			path = ../CarbonKit;
+			path = ../Source;
 			sourceTree = "<group>";
 		};
 		A69E9F701AC0AAF5001FEAC1 /* Base.lproj */ = {
