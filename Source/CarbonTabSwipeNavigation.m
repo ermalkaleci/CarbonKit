@@ -178,8 +178,8 @@
     self.pageViewController.view.userInteractionEnabled = NO;
 
     id animateCompletionBlock = ^(BOOL finished) {
-        isSwipeLocked = NO;
-        selectedIndex = index;
+        self->isSwipeLocked = NO;
+        self->selectedIndex = index;
         self.carbonSegmentedControl.userInteractionEnabled = YES;
         self.pageViewController.view.userInteractionEnabled = YES;
 
@@ -224,7 +224,7 @@
     previewsOffset = CGPointMake(offsetX, 0);
     [UIView animateWithDuration:isLoaded ? 0.3 : 0
                      animations:^{
-                         self.carbonTabSwipeScrollView.contentOffset = previewsOffset;
+                         self.carbonTabSwipeScrollView.contentOffset = self->previewsOffset;
                      }];
 }
 
