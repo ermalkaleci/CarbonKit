@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5B59D9B81D94D8E5004C1E03 /* CarbonKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B59D9B61D94D8E5004C1E03 /* CarbonKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5B59D9C91D94D90E004C1E03 /* CarbonSwipeRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B59D9C01D94D90E004C1E03 /* CarbonSwipeRefresh.h */; };
+		5B59D9C91D94D90E004C1E03 /* CarbonSwipeRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B59D9C01D94D90E004C1E03 /* CarbonSwipeRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B59D9CA1D94D90E004C1E03 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59D9C11D94D90E004C1E03 /* CarbonSwipeRefresh.m */; };
-		5B59D9CB1D94D90E004C1E03 /* CarbonTabSwipeNavigation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B59D9C21D94D90E004C1E03 /* CarbonTabSwipeNavigation.h */; };
+		5B59D9CB1D94D90E004C1E03 /* CarbonTabSwipeNavigation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B59D9C21D94D90E004C1E03 /* CarbonTabSwipeNavigation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B59D9CC1D94D90E004C1E03 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59D9C31D94D90E004C1E03 /* CarbonTabSwipeNavigation.m */; };
-		5B59D9CD1D94D90E004C1E03 /* CarbonTabSwipeScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B59D9C41D94D90E004C1E03 /* CarbonTabSwipeScrollView.h */; };
+		5B59D9CD1D94D90E004C1E03 /* CarbonTabSwipeScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B59D9C41D94D90E004C1E03 /* CarbonTabSwipeScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B59D9CE1D94D90E004C1E03 /* CarbonTabSwipeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59D9C51D94D90E004C1E03 /* CarbonTabSwipeScrollView.m */; };
-		5B59D9CF1D94D90E004C1E03 /* CarbonTabSwipeSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B59D9C61D94D90E004C1E03 /* CarbonTabSwipeSegmentedControl.h */; };
+		5B59D9CF1D94D90E004C1E03 /* CarbonTabSwipeSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B59D9C61D94D90E004C1E03 /* CarbonTabSwipeSegmentedControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B59D9D01D94D90E004C1E03 /* CarbonTabSwipeSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59D9C71D94D90E004C1E03 /* CarbonTabSwipeSegmentedControl.m */; };
 /* End PBXBuildFile section */
 
