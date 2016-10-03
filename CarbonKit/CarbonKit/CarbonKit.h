@@ -15,8 +15,8 @@ FOUNDATION_EXPORT double CarbonKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char CarbonKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <CarbonKit/PublicHeader.h>
-#import "CarbonSwipeRefresh.h"
-#import "CarbonTabSwipeNavigation.h"
 
-
-
+#import <CarbonKit/CarbonSwipeRefresh.h>
+#import <CarbonKit/CarbonTabSwipeNavigation.h>
+#import <CarbonKit/CarbonTabSwipeScrollView.h>
+#import <CarbonKit/CarbonTabSwipeSegmentedControl.h>
