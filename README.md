@@ -11,8 +11,9 @@ CarbonKit includes:
 
 # Carthage
 Add following line into your Cartfile
-
-`github "ermalkaleci/CarbonKit"`
+```
+github "ermalkaleci/CarbonKit"
+```
 
 Run `carthage update`
 
