@@ -11,20 +11,12 @@
 		56DCFD521C0561AB00B9E2F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DCFD511C0561AB00B9E2F5 /* AppDelegate.m */; };
 		56DCFD551C0561AB00B9E2F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DCFD541C0561AB00B9E2F5 /* ViewController.m */; };
 		56DCFD581C0561AB00B9E2F5 /* Example2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56DCFD561C0561AB00B9E2F5 /* Example2.storyboard */; };
-		56DCFD621C0561C200B9E2F5 /* CarbonTabSwipeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */; };
-		56DCFD631C0561C700B9E2F5 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */; };
-		56DCFD641C0561C700B9E2F5 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FD1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m */; };
-		56DCFD651C0561C700B9E2F5 /* CarbonTabSwipeSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */; };
 		56DCFD671C0591CB00B9E2F5 /* Example1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F731AC0AAF5001FEAC1 /* Example1.storyboard */; };
 		56DCFD681C05924300B9E2F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */; };
 		56DCFD6A1C0593D200B9E2F5 /* ViewControllerOne.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F611AC0AAD6001FEAC1 /* ViewControllerOne.m */; };
 		56DCFD6B1C0593D200B9E2F5 /* ViewControllerTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F641AC0AAD6001FEAC1 /* ViewControllerTwo.m */; };
 		56DCFD6C1C0593D200B9E2F5 /* ViewControllerThree.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */; };
-		8E135E951BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */; };
-		8E135E981BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */; };
 		8E302D711C0FA0A900197054 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62CA4261AD155D300E4698D /* Default-568h@2x.png */; };
-		A61946FE1AE2C8D5005120D5 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */; };
-		A61946FF1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = A61946FD1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m */; };
 		A62CA4271AD155D300E4698D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A62CA4261AD155D300E4698D /* Default-568h@2x.png */; };
 		A64B48DE1AD2E4F10053D488 /* ViewControllerThree.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */; };
 		A69E9F671AC0AAD6001FEAC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F5F1AC0AAD6001FEAC1 /* AppDelegate.m */; };
@@ -34,7 +26,67 @@
 		A69E9F6B1AC0AAD6001FEAC1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69E9F661AC0AAD6001FEAC1 /* HomeViewController.m */; };
 		A69E9F6F1AC0AAEA001FEAC1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */; };
 		A69E9F841AC0AD21001FEAC1 /* Example1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69E9F731AC0AAF5001FEAC1 /* Example1.storyboard */; };
+		A6DA8C1D1DB004DF00F7B13B /* CarbonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DA8C1A1DB004D700F7B13B /* CarbonKit.framework */; };
+		A6DA8C1E1DB004DF00F7B13B /* CarbonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6DA8C1A1DB004D700F7B13B /* CarbonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A6DA8C211DB004E300F7B13B /* CarbonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DA8C1A1DB004D700F7B13B /* CarbonKit.framework */; };
+		A6DA8C221DB004E300F7B13B /* CarbonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6DA8C1A1DB004D700F7B13B /* CarbonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A6DA8C191DB004D700F7B13B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6DA8C141DB004D700F7B13B /* CarbonKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A6DA8BD41DAFE75B00F7B13B;
+			remoteInfo = CarbonKit;
+		};
+		A6DA8C1B1DB004D700F7B13B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6DA8C141DB004D700F7B13B /* CarbonKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A6DA8BDE1DAFE75B00F7B13B;
+			remoteInfo = CarbonKitTests;
+		};
+		A6DA8C1F1DB004DF00F7B13B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6DA8C141DB004D700F7B13B /* CarbonKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A6DA8BD31DAFE75B00F7B13B;
+			remoteInfo = CarbonKit;
+		};
+		A6DA8C231DB004E300F7B13B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6DA8C141DB004D700F7B13B /* CarbonKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A6DA8BD31DAFE75B00F7B13B;
+			remoteInfo = CarbonKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A6DA8C0E1DAFF89E00F7B13B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A6DA8C1E1DB004DF00F7B13B /* CarbonKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6DA8C131DAFF8A600F7B13B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A6DA8C221DB004E300F7B13B /* CarbonKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		56DCFD4B1C0561AB00B9E2F5 /* CarbonKitExample2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonKitExample2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,16 +97,7 @@
 		56DCFD541C0561AB00B9E2F5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		56DCFD571C0561AB00B9E2F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Example2.storyboard; sourceTree = "<group>"; };
 		56DCFD5E1C0561AB00B9E2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E135E931BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeSegmentedControl.h; sourceTree = "<group>"; };
-		8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeSegmentedControl.m; sourceTree = "<group>"; };
-		8E135E961BCC2DD7006DC967 /* CarbonTabSwipeScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeScrollView.h; sourceTree = "<group>"; };
-		8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeScrollView.m; sourceTree = "<group>"; };
 		A60473681A87AFCA00FCE808 /* CarbonKitExample1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonKitExample1.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A61946F91AE2C8D5005120D5 /* CarbonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonKit.h; sourceTree = "<group>"; };
-		A61946FA1AE2C8D5005120D5 /* CarbonSwipeRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonSwipeRefresh.h; sourceTree = "<group>"; };
-		A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonSwipeRefresh.m; sourceTree = "<group>"; };
-		A61946FC1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeNavigation.h; sourceTree = "<group>"; };
-		A61946FD1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeNavigation.m; sourceTree = "<group>"; };
 		A62CA4261AD155D300E4698D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "CarbonKitExamples/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		A64B48DC1AD2E4F10053D488 /* ViewControllerThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerThree.h; path = CarbonKitExamples/ViewControllerThree.h; sourceTree = SOURCE_ROOT; };
 		A64B48DD1AD2E4F10053D488 /* ViewControllerThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerThree.m; path = CarbonKitExamples/ViewControllerThree.m; sourceTree = SOURCE_ROOT; };
@@ -70,6 +113,7 @@
 		A69E9F6C1AC0AAE3001FEAC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CarbonKitExamples/Info.plist; sourceTree = SOURCE_ROOT; };
 		A69E9F6E1AC0AAEA001FEAC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CarbonKitExamples/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		A69E9F741AC0AAF5001FEAC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Example1.storyboard; sourceTree = "<group>"; };
+		A6DA8C141DB004D700F7B13B /* CarbonKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CarbonKit.xcodeproj; path = ../CarbonKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6DA8C211DB004E300F7B13B /* CarbonKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6DA8C1D1DB004DF00F7B13B /* CarbonKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +169,7 @@
 		A604735F1A87AFCA00FCE808 = {
 			isa = PBXGroup;
 			children = (
-				A61946F81AE2C8D5005120D5 /* CarbonKit */,
+				A6DA8C141DB004D700F7B13B /* CarbonKit.xcodeproj */,
 				A604736A1A87AFCA00FCE808 /* CarbonKitExample1 */,
 				56DCFD4C1C0561AB00B9E2F5 /* CarbonKitExample2 */,
 				56DCFD691C05925C00B9E2F5 /* Resources */,
@@ -175,23 +221,6 @@
 			path = "Test 2";
 			sourceTree = "<group>";
 		};
-		A61946F81AE2C8D5005120D5 /* CarbonKit */ = {
-			isa = PBXGroup;
-			children = (
-				A61946F91AE2C8D5005120D5 /* CarbonKit.h */,
-				A61946FA1AE2C8D5005120D5 /* CarbonSwipeRefresh.h */,
-				A61946FB1AE2C8D5005120D5 /* CarbonSwipeRefresh.m */,
-				A61946FC1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.h */,
-				A61946FD1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m */,
-				8E135E931BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.h */,
-				8E135E941BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m */,
-				8E135E961BCC2DD7006DC967 /* CarbonTabSwipeScrollView.h */,
-				8E135E971BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m */,
-			);
-			name = CarbonKit;
-			path = ../CarbonKit;
-			sourceTree = "<group>";
-		};
 		A69E9F701AC0AAF5001FEAC1 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +229,15 @@
 			name = Base.lproj;
 			path = CarbonKitExamples/Base.lproj;
 			sourceTree = SOURCE_ROOT;
+		};
+		A6DA8C151DB004D700F7B13B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6DA8C1A1DB004D700F7B13B /* CarbonKit.framework */,
+				A6DA8C1C1DB004D700F7B13B /* CarbonKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -211,10 +249,12 @@
 				56DCFD471C0561AB00B9E2F5 /* Sources */,
 				56DCFD481C0561AB00B9E2F5 /* Frameworks */,
 				56DCFD491C0561AB00B9E2F5 /* Resources */,
+				A6DA8C131DAFF8A600F7B13B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A6DA8C241DB004E300F7B13B /* PBXTargetDependency */,
 			);
 			name = CarbonKitExample2;
 			productName = CarbonKitExample2;
@@ -228,10 +268,12 @@
 				A60473641A87AFCA00FCE808 /* Sources */,
 				A60473651A87AFCA00FCE808 /* Frameworks */,
 				A60473661A87AFCA00FCE808 /* Resources */,
+				A6DA8C0E1DAFF89E00F7B13B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A6DA8C201DB004DF00F7B13B /* PBXTargetDependency */,
 			);
 			name = CarbonKitExample1;
 			productName = "Test 2";
@@ -244,7 +286,7 @@
 		A60473601A87AFCA00FCE808 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Ermal Kaleci";
 				TargetAttributes = {
 					56DCFD4A1C0561AB00B9E2F5 = {
@@ -252,7 +294,6 @@
 					};
 					A60473671A87AFCA00FCE808 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = WSDWDF57D2;
 					};
 				};
 			};
@@ -267,6 +308,12 @@
 			mainGroup = A604735F1A87AFCA00FCE808;
 			productRefGroup = A60473691A87AFCA00FCE808 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A6DA8C151DB004D700F7B13B /* Products */;
+					ProjectRef = A6DA8C141DB004D700F7B13B /* CarbonKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A60473671A87AFCA00FCE808 /* CarbonKitExample1 */,
@@ -274,6 +321,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A6DA8C1A1DB004D700F7B13B /* CarbonKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CarbonKit.framework;
+			remoteRef = A6DA8C191DB004D700F7B13B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A6DA8C1C1DB004D700F7B13B /* CarbonKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CarbonKitTests.xctest;
+			remoteRef = A6DA8C1B1DB004D700F7B13B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		56DCFD491C0561AB00B9E2F5 /* Resources */ = {
@@ -309,10 +373,6 @@
 				56DCFD521C0561AB00B9E2F5 /* AppDelegate.m in Sources */,
 				56DCFD6C1C0593D200B9E2F5 /* ViewControllerThree.m in Sources */,
 				56DCFD4F1C0561AB00B9E2F5 /* main.m in Sources */,
-				56DCFD631C0561C700B9E2F5 /* CarbonSwipeRefresh.m in Sources */,
-				56DCFD621C0561C200B9E2F5 /* CarbonTabSwipeScrollView.m in Sources */,
-				56DCFD651C0561C700B9E2F5 /* CarbonTabSwipeSegmentedControl.m in Sources */,
-				56DCFD641C0561C700B9E2F5 /* CarbonTabSwipeNavigation.m in Sources */,
 				56DCFD6A1C0593D200B9E2F5 /* ViewControllerOne.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,18 +383,27 @@
 			files = (
 				A69E9F6B1AC0AAD6001FEAC1 /* HomeViewController.m in Sources */,
 				A69E9F671AC0AAD6001FEAC1 /* AppDelegate.m in Sources */,
-				A61946FE1AE2C8D5005120D5 /* CarbonSwipeRefresh.m in Sources */,
 				A69E9F691AC0AAD6001FEAC1 /* main.m in Sources */,
-				A61946FF1AE2C8D5005120D5 /* CarbonTabSwipeNavigation.m in Sources */,
-				8E135E951BCC2A2A006DC967 /* CarbonTabSwipeSegmentedControl.m in Sources */,
 				A69E9F681AC0AAD6001FEAC1 /* ViewControllerOne.m in Sources */,
 				A64B48DE1AD2E4F10053D488 /* ViewControllerThree.m in Sources */,
 				A69E9F6A1AC0AAD6001FEAC1 /* ViewControllerTwo.m in Sources */,
-				8E135E981BCC2DD7006DC967 /* CarbonTabSwipeScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A6DA8C201DB004DF00F7B13B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CarbonKit;
+			targetProxy = A6DA8C1F1DB004DF00F7B13B /* PBXContainerItemProxy */;
+		};
+		A6DA8C241DB004E300F7B13B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CarbonKit;
+			targetProxy = A6DA8C231DB004E300F7B13B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		56DCFD561C0561AB00B9E2F5 /* Example2.storyboard */ = {
@@ -364,7 +433,6 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = CarbonKitExample2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ermalkaleci.CarbonKitExample2.CarbonKitExample2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -379,7 +447,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = CarbonKitExample2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ermalkaleci.CarbonKitExample2.CarbonKitExample2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -406,6 +473,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -420,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -456,7 +524,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

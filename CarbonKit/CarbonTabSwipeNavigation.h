@@ -21,7 +21,7 @@
 //  SOFTWARE.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 #import "CarbonTabSwipeScrollView.h"
 
 

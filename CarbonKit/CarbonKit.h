@@ -21,6 +21,13 @@
 //  SOFTWARE.
 //
 
-#import "CarbonSwipeRefresh.h"
-#import "CarbonTabSwipeNavigation.h"
+#import <UIKit/UIKit.h>
 
+//! Project version number for CarbonKit.
+FOUNDATION_EXPORT double CarbonKitVersionNumber;
+
+//! Project version string for CarbonKit.
+FOUNDATION_EXPORT const unsigned char CarbonKitVersionString[];
+
+#import <CarbonKit/CarbonSwipeRefresh.h>
+#import <CarbonKit/CarbonTabSwipeNavigation.h>
