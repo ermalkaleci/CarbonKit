@@ -535,14 +535,17 @@
                                                                       options:0
                                                                       metrics:nil
                                                                         views:views]];
-
-    self.toolbarHeight = [NSLayoutConstraint constraintWithItem:self.toolbar
-                                                      attribute:NSLayoutAttributeHeight
-                                                      relatedBy:NSLayoutRelationEqual
-                                                         toItem:nil
-                                                      attribute:NSLayoutAttributeNotAnAttribute
-                                                     multiplier:1.0
-                                                       constant:40];
+	
+	// ToolbarHeight could be prepared.
+	if (self.toolbarHeight == nil) {
+		self.toolbarHeight = [NSLayoutConstraint constraintWithItem:self.toolbar
+														  attribute:NSLayoutAttributeHeight
+														  relatedBy:NSLayoutRelationEqual
+															 toItem:nil
+														  attribute:NSLayoutAttributeNotAnAttribute
+														 multiplier:1.0
+														   constant:self.toolbar.frame.size.height ?: 44];
+	}
 
     [self.view addConstraint:self.toolbarHeight];
 }
