@@ -64,6 +64,9 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
+    if (self.superview != nil)
+        [self.superview bringSubviewToFront:self];
+
     if (_carbonSegmentedControl) {
         // Set segmented control height equal to scroll view height
         CGRect segmentRect = _carbonSegmentedControl.frame;
