@@ -210,10 +210,20 @@
     CGFloat offsetX = selectedSegmentMinX - indicatorMaxOriginX;
 
     if (segmentedWidth <= scrollViewWidth) {
-        offsetX = 0;
-    } else {
-        if (offsetX < 0) {
+        if (@available(iOS 11.0, *)) {
+            offsetX = -self.carbonTabSwipeScrollView.safeAreaInsets.left;
+        } else {
             offsetX = 0;
+        }
+    } else {
+        if (@available(iOS 11.0, *)) {
+            if (offsetX < -self.carbonTabSwipeScrollView.safeAreaInsets.left) {
+                offsetX = -self.carbonTabSwipeScrollView.safeAreaInsets.left;
+            }
+        } else {
+            if (offsetX < 0) {
+                offsetX = 0;
+            }
         }
 
         if (offsetX > segmentedWidth - scrollViewWidth) {
@@ -400,14 +410,30 @@
     CGFloat offsetX = self.carbonSegmentedControl.indicatorMinX - indicatorMaxOriginX;
 
     if (segmentedWidth <= scrollViewWidth) {
-        offsetX = 0;
-    } else {
-        if (offsetX < 0) {
+        if (@available(iOS 11.0, *)) {
+            offsetX = -self.carbonTabSwipeScrollView.safeAreaInsets.left;
+        } else {
             offsetX = 0;
         }
+    } else {
+        if (@available(iOS 11.0, *)) {
+            if (offsetX < -self.carbonTabSwipeScrollView.safeAreaInsets.left) {
+                offsetX = -self.carbonTabSwipeScrollView.safeAreaInsets.left;
+            }
+        } else {
+            if (offsetX < 0) {
+                offsetX = 0;
+            }
+        }
 
-        if (offsetX > segmentedWidth - toolbarWidth) {
-            offsetX = segmentedWidth - toolbarWidth;
+        if (@available(iOS 11.0, *)) {
+            if (offsetX - self.carbonTabSwipeScrollView.safeAreaInsets.left > segmentedWidth - toolbarWidth) {
+                offsetX = segmentedWidth - toolbarWidth + self.carbonTabSwipeScrollView.safeAreaInsets.left;
+            }
+        } else {
+            if (offsetX > segmentedWidth - toolbarWidth) {
+                offsetX = segmentedWidth - toolbarWidth;
+            }
         }
     }
 
