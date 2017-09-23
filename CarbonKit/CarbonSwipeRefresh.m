@@ -38,7 +38,6 @@ typedef NS_ENUM(NSUInteger, PullState) {
     dispatch_once_t initConstraits;
 
     NSLayoutConstraint *topConstrait;
-    NSLayoutConstraint *centerXConstrait;
 
     UIScrollView *tableScrollView;
 
@@ -65,9 +64,19 @@ typedef NS_ENUM(NSUInteger, PullState) {
 
         self.colors = @[ self.tintColor ];
 
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-        container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        UIView *view = [[UIView alloc] init];
+        container = [[UIView alloc] init];
         [view addSubview:container];
+
+        container.translatesAutoresizingMaskIntoConstraints = false;
+        [NSLayoutConstraint activateConstraints:
+         @[
+           [container.widthAnchor constraintEqualToConstant:40],
+           [container.heightAnchor constraintEqualToConstant:40],
+           [container.centerXAnchor constraintEqualToAnchor:view.centerXAnchor],
+           [container.centerYAnchor constraintEqualToAnchor:view.centerYAnchor]
+           ]
+         ];
 
         view.layer.backgroundColor = [UIColor whiteColor].CGColor;
         view.layer.cornerRadius = 20.0;
@@ -112,9 +121,22 @@ typedef NS_ENUM(NSUInteger, PullState) {
 
         [self addSubview:view];
 
-        CGRect rect =
-            CGRectMake((self.superview.frame.size.width - 40) / 2, -50 + marginTop, 40, 40);
-        self.frame = rect;
+        view.translatesAutoresizingMaskIntoConstraints = false;
+        [NSLayoutConstraint activateConstraints:
+         @[
+           [view.widthAnchor constraintEqualToConstant:40],
+           [view.heightAnchor constraintEqualToConstant:40],
+           [view.centerXAnchor constraintEqualToAnchor:self.centerXAnchor],
+           [view.centerYAnchor constraintEqualToAnchor:self.centerYAnchor]
+           ]
+         ];
+
+        [NSLayoutConstraint activateConstraints:
+         @[
+           [self.widthAnchor constraintEqualToConstant:40],
+           [self.heightAnchor constraintEqualToConstant:40]
+           ]
+         ];
     }
     return self;
 }
@@ -124,26 +146,28 @@ typedef NS_ENUM(NSUInteger, PullState) {
 }
 
 - (void)didMoveToSuperview {
-    dispatch_once(&initConstraits, ^{
-        topConstrait = [NSLayoutConstraint constraintWithItem:self
-                                                    attribute:NSLayoutAttributeTop
-                                                    relatedBy:NSLayoutRelationEqual
-                                                       toItem:self.superview
-                                                    attribute:NSLayoutAttributeTop
-                                                   multiplier:1.0
-                                                     constant:-50];
-        centerXConstrait = [NSLayoutConstraint constraintWithItem:self
-                                                        attribute:NSLayoutAttributeCenterX
+    if (self.superview != nil) {
+        dispatch_once(&initConstraits, ^{
+            topConstrait = [NSLayoutConstraint constraintWithItem:self
+                                                        attribute:NSLayoutAttributeTop
                                                         relatedBy:NSLayoutRelationEqual
                                                            toItem:self.superview
-                                                        attribute:NSLayoutAttributeCenterX
-                                                       multiplier:1.f
-                                                         constant:-20];
+                                                        attribute:NSLayoutAttributeTop
+                                                       multiplier:1.0
+                                                         constant:0];
+            NSLayoutConstraint *centerXConstrait = [NSLayoutConstraint constraintWithItem:self
+                                                            attribute:NSLayoutAttributeCenterX
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:self.superview
+                                                            attribute:NSLayoutAttributeCenterX
+                                                           multiplier:1.f
+                                                             constant:0];
 
-        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.superview addConstraint:topConstrait];
-        [self.superview addConstraint:centerXConstrait];
-    });
+            [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+            [self.superview addConstraint:topConstrait];
+            [self.superview addConstraint:centerXConstrait];
+        });
+    }
 }
 
 - (id)initWithScrollView:(UIScrollView *)scrollView {
@@ -227,19 +251,19 @@ typedef NS_ENUM(NSUInteger, PullState) {
                 [UIView animateWithDuration:.2f
                                  animations:^{
                                      topConstrait.constant = 10 - marginTop;
-                                     [self layoutIfNeeded];
+                                     [self.superview layoutIfNeeded];
                                  }];
                 [self startAnimating];
                 [self sendActionsForControlEvents:UIControlEventValueChanged];
             } else {
                 [UIView animateWithDuration:0.2
-                    animations:^{
-                        topConstrait.constant = -50 - marginTop;
-                        [self layoutIfNeeded];
-                    }
-                    completion:^(BOOL finished) {
-                        pathLayer.strokeColor = ((UIColor *)self.colors[colorIndex]).CGColor;
-                    }];
+                                 animations:^{
+                                     topConstrait.constant = -50 - marginTop;
+                                     [self.superview layoutIfNeeded];
+                                 }
+                                 completion:^(BOOL finished) {
+                                     pathLayer.strokeColor = ((UIColor *)self.colors[colorIndex]).CGColor;
+                                 }];
             }
         }
     }
@@ -291,7 +315,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
 
 - (void)startAnimating {
     float currentAngle =
-        [(NSNumber *)[container.layer valueForKeyPath:@"transform.rotation.z"] floatValue];
+    [(NSNumber *)[container.layer valueForKeyPath:@"transform.rotation.z"] floatValue];
     CABasicAnimation *animation = [CABasicAnimation animation];
     animation.keyPath = @"transform.rotation";
     animation.duration = 3.f;
@@ -307,7 +331,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
     beginHeadAnimation.fromValue = @(.25f);
     beginHeadAnimation.toValue = @(1.f);
     beginHeadAnimation.timingFunction =
-        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
     CABasicAnimation *beginTailAnimation = [CABasicAnimation animation];
     beginTailAnimation.keyPath = @"strokeEnd";
@@ -315,7 +339,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
     beginTailAnimation.fromValue = @(1.f);
     beginTailAnimation.toValue = @(1.f);
     beginTailAnimation.timingFunction =
-        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
     CABasicAnimation *endHeadAnimation = [CABasicAnimation animation];
     endHeadAnimation.keyPath = @"strokeStart";
@@ -324,7 +348,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
     endHeadAnimation.fromValue = @(.0f);
     endHeadAnimation.toValue = @(.25f);
     endHeadAnimation.timingFunction =
-        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
     CABasicAnimation *endTailAnimation = [CABasicAnimation animation];
     endTailAnimation.keyPath = @"strokeEnd";
@@ -333,17 +357,17 @@ typedef NS_ENUM(NSUInteger, PullState) {
     endTailAnimation.fromValue = @(0.f);
     endTailAnimation.toValue = @(1.f);
     endTailAnimation.timingFunction =
-        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
     CAAnimationGroup *animations = [CAAnimationGroup animation];
     [animations setDuration:1.5f];
     [animations setRemovedOnCompletion:NO];
     [animations setAnimations:@[
-        beginHeadAnimation,
-        beginTailAnimation,
-        endHeadAnimation,
-        endTailAnimation
-    ]];
+                                beginHeadAnimation,
+                                beginTailAnimation,
+                                endHeadAnimation,
+                                endTailAnimation
+                                ]];
     animations.repeatCount = INFINITY;
     [pathLayer addAnimation:animations forKey:STROKE_ANIMATION];
 
@@ -404,34 +428,25 @@ typedef NS_ENUM(NSUInteger, PullState) {
 - (void)hideView {
 
     [UIView animateWithDuration:.3f
-        animations:^{
-            self.layer.opacity = 0;
-            self.layer.transform = CATransform3DMakeScale(0.5, 0.5, 1);
+                     animations:^{
+                         self.layer.opacity = 0;
+                         self.layer.transform = CATransform3DMakeScale(0.5, 0.5, 1);
+                         [self layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished) {
+                         [self endAnimating];
 
-            // hide on center
-            centerXConstrait.constant = -10;
-            topConstrait.constant += 10;
-            [self layoutIfNeeded];
+                         pullState = PullStateFinished;
+                         colorIndex = 0;
+                         pathLayer.strokeColor = ((UIColor *)self.colors[colorIndex]).CGColor;
 
-        }
-        completion:^(BOOL finished) {
-            [self endAnimating];
-
-            // update center
-            centerXConstrait.constant = -20;
-
-            pullState = PullStateFinished;
-            colorIndex = 0;
-            pathLayer.strokeColor = ((UIColor *)self.colors[colorIndex]).CGColor;
-
-            topConstrait.constant = -50 + marginTop;
-        }];
+                         topConstrait.constant = -50 + marginTop;
+                     }];
 }
 
 - (void)startRefreshing {
     pullState = PullStateRefreshing;
     self.layer.transform = CATransform3DMakeScale(0, 0, 1);
-    centerXConstrait.constant = 0;
     topConstrait.constant = 30 - marginTop;
     [self layoutIfNeeded];
 
@@ -440,7 +455,6 @@ typedef NS_ENUM(NSUInteger, PullState) {
                          self.layer.opacity = 1;
                          self.layer.transform = CATransform3DMakeScale(1, 1, 1);
 
-                         centerXConstrait.constant = -20;
                          topConstrait.constant = 10 - marginTop;
                          [self layoutIfNeeded];
 
@@ -464,7 +478,7 @@ typedef NS_ENUM(NSUInteger, PullState) {
     [self getAxisAlignedArrowPoints:points width:width length:length];
 
     CGAffineTransform transform =
-        [self transformForStartPoint:startPoint endPoint:endPoint length:length];
+    [self transformForStartPoint:startPoint endPoint:endPoint length:length];
 
     CGMutablePathRef cgPath = CGPathCreateMutable();
     CGPathAddLines(cgPath, &transform, points, sizeof points / sizeof *points);
