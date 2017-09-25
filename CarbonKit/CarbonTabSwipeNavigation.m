@@ -205,6 +205,10 @@
 
     CGFloat segmentedWidth = CGRectGetWidth(self.carbonSegmentedControl.frame);
     CGFloat scrollViewWidth = CGRectGetWidth(_carbonTabSwipeScrollView.frame);
+    
+    if (index == self.carbonSegmentedControl.segments.count - 1) {
+        segmentedWidth = selectedSegmentMinX + selectedSegmentWidth;
+    }
 
     CGFloat indicatorMaxOriginX = scrollViewWidth / 2 - selectedSegmentWidth / 2;
     CGFloat offsetX = selectedSegmentMinX - indicatorMaxOriginX;
