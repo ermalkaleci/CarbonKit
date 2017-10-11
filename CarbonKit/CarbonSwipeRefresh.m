@@ -69,14 +69,38 @@ typedef NS_ENUM(NSUInteger, PullState) {
         [view addSubview:container];
 
         container.translatesAutoresizingMaskIntoConstraints = false;
-        [NSLayoutConstraint activateConstraints:
-         @[
-           [container.widthAnchor constraintEqualToConstant:40],
-           [container.heightAnchor constraintEqualToConstant:40],
-           [container.centerXAnchor constraintEqualToAnchor:view.centerXAnchor],
-           [container.centerYAnchor constraintEqualToAnchor:view.centerYAnchor]
-           ]
-         ];
+        [[NSLayoutConstraint constraintWithItem:container
+                                      attribute:NSLayoutAttributeWidth
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:nil
+                                      attribute:NSLayoutAttributeNotAnAttribute
+                                     multiplier:1
+                                       constant:40]
+         setActive:YES];
+        [[NSLayoutConstraint constraintWithItem:container
+                                      attribute:NSLayoutAttributeHeight
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:nil
+                                      attribute:NSLayoutAttributeNotAnAttribute
+                                     multiplier:1
+                                       constant:40]
+         setActive:YES];
+        [[NSLayoutConstraint constraintWithItem:container
+                                      attribute:NSLayoutAttributeCenterX
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:view
+                                      attribute:NSLayoutAttributeCenterX
+                                     multiplier:1
+                                       constant:0]
+         setActive:YES];
+        [[NSLayoutConstraint constraintWithItem:container
+                                      attribute:NSLayoutAttributeCenterY
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:view
+                                      attribute:NSLayoutAttributeCenterY
+                                     multiplier:1
+                                       constant:0]
+         setActive:YES];
 
         view.layer.backgroundColor = [UIColor whiteColor].CGColor;
         view.layer.cornerRadius = 20.0;
@@ -122,21 +146,55 @@ typedef NS_ENUM(NSUInteger, PullState) {
         [self addSubview:view];
 
         view.translatesAutoresizingMaskIntoConstraints = false;
-        [NSLayoutConstraint activateConstraints:
-         @[
-           [view.widthAnchor constraintEqualToConstant:40],
-           [view.heightAnchor constraintEqualToConstant:40],
-           [view.centerXAnchor constraintEqualToAnchor:self.centerXAnchor],
-           [view.centerYAnchor constraintEqualToAnchor:self.centerYAnchor]
-           ]
-         ];
+        [[NSLayoutConstraint constraintWithItem:view
+                                      attribute:NSLayoutAttributeWidth
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:nil
+                                      attribute:NSLayoutAttributeNotAnAttribute
+                                     multiplier:1
+                                       constant:40]
+         setActive:YES];
+        [[NSLayoutConstraint constraintWithItem:view
+                                      attribute:NSLayoutAttributeHeight
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:nil
+                                      attribute:NSLayoutAttributeNotAnAttribute
+                                     multiplier:1
+                                       constant:40]
+         setActive:YES];
+        [[NSLayoutConstraint constraintWithItem:view
+                                      attribute:NSLayoutAttributeCenterX
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:self
+                                      attribute:NSLayoutAttributeCenterX
+                                     multiplier:1
+                                       constant:0]
+         setActive:YES];
+        [[NSLayoutConstraint constraintWithItem:view
+                                      attribute:NSLayoutAttributeCenterY
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:self
+                                      attribute:NSLayoutAttributeCenterY
+                                     multiplier:1
+                                       constant:0]
+         setActive:YES];
 
-        [NSLayoutConstraint activateConstraints:
-         @[
-           [self.widthAnchor constraintEqualToConstant:40],
-           [self.heightAnchor constraintEqualToConstant:40]
-           ]
-         ];
+        [[NSLayoutConstraint constraintWithItem:self
+                                      attribute:NSLayoutAttributeWidth
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:nil
+                                      attribute:NSLayoutAttributeNotAnAttribute
+                                     multiplier:1
+                                       constant:40]
+         setActive:YES];
+        [[NSLayoutConstraint constraintWithItem:self
+                                      attribute:NSLayoutAttributeHeight
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:nil
+                                      attribute:NSLayoutAttributeNotAnAttribute
+                                     multiplier:1
+                                       constant:40]
+         setActive:YES];
     }
     return self;
 }

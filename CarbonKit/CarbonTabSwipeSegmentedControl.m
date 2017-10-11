@@ -183,6 +183,9 @@
 }
 
 - (CGFloat)getWidthForSegmentAtIndex:(NSUInteger)index {
+    if (index == [self.segments count] - 1) {
+        return CGRectGetWidth(self.frame) - CGRectGetMinX(self.segments[index].frame);
+    }
     return CGRectGetWidth(self.segments[index].frame);
 }
 

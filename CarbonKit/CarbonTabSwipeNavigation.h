@@ -166,7 +166,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithItems:(nullable NSArray *)items
                       toolBar:(nonnull UIToolbar *)toolBar
-                     delegate:(nonnull id)target;
+                     delegate:(nonnull id)target __attribute__((deprecated));
 
 /**
  *  Set tab bar height
