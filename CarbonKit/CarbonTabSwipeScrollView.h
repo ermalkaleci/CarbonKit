@@ -51,8 +51,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  SegmentedControl width.
  *
  *  @param items Array of segment titles or images
- *
- *  @return CarbonTabSwipeScrollView that contains CarbonTabSwipeSegmentedControl
  */
 - (void)setItems:(nullable NSArray *)items;
 

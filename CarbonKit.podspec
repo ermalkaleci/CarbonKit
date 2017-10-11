@@ -16,12 +16,12 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CarbonKit"
-  s.version      = "2.1.10"
+  s.version      = "2.2.2"
   s.summary      = "CarbonKit - iOS Components (Obj-C & Swift)"
 
   s.description  = "CarbonKit is an open source iOS library that includes powerful and beauty UI components."
 
-  s.homepage     = "https://github.com/ermalkaleci/CarbonKit"
+  s.homepage     = "https://github.com/ermalkaleci/CarbonKit#readme"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #

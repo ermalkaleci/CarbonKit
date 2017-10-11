@@ -43,13 +43,6 @@
         if (@available(iOS 11.0, *)) {
             [self setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
         }
-
-        // Support RTL
-        if ([UIApplication sharedApplication].userInterfaceLayoutDirection ==
-                UIUserInterfaceLayoutDirectionRightToLeft &&
-            [self respondsToSelector:@selector(semanticContentAttribute)]) {
-            self.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
-        }
     }
     return self;
 }

@@ -164,7 +164,7 @@
                                : UIPageViewControllerNavigationDirectionReverse;
 
     // Support RTL
-    if (self.isRTL) {
+    if ([self isRTL]) {
         if (animateDirection == UIPageViewControllerNavigationDirectionForward) {
             animateDirection = UIPageViewControllerNavigationDirectionReverse;
         } else {
@@ -305,7 +305,7 @@
 
             // Support RTL
             NSInteger backIndex = selectedIndex;
-            if (self.isRTL) {
+            if ([self isRTL]) {
                 // Ensure index range
                 if (!(++backIndex >= self.carbonSegmentedControl.numberOfSegments)) {
                     backTabWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:backIndex];
@@ -326,7 +326,7 @@
             [self.carbonSegmentedControl setIndicatorWidth:newWidth];
             [self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
 
-            if (self.isRTL) {
+            if ([self isRTL]) {
                 // Ensure index range
                 if (backIndex >= self.carbonSegmentedControl.numberOfSegments) {
                     return;
@@ -361,7 +361,7 @@
 
             // Support RTL
             NSInteger nextIndex = selectedIndex;
-            if (self.isRTL) {
+            if ([self isRTL]) {
                 // Ensure index range
                 if (!(--nextIndex < 0)) {
                     nextTabWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:nextIndex];
@@ -382,7 +382,7 @@
             [self.carbonSegmentedControl setIndicatorWidth:newWidth];
             [self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
 
-            if (self.isRTL) {
+            if ([self isRTL]) {
                 // Ensure index range
                 if (nextIndex < 0) {
                     return;
@@ -640,13 +640,14 @@
 }
 
 - (BOOL)isRTL {
-    return [UIApplication sharedApplication].userInterfaceLayoutDirection ==
-               UIUserInterfaceLayoutDirectionRightToLeft &&
-           [self.view respondsToSelector:@selector(semanticContentAttribute)];
+    if (@available(iOS 9.0, *)) {
+        return [UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.view.semanticContentAttribute] == UIUserInterfaceLayoutDirectionRightToLeft;
+    }
+    return NO;
 }
 
 - (UIPageViewControllerNavigationDirection)directionAnimation {
-    if (self.isRTL) {
+    if ([self isRTL]) {
         return UIPageViewControllerNavigationDirectionReverse;
     }
     return UIPageViewControllerNavigationDirectionForward;
