@@ -3,7 +3,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/CarbonKit.svg?style=flat)](https://cocoapods.org/pods/CarbonKit) [![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/ermalkaleci/CarbonKit/blob/master/LICENSE)
 
-IMPORTANT NOTE: Please don't submit issues for questions regarding your code. Only actual bugs or feature requests will be answered, all others will be closed without comment.
+**IMPORTANT NOTE**: Please don't submit issues for questions regarding your code. Only actual bugs or feature requests will be answered, all others will be closed without comment. In case of reporting a bug, please include a screenshot and the code to reproduce it.
 
 CarbonKit is an open source iOS library that includes powerful and beauty UI components.
 
@@ -134,8 +134,6 @@ If you are using UITableViewController you must add the refreshControl into self
 }
 ```
 
-# THANKS TO
-[Contributors](https://github.com/ermalkaleci/CarbonKit/graphs/contributors)
 
 # LICENSE
 [The MIT License (MIT)](https://github.com/ermalkaleci/CarbonKit/blob/master/LICENSE)
