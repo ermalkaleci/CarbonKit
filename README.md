@@ -3,6 +3,8 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/CarbonKit.svg?style=flat)](https://cocoapods.org/pods/CarbonKit) [![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/ermalkaleci/CarbonKit/blob/master/LICENSE)
 
+IMPORTANT NOTE: Please don't submit issues for questions regarding your code. Only actual bugs or feature requests will be answered, all others will be closed without comment.
+
 CarbonKit is an open source iOS library that includes powerful and beauty UI components.
 
 CarbonKit includes:
