@@ -177,20 +177,24 @@
     self.pageViewController.view.userInteractionEnabled = NO;
 
     id animateCompletionBlock = ^(BOOL finished) {
-        isSwipeLocked = NO;
-        selectedIndex = index;
-        self.carbonSegmentedControl.userInteractionEnabled = YES;
-        self.pageViewController.view.userInteractionEnabled = YES;
-
-        [self callDelegateForCurrentIndex];
+         dispatch_async(dispatch_get_main_queue(), ^{
+              isSwipeLocked = NO;
+              selectedIndex = index;
+              self.carbonSegmentedControl.userInteractionEnabled = YES;
+              self.pageViewController.view.userInteractionEnabled = YES;
+              
+              [self callDelegateForCurrentIndex];
+         });
     };
-
     [self callDelegateForTargetIndex];
 
-    [self.pageViewController setViewControllers:@[ viewController ]
+    dispatch_async(dispatch_get_main_queue(), ^{
+          [self.pageViewController setViewControllers:@[ viewController ]
                                       direction:animateDirection
                                        animated:animate
                                      completion:animateCompletionBlock];
+    });
+    
 }
 
 - (void)syncIndicator {
@@ -620,13 +624,17 @@
     [self callDelegateForTargetIndex];
 
     id completionBlock = ^(BOOL finished) {
-        [self callDelegateForCurrentIndex];
+         dispatch_async(dispatch_get_main_queue(), ^{
+              [self callDelegateForCurrentIndex];
+         });
     };
-
-    [self.pageViewController setViewControllers:@[ viewController ]
-                                      direction:self.directionAnimation
-                                       animated:YES
-                                     completion:completionBlock];
+     
+     dispatch_async(dispatch_get_main_queue(), ^{
+          [self.pageViewController setViewControllers:@[ viewController ]
+                                            direction:self.directionAnimation
+                                             animated:YES
+                                           completion:completionBlock];
+     });
 }
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index {
