@@ -63,6 +63,14 @@
               rightSegmentState:UIControlStateNormal
                      barMetrics:UIBarMetricsDefault];
 
+        [self setClipsToBounds:FALSE];
+        [self setBackgroundImage:[UIImage new]
+                        forState:UIControlStateNormal
+                      barMetrics:UIBarMetricsDefault];
+        [self setBackgroundImage:[UIImage new]
+                        forState:UIControlStateSelected
+                      barMetrics:UIBarMetricsDefault];
+
         // Fix indicator frame
         if (items) {
             self.indicatorMinX = [self getMinXForSegmentAtIndex:self.selectedSegmentIndex];
