@@ -171,7 +171,12 @@
 #pragma mark - Properties
 
 - (NSArray<UIView *> *)segments {
-    return [self valueForKey:@"_segments"];
+    NSArray<UIView *> *segmentsTmp = [self valueForKey:@"_segments"];
+    UIView *firstSegment = segmentsTmp.count>0 ? segmentsTmp[0] : nil;
+    if ([self isRTL] && firstSegment.frame.origin.x == 0) {
+        return [[segmentsTmp reverseObjectEnumerator] allObjects];
+    }
+    return segmentsTmp;
 }
 
 - (UIView *)getSelectedSegment {
