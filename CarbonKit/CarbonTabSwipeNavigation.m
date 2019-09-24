@@ -85,31 +85,35 @@
 }
 
 - (instancetype)initWithItems:(NSArray *)items delegate:(id)target {
-    selectedIndex = 0;
-    self.delegate = target;
-    self.viewControllers = [NSMutableDictionary new];
+    self = [super init];
+    if (self) {
+        selectedIndex = 0;
+        self.delegate = target;
+        self.viewControllers = [NSMutableDictionary new];
 
-    [self createSegmentedToolbar];
-    [self createTabSwipeScrollViewWithItems:items];
-    [self addToolbarIntoSuperview];
-    [self createPageViewController];
+        [self createSegmentedToolbar];
+        [self createTabSwipeScrollViewWithItems:items];
+        [self addToolbarIntoSuperview];
+        [self createPageViewController];
 
-    [self loadFirstViewController];
-
+        [self loadFirstViewController];
+    }
     return self;
 }
 
 - (instancetype)initWithItems:(NSArray *)items toolBar:(UIToolbar *)toolBar delegate:(id)target {
-    selectedIndex = 0;
-    self.delegate = target;
-    self.viewControllers = [NSMutableDictionary new];
+    self = [super init];
+    if (self) {
+        selectedIndex = 0;
+        self.delegate = target;
+        self.viewControllers = [NSMutableDictionary new];
 
-    [self setToolbar:toolBar];
-    [self createTabSwipeScrollViewWithItems:items];
-    [self createPageViewController];
+        [self setToolbar:toolBar];
+        [self createTabSwipeScrollViewWithItems:items];
+        [self createPageViewController];
 
-    [self loadFirstViewController];
-
+        [self loadFirstViewController];
+    }
     return self;
 }
 
